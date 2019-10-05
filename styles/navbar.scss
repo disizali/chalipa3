@@ -1,0 +1,80 @@
+nav {
+  min-height: 80px;
+}
+.dropdown-menu {
+  background: white;
+  text-align: right;
+  border-radius: 5px;
+  box-shadow: 0 0 10px $shadowColor;
+  direction: rtl;
+  margin-top: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s;
+  display: block;
+  &.show {
+    margin-top: 0;
+    opacity: 1;
+    pointer-events: all;
+  }
+  button {
+    color: $mainColor;
+    a {
+      transition: all 0.5s;
+    }
+    &:hover > a {
+      margin-right: 2px;
+    }
+
+    &:hover > ul {
+      opacity: 1;
+      pointer-events: all;
+    }
+    ul {
+      pointer-events: none;
+      opacity: 0;
+      top: 0;
+      position: absolute;
+      right: 100%;
+      background: white;
+      box-shadow: 0 0 10px $shadowColor;
+      transition: 0.2s all;
+      border-radius: 5px;
+      list-style: none;
+      padding: 0 5px 0 0;
+      li {
+        padding: 5px;
+      }
+    }
+  }
+  text-decoration: none;
+}
+
+.dropdown-menu .navbar-brand {
+  span {
+    color: $mainColor !important;
+  }
+}
+
+.nav-item {
+  margin-right: 20px;
+  a {
+    color: $mainColor !important;
+  }
+}
+
+.dropdown-toggle::after {
+  margin-right: 10px;
+}
+
+@include media-breakpoint-down(md) {
+  .dropdown-menu {
+    opacity: 1;
+    pointer-events: all;
+    display: none;
+    margin-top: 0;
+    &.show {
+      margin-top: 0;
+    }
+  }
+}

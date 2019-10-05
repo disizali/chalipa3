@@ -1,0 +1,32 @@
+.categories {
+  margin: 30px 0;
+}
+.category-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  img {
+    transition: 0.5s all;
+  }
+  &:hover > img {
+    margin-bottom: 50px;
+  }
+}
+.category-image {
+  width: 100px;
+  height: 100px;
+  background: $secondColor;
+  border-radius: 100px;
+  left: 50%;
+  position: relative;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px $shadowColor);
+  transform: translateX(-50%);
+}
+
+.category-title {
+  margin-top: 20px;
+  font-size: 1.4em;
+  text-shadow: 0 0 10px $shadowColor;
+}
