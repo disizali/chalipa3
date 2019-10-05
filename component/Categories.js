@@ -9,22 +9,22 @@ export default class Categories extends React.Component {
     return (
       <section className="categories">
         <Container>
-          <Row className="bg-warning">
-            <Col className="category-column bg-danger" sm="12" md="4">
+          <Row>
+            <Col className="category-column" sm="12" md="4">
               <img
                 src="/static/images/cable-1.png"
                 className="category-image"
               />
               <h1 className="category-title">کابل فشار قوی</h1>
             </Col>
-            <Col className="category-column bg-danger" sm="12" md="4">
+            <Col className="category-column" sm="12" md="4">
               <img
                 src="/static/images/cable-2.png"
                 className="category-image"
               />
               <h1 className="category-title">کابل فشار متوسط</h1>
             </Col>
-            <Col className="category-column bg-danger" sm="12" md="4">
+            <Col className="category-column" sm="12" md="4">
               <img
                 src="/static/images/cable-3.png"
                 className="category-image"

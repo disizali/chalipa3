@@ -131,14 +131,13 @@ class Categories extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component 
       },
       __self: this
     }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-      className: "bg-warning",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 12
       },
       __self: this
     }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-      className: "category-column bg-danger",
+      className: "category-column",
       sm: "12",
       md: "4",
       __source: {
@@ -162,7 +161,7 @@ class Categories extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component 
       },
       __self: this
     }, "\u06A9\u0627\u0628\u0644 \u0641\u0634\u0627\u0631 \u0642\u0648\u06CC")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-      className: "category-column bg-danger",
+      className: "category-column",
       sm: "12",
       md: "4",
       __source: {
@@ -186,7 +185,7 @@ class Categories extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component 
       },
       __self: this
     }, "\u06A9\u0627\u0628\u0644 \u0641\u0634\u0627\u0631 \u0645\u062A\u0648\u0633\u0637")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-      className: "category-column bg-danger",
+      className: "category-column",
       sm: "12",
       md: "4",
       __source: {

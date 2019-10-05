@@ -11525,11 +11525,16 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center; }
-  .category-column img {
+  text-align: center;
+  cursor: pointer; }
+  .category-column img,
+  .category-column h1 {
     transition: 0.5s all; }
   .category-column:hover > img {
-    margin-bottom: 50px; }
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+    border: 4px solid #eeeeee; }
+  .category-column:hover > h1 {
+    font-size: 1.3em; }
 
 .category-image {
   width: 100px;
