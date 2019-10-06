@@ -1,0 +1,28 @@
+.sample-image {
+  border-radius: 5px;
+  position: relative;
+  background-image: linear-gradient(to bottom, transparent, red);
+  transition: filter 0.5s ease;
+  &:hover {
+    filter: brightness(70%);
+  }
+}
+.sample-column:hover > .sample-title {
+  opacity: 1;
+  height: 30px;
+  margin-top: -30px;
+  letter-spacing: 4px;
+}
+
+.sample-title {
+  height: 25px;
+  position: relative;
+  margin-top: -25px;
+  background: linear-gradient(to top, $shadowColor 0%, transparent 100%);
+  color: #ffffff;
+  transition: all 0.3s;
+  opacity: 0.2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

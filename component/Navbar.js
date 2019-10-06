@@ -16,6 +16,9 @@ import {
   Container
 } from "reactstrap";
 
+import categories from "../static/data/categories";
+const categoriesArray = Object.values(categories);
+
 export default class Navbarclass extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +39,7 @@ export default class Navbarclass extends React.Component {
         <Navbar
           color="light"
           light
-          expand="md"
+          expand="lg"
           className="rtl shadow"
           fixed="true"
         >
@@ -59,34 +62,27 @@ export default class Navbarclass extends React.Component {
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>
-                      <Link href="/category/1">
-                        <a>کابل فشار ضعیف</a>
-                      </Link>
-                      <ul>
-                        <li>
-                          <Link href="/category/4">
-                            <a>کابل افشان</a>
-                          </Link>
-                        </li>
-                      </ul>
+                      {categoriesArray.map((item, index) => {
+                        return (
+                          <div>
+                            <Link href={`/category/${item.id}`}>
+                              <a>{item.title}</a>
+                            </Link>
+                            <ul>
+                              {item.subCategories.map((item, index) => {
+                                return (
+                                  <li>
+                                    <Link href={`/category/${item.id}`}>
+                                      <a>{item.title}</a>
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        );
+                      })}
                     </DropdownItem>
-                        <DropdownItem>
-                          <Link href="/category/1">
-                            <a>کابل فشار متوسط</a>
-                          </Link>
-                          <ul>
-                            <li>
-                              <Link href="/category/4">
-                                <a>نتشیصمیاشصیاشصمعیاشمصعیلشصمیلشمصی</a>
-                              </Link>
-                            </li>
-                          </ul>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Link href="/category/1">
-                            <a>کابل فشار قوی</a>
-                          </Link>
-                        </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
                 <NavItem>

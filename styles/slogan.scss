@@ -4,6 +4,9 @@
   background: #f9f9f9;
   direction: rtl;
   text-align: center;
+  border-bottom-left-radius: 100px;
+  border-top-right-radius: 100px;
+  margin: auto 200px;
   span {
     margin: 20px;
     font-family: "Samim";
@@ -15,6 +18,12 @@
     color: $mainColor;
   }
   strong {
+    color: white;
+    background: $secondColor;
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+  legend {
     color: $secondColor;
   }
 }

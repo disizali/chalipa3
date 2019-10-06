@@ -10,6 +10,8 @@ $secondColor: #fb8c09;
 @import "splash";
 @import "slogan";
 @import "categories";
+@import "samples";
+@import "customer";
 @import "footer";
 
 .rtl {
@@ -19,4 +21,6 @@ body {
   overflow-x: hidden;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }

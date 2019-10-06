@@ -1,17 +1,137 @@
 import React from "react";
+import { Container, Row, Col } from "reactstrap";
 export default class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: "/static/images/splash-1.jpg"
+      selected: 2
     };
   }
+
+  changeSelected(e) {
+    const cableImage = document.getElementById("cable-image");
+    cableImage.style.left = `-28%`;
+    cableImage.style.opacity = `0`;
+    const behindText = document.getElementById("behind-text");
+    behindText.style.letterSpacing = `50px`;
+    const btnShowCategory = document.getElementById("btn-show-category");
+    btnShowCategory.style.width = `90px`;
+    setTimeout(() => {
+      this.setState({ selected: e });
+      cableImage.style.left = `-30%`;
+      cableImage.style.opacity = `1`;
+      behindText.style.letterSpacing = `40px`;
+      btnShowCategory.style.width = `100px`;
+    }, 500);
+  }
+
   render() {
+    const { selected } = this.state;
     return (
-      <section className="splash h-50">
-        <img src={this.state.image} className="slider" width="100%" />
-        <button className="splash-changer changer-1">&lt;</button>
-        <button className="splash-changer changer-2">&gt;</button>
+      <section className="splash">
+        <Row className="splash-bg">
+          <Col md={3}>
+            <Container className="d-flex flex-column justify-content-center align-items-center p-5 text-center h-100">
+              <div className="extra">
+                <div className="mb-5 px-5">
+                  <div className="slpash-circle">
+                    <i className="fas fa-envelope mr-2 text-muted"></i>
+                    info@chalipacable.ir
+                  </div>
+                  {/* <Row>
+                    <Col sm={4}>
+                      <div className="slpash-circle bg-white">قیمت</div>
+                    </Col>
+                    <Col sm={4}>
+                      <div className="slpash-circle bg-white">تماس</div>
+                    </Col>
+                    <Col sm={4}>
+                      <div className="slpash-circle bg-white">مقالات</div>
+                    </Col>
+                  </Row> */}
+                </div>
+                <div className="my-5 px-5">
+                  <div className="slpash-circle">
+                    <i className="fas fa-phone mr-2 text-muted"></i>
+                    <span className="ml-2">021-88525503-5</span>
+                  </div>
+                </div>
+                <div className="mt-5 px-5 w-100">
+                  <div className="slpash-circle">
+                    <i className="fab fa-instagram mx-3"></i>
+                    <i className="fab fa-twitter mx-3"></i>
+                    <i className="fab fa-facebook mx-3"></i>
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </Col>
+          <Col sm={12} md={3}>
+            <Container className="d-flex flex-column justify-content-center align-items-center p-5">
+              <div className="categories rtl text-right">
+                <div
+                  className={`mb-md-4 splash-category px-5 ${
+                    selected == 1 ? "active" : ""
+                  }`}
+                  onClick={() => this.changeSelected(1)}
+                >
+                  <img
+                    src={`/static/images/cable-medium${
+                      selected == 1 ? "-active" : ""
+                    }.png`}
+                    className="cable-icon"
+                  />
+                  <span>کابل فشار ضعیف</span>
+                </div>
+
+                <div
+                  className={`my-md-4 splash-category px-5 ${
+                    selected == 2 ? "active" : ""
+                  }`}
+                  onClick={() => this.changeSelected(2)}
+                >
+                  <img
+                    src={`/static/images/cable-medium${
+                      selected == 2 ? "-active" : ""
+                    }.png`}
+                    className="cable-icon"
+                  />
+                  <span id="category-2">کابل فشار متوسط</span>
+                </div>
+
+                <div
+                  className={`mt-md-4 splash-category  px-5 ${
+                    selected == 3 ? "active" : ""
+                  }`}
+                  onClick={() => this.changeSelected(3)}
+                >
+                  <img
+                    src={`/static/images/cable-high${
+                      selected == 3 ? "-active" : ""
+                    }.png`}
+                    className="cable-icon"
+                  />
+                  <span>کابل فشار قوی</span>
+                </div>
+              </div>
+            </Container>
+          </Col>
+          <Col
+            sm={12}
+            md={6}
+            className="justify-content-end d-flex align-items-center"
+          >
+            <div className="cable-container d-flex align-items-center justify-content-start">
+              <img
+                src={`/static/images/cable-${selected}.png`}
+                className="cable-image"
+                id="cable-image"
+              />
+              <span id="behind-text">CHALIPA</span>
+              <button id="btn-show-category">مشاهده</button>
+            </div>
+          </Col>
+        </Row>
       </section>
     );
   }

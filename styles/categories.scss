@@ -10,15 +10,18 @@
   img,
   h1 {
     transition: 0.5s all;
+    color: rgb(90, 90, 90);
   }
   &:hover > img {
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
     border: 4px solid #eeeeee;
   }
   &:hover > h1 {
-    font-size: 1.3em;
+    font-size: 1.38em;
+    color: $secondColor;
   }
 }
+
 .category-image {
   width: 100px;
   height: 100px;

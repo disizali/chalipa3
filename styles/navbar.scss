@@ -1,6 +1,12 @@
 nav {
   min-height: 80px;
 }
+.dropdown:hover > .dropdown-menu {
+  opacity: 1;
+  margin-top: -5px;
+  pointer-events: all;
+}
+
 .dropdown-menu {
   background: white;
   text-align: right;
@@ -18,32 +24,36 @@ nav {
     pointer-events: all;
   }
   button {
+    position: relative;
     color: $mainColor;
-    a {
-      transition: all 0.5s;
-    }
-    &:hover > a {
-      margin-right: 2px;
-    }
+    div {
+      a {
+        transition: all 0.5s;
+      }
+      &:hover > a {
+        margin-right: 2px;
+      }
 
-    &:hover > ul {
-      opacity: 1;
-      pointer-events: all;
-    }
-    ul {
-      pointer-events: none;
-      opacity: 0;
-      top: 0;
-      position: absolute;
-      right: 100%;
-      background: white;
-      box-shadow: 0 0 10px $shadowColor;
-      transition: 0.2s all;
-      border-radius: 5px;
-      list-style: none;
-      padding: 0 5px 0 0;
-      li {
-        padding: 5px;
+      &:hover > ul {
+        opacity: 1;
+        pointer-events: all;
+      }
+      ul {
+        pointer-events: none;
+        opacity: 0;
+        top: 0;
+        position: absolute;
+        right: 100%;
+        margin-right: 2px;
+        background: white;
+        box-shadow: 0 0 10px $shadowColor;
+        transition: 0.2s all;
+        border-radius: 5px;
+        list-style: none;
+        padding: 0 5px 0 0;
+        li {
+          padding: 5px;
+        }
       }
     }
   }

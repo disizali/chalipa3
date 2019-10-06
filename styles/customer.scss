@@ -1,0 +1,25 @@
+.customer-title {
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: initial;
+  pointer-events: none;
+}
+.customer-logo{
+
+}
+
+.customer-container {
+  width: 100%;
+  height: 60px;
+  border: 4px solid #e9e9e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  &:hover {
+    border: 4px solid $secondColor;
+  }
+}
+.customer-image {
+  border-radius: 10px;
+}

@@ -7,7 +7,7 @@ export default class Categories extends React.Component {
   }
   render() {
     return (
-      <section className="categories">
+      <section className="categories mt-5">
         <Container>
           <Row>
             <Col className="category-column" sm="12" md="4">

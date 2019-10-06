@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "reactstrap";
 export default class Slogan extends React.Component {
   constructor(props) {
     super(props);
@@ -9,20 +10,22 @@ export default class Slogan extends React.Component {
   render() {
     return (
       <section className="slogan d-flex flex-column">
-        <div className="d-block m-2">
-          <span>
-            فروش پایان یک معامله نیست , <strong>آغاز یک تعهد</strong> است .
-          </span>
-        </div>
-        <hr />
-        <div className="d-block m-2">
-          <p>
-          <strong>چلیپا کابل پویا</strong> مرجعی برای خرید انواع سیم و کابل با استانداردهای
-            توانیر پیشرو در ارائه خدمات به پروژه های نفت و گاز و پتروشیمی و
-            پالایشگاهی , فولادی و سیمانی و... ما میتوانیم برای کمک به شما
-            تجاربمان را در اختیارتان بگذاریم
-          </p>
-        </div>
+        <Container>
+          <div className="d-block m-2">
+            <span>
+             فروش پایان یک معامله نیست , آغاز یک <strong>تعهد</strong> است .
+            </span>
+          </div>
+          <div className="d-block m-2">
+            <p>
+              <b>چلیپا کابل پویا</b> مرجعی برای خرید انواع سیم و کابل
+              با استانداردهای توانیر پیشرو در ارائه خدمات به پروژه های نفت و
+              گاز و پتروشیمی و پالایشگاهی , فولادی و سیمانی و...
+              <br />
+              ما میتوانیم برای کمک به شما تجاربمان را در اختیارتان بگذاریم
+            </p>
+          </div>
+        </Container>
       </section>
     );
   }
