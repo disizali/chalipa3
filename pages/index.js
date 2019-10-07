@@ -1,10 +1,9 @@
 import React from "react";
-import Layout from "../component/Layout";
-import Splash from "../component/Splash";
-import Slogan from "../component/Slogan";
-import Categories from "../component/Categories";
-import Samples from "../component/Samples";
-import Customers from "../component/Customers";
+import Layout from "../components/Layout";
+import Splash from "../components/Splash";
+import Slogan from "../components/Slogan";
+import Samples from "../components/Samples";
+import Customers from "../components/Customers";
 import { Container } from "reactstrap";
 
 const Splitter = () => {
@@ -23,7 +22,6 @@ export default class Index extends React.Component {
       <Layout className="justify-content-center">
         <Splash />
         <Slogan />
-        {/* <Categories /> */}
         {/* <Splitter /> */}
         <Samples />
         <Splitter />

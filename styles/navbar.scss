@@ -1,5 +1,6 @@
 nav {
   min-height: 80px;
+  z-index: 1;
 }
 .dropdown:hover > .dropdown-menu {
   opacity: 1;
@@ -26,18 +27,19 @@ nav {
   button {
     position: relative;
     color: $mainColor;
+    &:hover > div a {
+      margin-right: 2px;
+    }
+
+    &:hover > div ul {
+      opacity: 1;
+      pointer-events: all;
+    }
     div {
       a {
         transition: all 0.5s;
       }
-      &:hover > a {
-        margin-right: 2px;
-      }
 
-      &:hover > ul {
-        opacity: 1;
-        pointer-events: all;
-      }
       ul {
         pointer-events: none;
         opacity: 0;
@@ -60,16 +62,19 @@ nav {
   text-decoration: none;
 }
 
-.dropdown-menu .navbar-brand {
+.navbar-brand {
   span {
     color: $mainColor !important;
   }
 }
 
 .nav-item {
-  margin-right: 20px;
   a {
     color: $mainColor !important;
+    transition: 0.3s all;
+    &:hover {
+      color: $secondColor !important;
+    }
   }
 }
 

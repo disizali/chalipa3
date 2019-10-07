@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+
 import { Container, Row, Col } from "reactstrap";
 export default class Splash extends React.Component {
   constructor(props) {
@@ -38,17 +40,6 @@ export default class Splash extends React.Component {
                     <i className="fas fa-envelope mr-2 text-muted"></i>
                     info@chalipacable.ir
                   </div>
-                  {/* <Row>
-                    <Col sm={4}>
-                      <div className="slpash-circle bg-white">قیمت</div>
-                    </Col>
-                    <Col sm={4}>
-                      <div className="slpash-circle bg-white">تماس</div>
-                    </Col>
-                    <Col sm={4}>
-                      <div className="slpash-circle bg-white">مقالات</div>
-                    </Col>
-                  </Row> */}
                 </div>
                 <div className="my-5 px-5">
                   <div className="slpash-circle">
@@ -128,7 +119,9 @@ export default class Splash extends React.Component {
                 id="cable-image"
               />
               <span id="behind-text">CHALIPA</span>
-              <button id="btn-show-category">مشاهده</button>
+              <Link href={`/category/${selected}`}>
+                <a id="btn-show-category">مشاهده</a>
+              </Link>
             </div>
           </Col>
         </Row>
