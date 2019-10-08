@@ -40,7 +40,7 @@ export default class Navbarclass extends React.Component {
           color="light"
           light
           expand="lg"
-          className="rtl shadow"
+          className="rtl shadow-sm"
           fixed="true"
         >
           <NavbarBrand href="/">

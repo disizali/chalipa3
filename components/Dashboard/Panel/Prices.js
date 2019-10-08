@@ -54,6 +54,7 @@ export class Prices extends Component {
     return (
       <div>
         <Container className="p-5">
+          <h2 className="text-light">لیست قیمت ها</h2>
           <Row className="my-2">
             <Col>
               <input
@@ -96,10 +97,10 @@ export class Prices extends Component {
           <Table dark responsive bordered>
             <thead>
               <tr>
-              <th>نام</th>
-              <th>اندازه</th>
-              <th>قیمت</th>
-              <th>عملیات</th>
+                <th>نام</th>
+                <th>اندازه</th>
+                <th>قیمت</th>
+                <th>عملیات</th>
               </tr>
             </thead>
             <tbody>

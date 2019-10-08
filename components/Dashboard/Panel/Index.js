@@ -9,7 +9,7 @@ import Images from "./Images";
 export class panel extends Component {
   constructor(props) {
     super(props);
-    this.state = { panel: 5 };
+    this.state = { panel: 1 };
   }
   getPanel() {
     const { panel } = this.state;

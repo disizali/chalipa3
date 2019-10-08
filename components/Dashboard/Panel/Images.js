@@ -16,7 +16,14 @@ export class Images extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.uploadImage.bind(this)}>UPLOAD</Button>
+        <form
+          action="/api/upload"
+          encType="multipart/form-data"
+          method="POST"
+        >
+          <input type="file" name="myImage" accept="image/*" />
+          <input type="submit" value="Upload Photo" />
+        </form>
       </div>
     );
   }
