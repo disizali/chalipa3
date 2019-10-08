@@ -37,7 +37,13 @@ export default class Product extends React.Component {
     }, 300);
   }
   changeTab(e) {
-    this.setState({ tab: e });
+    if (e == this.state.tab) return;
+    const tabContainer = document.getElementById("tab-container");
+    tabContainer.style.opacity = 0;
+    setTimeout(() => {
+      tabContainer.style.opacity = 1;
+      this.setState({ tab: e });
+    }, 300);
   }
   render() {
     const { selected, tab } = this.state;
@@ -105,7 +111,9 @@ export default class Product extends React.Component {
                     </Row>
                     <Row>
                       <Col>
-                        <div>
+                        <img src={selected.details} hidden />
+                        <img src={selected.technicalTable} hidden />
+                        <div className="tab-container" id="tab-container">
                           {tab == 1 && (
                             <div
                               className="p-3 w-100 h-100 bg-white shadow-lg rounded"

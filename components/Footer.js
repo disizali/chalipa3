@@ -1,13 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
-
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
   render() {
     return (
       <footer>
@@ -72,7 +70,9 @@ export default class Footer extends React.Component {
                 <li>پست الکترونیک: info@chalipacable.ir</li>
                 <li>شماره تماس: 5-88525503-021</li>
                 <li>
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram mx-2"></i>
+                  <i className="fab fa-twitter mx-2"></i>
+                  <i className="fab fa-facebook mx-2"></i>
                 </li>
               </ul>
             </Col>

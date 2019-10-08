@@ -69,8 +69,13 @@
   cursor: pointer;
   background: #eeeeee;
   min-height: 50px;
+  transition: 0.3s all;
   &.active {
     background: $mainColor;
     color: white;
   }
+}
+.tab-container {
+  transition: 0.3s all;
+  opacity: 1;
 }

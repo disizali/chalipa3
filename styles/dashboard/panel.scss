@@ -1,0 +1,45 @@
+
+.panel-actions {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    cursor: pointer;
+    li {
+      padding: 30px 20px;
+      color: rgba(106, 106, 148, 0.5);
+      font-size: 1.2em;
+      transition: all 0.3s;
+      &.active {
+        background: rgb(126, 126, 167);
+        color: #eeeeee;
+      }
+      span {
+        margin-right: 10px;
+      }
+      i {
+        margin-left: 10px;
+      }
+      &:hover {
+        color: white;
+        background: rgba(120, 120, 161, 0.5);
+      }
+    }
+  }
+}
+
+.panel-editor {
+  min-height: 50px;
+  background: rgba(41, 41, 56, 1);
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea.panel-editor{
+  min-height: 150px;
+}

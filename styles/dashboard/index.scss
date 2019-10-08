@@ -1,0 +1,18 @@
+@import "loading";
+@import "login";
+@import "panel";
+@import "draft";
+.dashboard {
+  background: rgb(53, 53, 71);
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+.panel-actions {
+  background: rgba(41, 41, 56, 0.5);
+  height: 100%;
+  min-height: 100vh;
+}

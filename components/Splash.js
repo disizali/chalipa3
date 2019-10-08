@@ -113,6 +113,9 @@ export default class Splash extends React.Component {
             className="justify-content-end d-flex align-items-center"
           >
             <div className="cable-container d-flex align-items-center justify-content-start">
+              {[1, 2, 3].map(item => {
+                <img src={`/static/images/cable-${selected}.png`} hidden />;
+              })}
               <img
                 src={`/static/images/cable-${selected}.png`}
                 className="cable-image"

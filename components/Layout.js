@@ -16,7 +16,9 @@ export default class Layout extends React.Component {
           <title>سیم و کابل چلیپا</title>
         </Head>
         <Navbar />
+        <div className="children">
         {this.props.children}
+        </div>
         <Footer />
       </main>
     );

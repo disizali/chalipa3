@@ -5,20 +5,12 @@
   },
   {
     "id": "2",
-    "title": "کابل فشار متوسط",
-    "products": [
-      { "id": "1", "title": "N2XSEKYRY" },
-      { "id": "2", "title": "N2XSEY" },
-      { "id": "3", "title": "N2XSEYBY" }
-    ]
+    "title": "کابل فشار متوسط"
   },
-  { "id": "3", "title": "کابل فشار قوی" },
-  { "id": "4", "parentCategory": 1, "title": "کابل افشان" },
+  { "id": "3", "parentCategory": 1, "title": "کابل افشان" },
   {
-    "id": "5",
+    "id": "4",
     "parentCategory": 1,
     "title": "PVC,XLPE کابل نیمه افشان با عایق"
-  },
-  { "id": "6", "parentCategory": 2, "title": "فلان" },
-  { "id": "7", "parentCategory": 2, "title": "بهمان" }
+  }
 ]
