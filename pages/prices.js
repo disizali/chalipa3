@@ -1,9 +1,12 @@
 import Layout from "../components/Layout";
 import { Table, Container } from "reactstrap";
+import axios from "axios";
 
 export default class Prices extends React.Component {
   static async getInitialProps() {
-    const prices = require("../static/data/prices");
+    const { data: prices } = await axios.get(
+      "http://localhost:3000/api/prices"
+    );
     return { prices };
   }
   constructor(props) {
@@ -25,7 +28,7 @@ export default class Prices extends React.Component {
               {this.props.prices.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{index + 1}</td>
                     <td>{item.name}</td>
                     <td>{item.size}</td>
                     <td>
