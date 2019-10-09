@@ -1,29 +1,23 @@
-import express from "express";
-import multer from "multer";
+const express = require('express');
+const fileUpload = require("express-fileupload");
 const app = express();
-var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "uploads/images");
-  },
-  filename: function(req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now());
-  }
-});
-var upload = multer({ storage: storage });
 
-const custom = (req, res, next) => {
-  console.log("CUSTOM MIDDLEWARE WROKED");
-  next();
-};
+// default options
+app.use(fileUpload());
 
-app.post("/api/upload", [custom, upload.single("myImage")], (req, res, next) => {
-  const file = req.file;
-  if (!file) {
-    const error = new Error("Please upload a file");
-    error.httpStatusCode = 400;
-    return next(error);
+app.post("/api/upload", function(req, res) {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send("No files were uploaded.");
   }
-  res.send(file);
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.sampleFile;
+
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv("/static/uploads/images/filename.jpg", function(err) {
+    if (err) return res.status(500).send(err);
+    res.send("File uploaded!");
+  });
 });
 
 export default app;

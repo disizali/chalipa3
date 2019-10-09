@@ -68,8 +68,8 @@ export class panel extends Component {
                 className={`w-100 h-100 ${panel == 5 && "active"}`}
                 onClick={() => this.changePanel(5)}
               >
-                <i className="fa fa-image"></i>
-                <span>آپلود تصویر</span>
+                <i className="fa fa-images"></i>
+                <span>مدیریت تصاویر</span>
               </li>
             </ul>
           </Col>

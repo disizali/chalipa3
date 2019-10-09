@@ -1,7 +1,6 @@
 import Layout from "../components/Layout";
 import { Table, Container } from "reactstrap";
-import axios from "axios";
-
+import axios from "axios"; 
 export default class Prices extends React.Component {
   static async getInitialProps() {
     const { data: prices } = await axios.get(

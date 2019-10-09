@@ -61,7 +61,7 @@ export default class Splash extends React.Component {
             <Container className="d-flex flex-column justify-content-center align-items-center p-5">
               <div className="categories rtl text-right">
                 <div
-                  className={`mb-md-4 splash-category px-5 ${
+                  className={`mb-sm-2 mb-md-4 splash-category px-5 ${
                     selected == 1 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(1)}
@@ -76,7 +76,7 @@ export default class Splash extends React.Component {
                 </div>
 
                 <div
-                  className={`my-md-4 splash-category px-5 ${
+                  className={`my-sm-2 my-md-4 splash-category px-5 ${
                     selected == 2 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(2)}
@@ -91,7 +91,7 @@ export default class Splash extends React.Component {
                 </div>
 
                 <div
-                  className={`mt-md-4 splash-category  px-5 ${
+                  className={`mt-sm-2 mt-md-4 splash-category  px-5 ${
                     selected == 3 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(3)}

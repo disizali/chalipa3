@@ -5,6 +5,8 @@ import cookie from "js-cookie";
 import Index from "../components/Dashboard/Panel";
 import axios from "axios";
 
+import Head from "next/head";
+
 import "../styles/dashboard/index.scss";
 
 export class dashboard extends Component {
@@ -39,6 +41,9 @@ export class dashboard extends Component {
     const { loading, garanted } = this.state;
     return (
       <main className="dashboard">
+        <Head>
+          <title>چلیپا - پنل مدیریت</title>
+        </Head>
         {loading && <Loading />}
         {garanted == -1 && (
           <Login changeGaranty={this.changeGaranty.bind(this)} />

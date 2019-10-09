@@ -1,13 +1,21 @@
 import React from "react";
 import Layout from "../../components/Layout";
+import axios from "axios";
+
 import { Container, Row, Col, Nav, NavItem, NavLink } from "reactstrap";
 export default class Product extends React.Component {
   static async getInitialProps(context) {
-    const products = require("../../static/data/products.json");
+    const {
+      query: { id }
+    } = context;
 
-    const product = products.find(item => {
-      return item.id == context.query.id;
-    });
+    const host =
+      context.req != undefined
+        ? `http://${context.req.headers.host}`
+        : `${window.location.origin}`;
+
+    const { data: product } = await axios.get(`${host}/api/products/${id}`);
+
     if (product == undefined) {
       return { error: true };
     }

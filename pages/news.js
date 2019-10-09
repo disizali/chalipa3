@@ -6,12 +6,12 @@ import axios from "axios";
 export default class News extends React.Component {
   static async getInitialProps(context) {
     const host =
-    context.req != undefined
-      ? `http://${context.req.headers.host}`
-      : `${window.location.origin}`;
+      context.req != undefined
+        ? `http://${context.req.headers.host}`
+        : `${window.location.origin}`;
 
-  const { data: news } = await axios.get(`${host}/api/news`);
-  return { news };
+    const { data: news } = await axios.get(`${host}/api/news`);
+    return { news };
   }
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ export default class News extends React.Component {
           {this.props.news.map((item, index) => {
             const date = new Date(item.createdAt);
             return (
-              <Link href={`/news/${++index}`} key={index}>
+              <Link href={`/news/${item.id}`} key={index}>
                 <a>
                   <div className="bg-white shadow rounded p-2 my-3">
                     <Row className="py-2">

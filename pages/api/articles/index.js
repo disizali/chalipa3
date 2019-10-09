@@ -15,9 +15,12 @@ export default async (req, res) => {
   switch (req.method) {
     case "GET":
       res.json(await Article.findAll({ order: [["id", "DESC"]] }));
+      break;
     case "POST":
       res.send(await insertArticle(req.body.title, req.body.body));
+      break;
     case "DELETE":
-    res.send(await deleteArticle(req.body.targetId));
+      res.send(await deleteArticle(req.body.targetId));
+      break;
   }
 };

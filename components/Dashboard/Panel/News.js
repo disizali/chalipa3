@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Button, Table } from "reactstrap";
+import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
 
 export default class News extends Component {
@@ -13,14 +13,18 @@ export default class News extends Component {
       this.setState({ news: data });
     });
     axios.get("http://localhost:3000/api/images").then(({ data: images }) => {
-      this.setState({ images });
+      this.setState({ images, selectedImage: images[0] });
     });
   }
 
-  sendPost() {
-    const { title, body, news } = this.state;
+  sendNews() {
+    const { title, body, selectedImage, news } = this.state;
     axios
-      .post("http://localhost:3000/api/news", { title, body })
+      .post("http://localhost:3000/api/news", {
+        title,
+        body,
+        image: selectedImage
+      })
       .then(({ data }) => {
         if (data == "wrong data") {
           return;
@@ -30,12 +34,12 @@ export default class News extends Component {
       });
   }
 
-  deletePost(targetId) {
+  deleteNews(targetId) {
     const { news } = this.state;
     axios
-      .delete("http://localhost:3000/api/articles", { data: { targetId } })
+      .delete("http://localhost:3000/api/news", { data: { targetId } })
       .then(({ data }) => {
-        if (data == "no article") {
+        if (data == "no news") {
           return;
         }
         return this.setState({
@@ -48,6 +52,9 @@ export default class News extends Component {
   }
   bodyChangeHandler(e) {
     this.setState({ body: e.target.value });
+  }
+  imageChangeHandler(e) {
+    this.setState({ selectedImage: e.target.value });
   }
   render() {
     return (
@@ -68,7 +75,27 @@ export default class News extends Component {
             onChange={this.bodyChangeHandler.bind(this)}
             value={this.state.body}
           ></textarea>
-          <Button color="primary" onClick={this.sendPost.bind(this)}>
+          <Row className="my-3">
+            <Col sm={2}>
+              <span className="text-light">تصویر :</span>
+            </Col>
+            <Col sm={10}>
+              <select
+                className="w-100 panel-editor ltr"
+                value={this.state.selectedImage}
+                onChange={this.imageChangeHandler.bind(this)}
+              >
+                {this.state.images.map((item, index) => {
+                  return (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
+            </Col>
+          </Row>
+          <Button color="primary" onClick={this.sendNews.bind(this)}>
             ارسال
           </Button>
           <br />
@@ -89,7 +116,7 @@ export default class News extends Component {
                     <td>
                       <Button
                         color="danger"
-                        onClick={() => this.deletePost(item.id)}
+                        onClick={() => this.deleteNews(item.id)}
                       >
                         <i className="fas fa-trash mx-2"></i>
                         <span className="mx-2">حذف</span>
