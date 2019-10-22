@@ -53,8 +53,9 @@
     width: 100px;
     height: 40px;
     transform: translateY(calc(-50% - 10px));
-    left: calc(100% - 110px);
-    right: auto;
+    // right: calc(100% - 110px);
+    // left: auto;
+    right: 10px;
     background: $secondColor;
     border-radius: 10px;
     box-shadow: 0 0 10px $shadowColor;
@@ -80,15 +81,6 @@
   left: -30%;
   z-index: 1;
   transition: all 0.5s;
-}
-
-@include media-breakpoint-down(md) {
-  .splash-category {
-    font-size: 1.4em;
-    &:hover {
-      background: transparent;
-    }
-  }
 }
 
 .slpash-circle {

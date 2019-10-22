@@ -9,11 +9,12 @@ $secondColor: #fb8c09;
 @import "navbar";
 @import "splash";
 @import "slogan";
-@import "categories";
+// @import "categories";
 @import "samples";
 @import "customer";
 @import "footer";
 @import "product";
+@import "category";
 
 .rtl {
   direction: rtl;

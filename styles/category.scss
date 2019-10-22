@@ -1,0 +1,38 @@
+.category-title {
+  position: absolute;
+  right: 0;
+  top: 6rem;
+  font-size: 2em;
+}
+.category-description {
+  text-shadow: 1px 1px 10px rgba(black, 0.2);
+  position: absolute;
+  right: 0;
+  top: 9rem;
+}
+.category-image {
+  opacity: 0.5;
+}
+.category-cintainer {
+  a {
+    text-decoration: none;
+    color: $mainColor;
+  }
+}
+.wave {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: -100px;
+}
+.category-logo {
+  background: $secondColor;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.category-info{
+  border-top: 1px solid $secondColor;
+  max-width: 200px;
+}
