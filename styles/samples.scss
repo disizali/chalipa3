@@ -26,3 +26,9 @@
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+
+@include media-breakpoint-down(md){
+  .sample-column{
+    padding : 20px;
+  }
+}

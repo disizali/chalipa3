@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import Router from "next/router";
+import axios from "axios";
 
 export default class Category extends React.Component {
   static async getInitialProps(context) {
@@ -9,28 +10,26 @@ export default class Category extends React.Component {
     const {
       query: { id }
     } = context;
-    const categories = require("../../static/data/categories.json");
-    if (id > categories.length) {
-      return { error: true };
-    }
-    const subCategories = categories.filter(item => {
-      return item.parentCategory == context.query.id;
-    });
-    if (subCategories == undefined || !subCategories.length) {
-      const products = require("../../static/data/products.json");
-      const product = products.find(item => item.category == id);
-      if (res) {
-        res.writeHead(302, {
-          Location: `/product/${product.id}`
-        });
-        res.end();
-      } else {
-        Router.push(`/product/${product.id}`);
-      }
-      return {};
-    }
-    return { categories: subCategories };
+    const 
+
+      const {data :category } = await axios.get(`http://localhost:3000/api/categories/${id}`);
+      if (category.subCategories){
+        return { category: categories };
+      }else {
+        const {data : products} = await axios.get("http://localhost:3000/api/products");
+        const product = products.find(item => item.category == id);
+        if (res) {
+          res.writeHead(302, {
+            Location: `/products/${product.id}`
+          });
+          res.end();
+        } else {
+          Router.push(`/products/${product.id}`);
+        }
+        return {};
+      }      
   }
+
   constructor(props) {
     super(props);
   }

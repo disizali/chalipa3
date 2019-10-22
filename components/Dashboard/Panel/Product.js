@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button, Table } from "reactstrap";
 import axios from "axios";
-
 export default class MyEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -18,12 +17,21 @@ export default class MyEditor extends React.Component {
       products: []
     };
   }
-
   componentDidMount() {
+    const editor = document.querySelector("#editor p");
+    editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+
     axios
       .get("http://localhost:3000/api/categories")
       .then(({ data: categories }) => {
-        this.setState({ categories, category: categories[0].id });
+        let finalCategories = [];
+        categories.forEach(item => {
+          finalCategories = [...finalCategories, ...item.subCategories];
+        });
+        this.setState({
+          categories: finalCategories,
+          category: finalCategories[0].id
+        });
       });
     axios
       .get("http://localhost:3000/api/products")
@@ -49,8 +57,8 @@ export default class MyEditor extends React.Component {
   subtitleChangeHandler(e) {
     this.setState({ subtitle: e.target.value });
   }
-  descriptionChangeHandler(e) {
-    this.setState({ description: e.target.value });
+  descriptionChangeHandler(description) {
+    this.setState({ description });
   }
   imageChangeHandler(e) {
     this.setState({ image: e.target.value });
@@ -60,6 +68,48 @@ export default class MyEditor extends React.Component {
   }
   technicalTableChangeHandler(e) {
     this.setState({ technicalTable: e.target.value });
+  }
+
+  modules() {
+    return {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ header: 1 }, { header: 2 }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ],
+        [{ direction: "rtl" }],
+        [{ align: [] }],
+        [{ color: [] }],
+        ["image", "link"],
+        [{ background: [] }],
+        ["clean"]
+      ]
+    };
+  }
+
+  formats() {
+    return [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "bullet",
+      "indent",
+      "align",
+      "link",
+      "color",
+      "background",
+      "direction",
+      "image"
+    ];
   }
 
   sendProduct() {
@@ -111,6 +161,8 @@ export default class MyEditor extends React.Component {
   }
 
   render() {
+    const ReactQuill = require("react-quill");
+
     return (
       <section className="product">
         <Container className="p-5">
@@ -142,20 +194,25 @@ export default class MyEditor extends React.Component {
               </select>
             </Col>
           </Row>
-          <input
+          <textarea
             type="text"
             className="panel-editor my-2 w-100"
             placeholder="درباره محصول"
             value={this.state.subtitle}
             onChange={this.subtitleChangeHandler.bind(this)}
-          />
-          <textarea
-            type="text"
-            className="panel-editor my-2 w-100"
-            placeholder="متن توضیحات"
-            value={this.state.description}
-            onChange={this.descriptionChangeHandler.bind(this)}
           ></textarea>
+          <div id="editor">
+            <ReactQuill
+              value={this.state.description}
+              className="panel-editor rtl text-center text-light"
+              theme="snow"
+              modules={this.modules()}
+              formats={this.formats()}
+              style={{ direction: "rtl" }}
+              onChange={this.descriptionChangeHandler.bind(this)}
+            />
+          </div>
+
           <Row className="my-3">
             <Col sm={2}>
               <span className="text-light">تصویر محصول :</span>

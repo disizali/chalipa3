@@ -66,13 +66,15 @@ export default class Splash extends React.Component {
                   }`}
                   onClick={() => this.changeSelected(1)}
                 >
-                  <img
-                    src={`/static/images/cable-medium${
-                      selected == 1 ? "-active" : ""
-                    }.png`}
-                    className="cable-icon"
-                  />
-                  <span>کابل فشار ضعیف</span>
+                  <h3>
+                    <img
+                      src={`/static/images/cable-low${
+                        selected == 1 ? "-active" : ""
+                      }.png`}
+                      className="cable-icon"
+                    />
+                    کابل فشار ضعیف
+                  </h3>
                 </div>
 
                 <div
@@ -81,15 +83,17 @@ export default class Splash extends React.Component {
                   }`}
                   onClick={() => this.changeSelected(2)}
                 >
-                  <img
-                    src={`/static/images/cable-medium${
-                      selected == 2 ? "-active" : ""
-                    }.png`}
-                    className="cable-icon"
-                  />
-                  <span id="category-2">کابل فشار متوسط</span>
+                  <h3 id="category-2">
+                    <img
+                      src={`/static/images/cable-medium${
+                        selected == 2 ? "-active" : ""
+                      }.png`}
+                      className="cable-icon"
+                    />
+                    <span>کابل فشار متوسط</span>
+                  </h3>
                 </div>
-
+                {/* 
                 <div
                   className={`mt-sm-2 mt-md-4 splash-category  px-5 ${
                     selected == 3 ? "active" : ""
@@ -103,7 +107,7 @@ export default class Splash extends React.Component {
                     className="cable-icon"
                   />
                   <span>کابل فشار قوی</span>
-                </div>
+                </div> */}
               </div>
             </Container>
           </Col>

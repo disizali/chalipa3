@@ -13,15 +13,17 @@ export default class Product extends React.Component {
       context.req != undefined
         ? `http://${context.req.headers.host}`
         : `${window.location.origin}`;
-
     const { data: product } = await axios.get(`${host}/api/products/${id}`);
+    const { data: products } = await axios.get(`${host}/api/products`);
 
     if (product == undefined) {
       return { error: true };
     }
     return {
       product,
-      productsList: products.filter(item => item.category == product.category)
+      productsList: products
+        .filter(item => item.category == product.category)
+        .sort((a, b) => b - a)
     };
   }
 
@@ -72,7 +74,7 @@ export default class Product extends React.Component {
                       onClick={() => this.changeProduct(item.id)}
                     >
                       <i className="mx-2"></i>
-                      <span className="mx-2">{item.title}</span>
+                      <span className="mx-2">{item.name}</span>
                     </li>
                   );
                 })}
@@ -84,10 +86,14 @@ export default class Product extends React.Component {
                 id="product-container"
               >
                 <Col sm={12} md={8} lg={6} xl={2}>
-                  <img src={selected.image} className="product-image" />
+                  <img
+                    src={`/static/uploads/images/${selected.image}`}
+                    className="product-image"
+                    width="100%"
+                  />
                 </Col>
                 <Col sm={12} md={8} lg={9} xl={10}>
-                  <h1 className="product-title">{selected.title}</h1>
+                  <h1 className="product-title">{selected.name}</h1>
                   <p className="product-subtitle">{selected.subtitle}</p>
                   <hr />
                   <div className="d-flex flex-column">
@@ -119,8 +125,14 @@ export default class Product extends React.Component {
                     </Row>
                     <Row>
                       <Col>
-                        <img src={selected.details} hidden />
-                        <img src={selected.technicalTable} hidden />
+                        <img
+                          src={`/static/uploads/images/${selected.details}`}
+                          hidden
+                        />
+                        <img
+                          src={`/static/uploads/images/${selected.technicalTable}`}
+                          hidden
+                        />
                         <div className="tab-container" id="tab-container">
                           {tab == 1 && (
                             <div
@@ -132,13 +144,13 @@ export default class Product extends React.Component {
                           )}
                           {tab == 2 && (
                             <img
-                              src={selected.details}
+                              src={`/static/uploads/images/${selected.details}`}
                               className="w-75 shadow-lg rounded"
                             />
                           )}
                           {tab == 3 && (
                             <img
-                              src={selected.technicalTable}
+                              src={`/static/uploads/images/${selected.technicalTable}`}
                               className="w-75 shadow-lg rounded"
                             />
                           )}
