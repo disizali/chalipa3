@@ -57,41 +57,42 @@ export default class Splash extends React.Component {
               </div>
             </Container>
           </Col>
-          <Col sm={12} md={3}>
+          <Col sm={12} md={3} className="d-flex align-items-center">
             <Container className="d-flex flex-column justify-content-center align-items-center p-5">
-              <div className="categories rtl text-right">
+              <div className="categories rtl text-right ">
                 <div
                   className={`mb-sm-2 mb-md-4 splash-category px-5 ${
                     selected == 1 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(1)}
                 >
-                  <h3>
+                  <h2>
                     <img
                       src={`/static/images/cable-low${
                         selected == 1 ? "-active" : ""
                       }.png`}
                       className="cable-icon"
+                      alt="cable low icon"
                     />
                     کابل فشار ضعیف
-                  </h3>
+                  </h2>
                 </div>
-
                 <div
                   className={`my-sm-2 my-md-4 splash-category px-5 ${
                     selected == 2 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(2)}
                 >
-                  <h3 id="category-2">
+                  <h2 id="category-2">
                     <img
                       src={`/static/images/cable-medium${
                         selected == 2 ? "-active" : ""
                       }.png`}
                       className="cable-icon"
+                      alt="cable medium icon"
                     />
                     <span>کابل فشار متوسط</span>
-                  </h3>
+                  </h2>
                 </div>
                 {/* 
                 <div
@@ -118,12 +119,17 @@ export default class Splash extends React.Component {
           >
             <div className="cable-container d-flex align-items-center justify-content-start">
               {[1, 2, 3].map(item => {
-                <img src={`/static/images/cable-${selected}.png`} hidden />;
+                <img
+                  src={`/static/images/cable-${selected}.png`}
+                  hidden
+                  alt="hidden cable file"
+                />;
               })}
               <img
                 src={`/static/images/cable-${selected}.png`}
                 className="cable-image"
                 id="cable-image"
+                alt="hidden cable file"
               />
               <span id="behind-text">CHALIPA</span>
               <Link href={`/category/${selected}`}>

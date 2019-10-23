@@ -20,7 +20,7 @@ export default class Prices extends React.Component {
             <tbody>
               <tr>
                 <th>#</th>
-                <th>نام</th>
+                <th>کد</th>
                 <th>اندازه</th>
                 <th>قیمت</th>
               </tr>
@@ -28,7 +28,7 @@ export default class Prices extends React.Component {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.name}</td>
+                    <td>{item.code}</td>
                     <td>{item.size}</td>
                     <td>
                       {item.price.toLocaleString()}

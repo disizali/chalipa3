@@ -54,7 +54,7 @@
   transition: 0.3s all;
 }
 .product-image {
-  border-radius: 10%;
+  border-radius: 10px;
   box-shadow: 0 5px 10px $shadowColor;
 }
 .product-title {
@@ -80,10 +80,13 @@
   opacity: 1;
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   .product {
     .products-list {
       min-height: 100%;
     }
+  }
+  .product-tab{
+    width: 100%;
   }
 }

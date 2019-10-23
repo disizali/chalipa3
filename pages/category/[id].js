@@ -50,27 +50,36 @@ export default class Category extends React.Component {
           width="100%"
         />
         <h1 className="text-white m-5 category-title">{category.title}</h1>
-        <p className="m-5 category-description text-light">
-          زیرمجموعه های این دسته بندی
+        <p className="m-5 category-description text-light text-right rtl">
+          {category.description}
         </p>
         <div className="w-100 h-100 bg-white">
           <Container className="category-cintainer h-100vh">
-            <h3 className="py-4 text-center">دسته بندی</h3>
             <Row className="justify-content-center text-right rtl">
               {category.subCategories.map((item, index) => {
                 return (
                   <Col sm={4} className={`mb-5`}>
                     <Link href={`${item.id}/products`} key={item.id}>
                       <a className="d-flex justify-content-start align-items-center">
-                        <span className="category-logo text-dark shadow mx-2 d-flex justify-content-center align-items-center">
-                          {/* <i className="fas fa-home text-white"></i> */}
+                        {/* <span className="category-logo text-dark shadow mx-2 d-flex justify-content-center align-items-center">
                           <img
                             src="/static/images/cable-low.png"
                             alt={item.title}
                             width="50%"
                           />
                         </span>
-                        <span className="mx-2">{item.title}</span>
+                        <span className="mx-2">{item.title}</span> */}
+                        <div
+                          style={{
+                            background: `linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ),url(http://picsum.photos/seed/item${item.id}/200/100?blur=9) no-repeat`,
+                            backgroundSize: `100% 100%`
+                          }}
+                          className="category-item d-flex justify-content-center align-items-center"
+                        >
+                          <h5 className="text-center text-white">
+                            {item.title}
+                          </h5>
+                        </div>
                       </a>
                     </Link>
                   </Col>
@@ -79,11 +88,6 @@ export default class Category extends React.Component {
             </Row>
           </Container>
         </div>
-        <style jsx>{`
-          body {
-            background: red;
-          }
-        `}</style>
       </Layout>
     );
   }

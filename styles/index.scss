@@ -9,12 +9,13 @@ $secondColor: #fb8c09;
 @import "navbar";
 @import "splash";
 @import "slogan";
-// @import "categories";
 @import "samples";
 @import "customer";
 @import "footer";
 @import "product";
 @import "category";
+@import "news";
+@import "gallery";
 
 .rtl {
   direction: rtl;
@@ -31,5 +32,12 @@ body {
   background-image: url(/static/images/back-pattern.png);
 }
 .children {
-  min-height: 80vh;
+  min-height: 60vh;
+}
+
+.text-main {
+  color: $mainColor;
+}
+.text-second {
+  color: $secondColor;
 }

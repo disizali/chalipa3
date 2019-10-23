@@ -1,14 +1,19 @@
 .category-title {
   position: absolute;
   right: 0;
-  top: 6rem;
+  top: 8rem;
   font-size: 2em;
+  font-family: "Lalezar";
+  font-weight: 100;
 }
+
 .category-description {
   text-shadow: 1px 1px 10px rgba(black, 0.2);
   position: absolute;
-  right: 0;
-  top: 9rem;
+  right: 0px;
+  top: 11rem;
+  font-family: "Samim";
+  max-width: 40%;
 }
 .category-image {
   opacity: 0.5;
@@ -32,7 +37,28 @@
   border-radius: 100%;
 }
 
-.category-info{
+.category-info {
   border-top: 1px solid $secondColor;
   max-width: 200px;
+}
+
+.category-item {
+  min-width: 300px;
+  min-height: 150px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 10px;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: 0 0 10px rgba(black, 0.5);
+  }
+  h5 {
+    max-width: 50%;
+    font-size: 1.3em;
+    text-shadow: 0 0 10px rgba(black, 0.3);
+  }
+}
+
+.category-number {
+  font-family: "Chamran";
 }

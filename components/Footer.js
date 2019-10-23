@@ -30,8 +30,8 @@ export default class Footer extends React.Component {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products">
-                    <a>محصولات</a>
+                  <Link href="/news">
+                    <a>اخبار</a>
                   </Link>
                 </li>
                 <li>
@@ -39,11 +39,11 @@ export default class Footer extends React.Component {
                     <a>تماس با ما</a>
                   </Link>
                 </li>
-                <li>
-                  <Link href="/contact">
+                {/* <li>
+                  <Link href="/gallery">
                     <a>گالری تصاویر</a>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="/articles">
                     <a>مقالات</a>
@@ -80,9 +80,15 @@ export default class Footer extends React.Component {
                 <li>پست الکترونیک: info@chalipacable.ir</li>
                 <li>شماره تماس: 5-88525503-021</li>
                 <li>
-                  <i className="fab fa-instagram mx-2"></i>
-                  <i className="fab fa-twitter mx-2"></i>
-                  <i className="fab fa-facebook mx-2"></i>
+                  <a href="https://instagram.com/chalipa">
+                    <i className="fab fa-instagram mx-2"></i>
+                  </a>
+                  <a href="https://twitter.com/chalipa">
+                    <i className="fab fa-twitter mx-2"></i>
+                  </a>
+                  <a href="https://facebook.com/chalipa">
+                    <i className="fab fa-facebook mx-2"></i>
+                  </a>
                 </li>
               </ul>
             </Col>

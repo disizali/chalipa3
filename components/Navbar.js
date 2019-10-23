@@ -12,7 +12,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Container
 } from "reactstrap";
 import axios from "axios";
 export default class Navbarclass extends React.Component {
@@ -41,17 +42,17 @@ export default class Navbarclass extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div>
-        <Navbar
-          color="light"
-          light
-          expand="lg"
-          className="rtl shadow-sm"
-          fixed="true"
-        >
+      <Navbar
+        color="light"
+        light
+        expand="lg"
+        className="rtl shadow-sm"
+        fixed="true"
+      >
+        <Container>
           <NavbarBrand href="/">
-            <img src="/static/images/logo.png" width="100" className="ml-1" />
-            <span className="mr-1">چلیپا کابل پویا</span>
+            <img src="/static/images/logo.png" width="100" className="ml-1" alt="chalipa logo | لوگو چلیپا"/>
+            <h1 className="mr-1 navbar-brand text-main">چلیپا کابل پویا</h1>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -114,14 +115,14 @@ export default class Navbarclass extends React.Component {
                   </NavLink>
                 </Link>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <Link href="/gallery">
                   <NavLink href="/gallery">
                     <i className="mx-1 fas fa-images"></i>
                     <span className="mx-1">گالری</span>
                   </NavLink>
                 </Link>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <Link href="/prices">
                   <NavLink href="/prices">
@@ -148,8 +149,8 @@ export default class Navbarclass extends React.Component {
               </NavItem>
             </Nav>
           </Collapse>
-        </Navbar>
-      </div>
+        </Container>
+      </Navbar>
     );
   }
 }

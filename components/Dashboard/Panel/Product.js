@@ -201,6 +201,7 @@ export default class MyEditor extends React.Component {
             value={this.state.subtitle}
             onChange={this.subtitleChangeHandler.bind(this)}
           ></textarea>
+          <span className="my-2 text-light">متن توضیحات :</span>
           <div id="editor">
             <ReactQuill
               value={this.state.description}

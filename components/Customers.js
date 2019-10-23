@@ -8,7 +8,7 @@ export default class Customers extends React.Component {
     return (
       <section className="Customers my-5">
         <Container className="text-center">
-          <h4 className="m-3">مشتری های ما</h4>
+          <h3 className="m-3">مشتری های ما</h3>
           <Row>
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return (
@@ -25,8 +25,12 @@ export default class Customers extends React.Component {
                   />
                   <span className="customer-title">مشتری {item}</span> */}
                   <div className="customer-container">
-                    <img src={`https://picsum.photos/2${index}`} className="customer-logo rounded"/>
-                        <span className="customer-title">مشتری {item}</span>
+                    <img
+                      src={`https://picsum.photos/2${index}`}
+                      className="customer-logo rounded"
+                      alt={`customer-${item}`}
+                    />
+                    <span className="customer-title">مشتری {item}</span>
                   </div>
                 </Col>
               );

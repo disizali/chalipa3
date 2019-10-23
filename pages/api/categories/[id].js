@@ -7,12 +7,12 @@ export default async (req, res) => {
   } = req;
   let category = await Category.findOne({
     where: { id },
-    attributes: ["id", "title"],
+    attributes: ["id", "title","description"],
     raw: true
   });
   let subCategories = await Category.findAll({
     where: { parent_category: category.id },
-    attributes: ["id", "title"],
+    attributes: ["id", "title","description"],
     raw: true
   });
   const test = {

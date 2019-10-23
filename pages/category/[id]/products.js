@@ -77,21 +77,21 @@ export default class Product extends React.Component {
                 className="product-container justify-content-between"
                 id="product-container"
               >
-                <Col sm={12} md={8} lg={6} xl={2}>
+                <Col sm={12} md={4} lg={3} xl={4}>
                   <img
                     src={`/static/uploads/images/${selected.image}`}
                     className="product-image"
                     width="100%"
                   />
                 </Col>
-                <Col sm={12} md={8} lg={9} xl={10}>
+                <Col sm={12} md={8} lg={9} xl={8}>
                   <h1 className="product-title">{selected.name}</h1>
                   <p className="product-subtitle">{selected.subtitle}</p>
                   <hr />
                   <div className="d-flex flex-column">
                     <Row className="my-2 mx-0">
                       <Col
-                        sm={2}
+                        sm={4}
                         className={`d-flex align-items-center product-tab ${tab ==
                           1 && "active"}`}
                         onClick={() => this.changeTab(1)}
@@ -99,7 +99,7 @@ export default class Product extends React.Component {
                         توضیحات
                       </Col>
                       <Col
-                        sm={2}
+                        sm={4}
                         className={`d-flex align-items-center product-tab ${tab ==
                           2 && "active"}`}
                         onClick={() => this.changeTab(2)}
@@ -107,7 +107,7 @@ export default class Product extends React.Component {
                         مشخصات
                       </Col>
                       <Col
-                        sm={2}
+                        sm={4}
                         className={`d-flex align-items-center product-tab ${tab ==
                           3 && "active"}`}
                         onClick={() => this.changeTab(3)}

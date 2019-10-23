@@ -55,40 +55,38 @@ export default class Contact extends React.Component {
   render() {
     return (
       <Layout>
-        <Container className="my-5 text-right ">
+        <div className="mapouter">
+          <div className="gmap_canvas">
+            <iframe
+              width="100%"
+              height="300"
+              id="gmap_canvas"
+              src="https://maps.google.com/maps?q=chalipa%20cable%20pouya&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameBorder="0"
+              scrolling="no"
+              marginHeight="0"
+              marginWidth="0"
+            ></iframe>
+          </div>
+          <style jsx>
+            {`
+              .mapouter {
+                position: relative;
+                text-align: right;
+                height: 300px;
+                width: 100%;
+              }
+              .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 300px;
+                width: 100%;
+              }
+            `}
+          </style>
+        </div>
+        <Container className="my-5 text-right rtl">
           <Row>
-            <Col>
-              <div className="mapouter">
-                <div className="gmap_canvas">
-                  <iframe
-                    width="300"
-                    height="405"
-                    id="gmap_canvas"
-                    src="https://maps.google.com/maps?q=chalipa%20cable%20pouya&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    frameBorder="0"
-                    scrolling="no"
-                    marginHeight="0"
-                    marginWidth="0"
-                  ></iframe>
-                </div>
-                <style jsx>
-                  {`
-                    .mapouter {
-                      position: relative;
-                      text-align: right;
-                      height: 500px;
-                      width: 300px;
-                    }
-                    .gmap_canvas {
-                      overflow: hidden;
-                      background: none !important;
-                      height: 500px;
-                      width: 300px;
-                    }
-                  `}
-                </style>
-              </div>
-            </Col>
             <Col>
               {/* <Form> */}
               <FormGroup>
@@ -127,13 +125,13 @@ export default class Contact extends React.Component {
               </Button>
               {/* </Form> */}
             </Col>
-            <Col className="d-flex align-items-center flex-column text-right">
+            <Col className="d-flex align-items-start flex-column text-right">
               <p>دفتر مرکزی چلیپا کابل پویا</p>
               <p>
                 تهران خیابان شهید بهشتی , بین خیابان سهروردی و میدان تختی -بعد
-                ازخیابان کاووسی فر , پلاک 202 , طبقه دوم-واحد 3 : تلفن
-                021-88525503-5
+                ازخیابان کاووسی فر , پلاک 202 , طبقه دوم-واحد 3
               </p>
+              <p> تلفن : 5-88525503-021</p>
             </Col>
           </Row>
         </Container>

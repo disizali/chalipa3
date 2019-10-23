@@ -10,8 +10,7 @@ export default async (req, res) => {
     case "POST":
       const { title, image, body } = req.body;
       if (!title || !image || !body) return res.send("wrong data");
-      await News.create(req.body);
-      res.status(200).send("done");
+      res.status(200).send(await News.create(req.body));
       break;
     case "DELETE":
       const destroy = await News.destroy({ where: { id: req.body.targetId } });
