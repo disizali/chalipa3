@@ -4,7 +4,7 @@ import axios from "axios";
 export class Prices extends Component {
   constructor(props) {
     super(props);
-    this.state = { prices: [], name: "", price: "", size: "" };
+    this.state = { prices: [], code: "", price: "", size: "" };
   }
 
   componentDidMount() {
@@ -14,22 +14,22 @@ export class Prices extends Component {
   }
 
   sendPrice() {
-    const { name, price, size, prices } = this.state;
+    const { code, price, size, prices } = this.state;
     axios
-      .post("http://localhost:3000/api/prices", { name, price, size })
+      .post("http://localhost:3000/api/prices", { code, price, size })
       .then(({ data }) => {
         if (data != "error") {
           const newPrices = [
-            { id: prices.length + 1, name, size, price },
+            { id: prices.length + 1, code, size, price },
             ...prices
           ];
           this.setState({ prices: newPrices });
         }
-        this.setState({ name: "", price: "", size: "" });
+        this.setState({ code: "", price: "", size: "" });
       });
   }
-  nameChangeHandler(e) {
-    this.setState({ name: e.target.value });
+  codeChangeHandler(e) {
+    this.setState({ code: e.target.value });
   }
   sizeChangeHandler(e) {
     this.setState({ size: e.target.value });
@@ -60,9 +60,9 @@ export class Prices extends Component {
               <input
                 type="text"
                 className="panel-editor w-100"
-                placeholder="نام"
-                onChange={this.nameChangeHandler.bind(this)}
-                value={this.state.name}
+                placeholder="کد"
+                onChange={this.codeChangeHandler.bind(this)}
+                value={this.state.code}
               />
             </Col>
             <Col>
@@ -97,7 +97,7 @@ export class Prices extends Component {
           <Table dark responsive bordered>
             <thead>
               <tr>
-                <th>نام</th>
+                <th>کد</th>
                 <th>اندازه</th>
                 <th>قیمت</th>
                 <th>عملیات</th>
@@ -107,7 +107,7 @@ export class Prices extends Component {
               {this.state.prices.map(item => {
                 return (
                   <tr key={item.id}>
-                    <td>{item.name}</td>
+                    <td>{item.code}</td>
                     <td>{item.size}</td>
                     <td>{item.price.toLocaleString()}</td>
                     <td>

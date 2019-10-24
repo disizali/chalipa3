@@ -5,10 +5,19 @@ import axios from "axios";
 export default class News extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", body: "", news: [], images: [] };
+    this.state = {
+      title: "",
+      body: "",
+      selectedImage: "",
+      news: [],
+      images: []
+    };
   }
 
   componentDidMount() {
+    const editor = document.querySelector("#editor p");
+    editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+
     axios.get("http://localhost:3000/api/news").then(({ data }) => {
       this.setState({ news: data });
     });
@@ -29,9 +38,50 @@ export default class News extends Component {
         if (data == "wrong data") {
           return;
         }
-        const newArticles = [{ id: news.length + 1, title, body }, ...news];
+        const newArticles = [{ id: data.id, title, body }, ...news];
         return this.setState({ title: "", body: "", news: newArticles });
       });
+  }
+  modules() {
+    return {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ header: 1 }, { header: 2 }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ],
+        [{ direction: "rtl" }],
+        [{ align: [] }],
+        [{ color: [] }],
+        ["image", "link"],
+        [{ background: [] }],
+        ["clean"]
+      ]
+    };
+  }
+
+  formats() {
+    return [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "bullet",
+      "indent",
+      "align",
+      "link",
+      "color",
+      "background",
+      "direction",
+      "image"
+    ];
   }
 
   deleteNews(targetId) {
@@ -50,13 +100,15 @@ export default class News extends Component {
   titleChangeHandler(e) {
     this.setState({ title: e.target.value });
   }
-  bodyChangeHandler(e) {
-    this.setState({ body: e.target.value });
+  bodyChangeHandler(body) {
+    this.setState({ body });
   }
   imageChangeHandler(e) {
     this.setState({ selectedImage: e.target.value });
   }
   render() {
+    const ReactQuill = require("react-quill");
+
     return (
       <div className="panel-article">
         <Container className="p-5 d-flex flex-column">
@@ -68,13 +120,18 @@ export default class News extends Component {
             onChange={this.titleChangeHandler.bind(this)}
             value={this.state.title}
           />
-          <textarea
-            type="text"
-            className="panel-editor my-2"
-            placeholder="متن خبر"
-            onChange={this.bodyChangeHandler.bind(this)}
-            value={this.state.body}
-          ></textarea>
+          <span className="my-2 text-light">متن خبر :</span>
+          <div id="editor">
+            <ReactQuill
+              value={this.state.body}
+              className="panel-editor rtl text-center text-light"
+              theme="snow"
+              modules={this.modules()}
+              formats={this.formats()}
+              style={{ direction: "rtl" }}
+              onChange={this.bodyChangeHandler.bind(this)}
+            />
+          </div>
           <Row className="my-3">
             <Col sm={2}>
               <span className="text-light">تصویر :</span>

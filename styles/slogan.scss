@@ -28,3 +28,33 @@
     color: $secondColor;
   }
 }
+
+.website-title {
+  background: $secondColor;
+  background-image: url("/static/images/back-pattern.png");
+  max-width: 40%;
+  right: 30%;
+  position: relative;
+  border-radius: 0px 0px 20px 20px;
+  font-family: Lalezar;
+  color: white;
+}
+
+@include media-breakpoint-down(md) {
+  .slogan {
+    margin: 20px 20px;
+    padding: 10px;
+    span {
+      margin: 10px;
+      font-size: 1.3em;
+      width: 100%;
+    }
+    .website-title {
+      background: transparent;
+      color: $secondColor;
+      max-width: 100%;
+      right: 0;
+      font-size: 1.7em;
+    }
+  }
+}

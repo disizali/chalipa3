@@ -19,10 +19,8 @@ export default class Gallery extends React.Component {
                 key={index}
               >
                 <img
-                  src={`https://picsum.photos/2${
-                    item.toString().length == 1 ? `0${item}` : item
-                  }`}
-                  className="w-75 shadow rounded"
+                  src={`https://picsum.photos/seed/item${item}/300`}
+                  className="w-75 shadow rounded gallery-item"
                 />
               </Col>
             );

@@ -1,32 +1,86 @@
 import React, { Component } from "react";
-import { Container, Button, Table } from "reactstrap";
+import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
 
 export default class Article extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", body: "", articles: [] };
+    this.state = { title: "", body: "", articles: [], images: [] };
   }
 
   componentDidMount() {
+    const editor = document.querySelector("#editor p");
+    editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+
     axios.get("http://localhost:3000/api/articles").then(({ data }) => {
       this.setState({ articles: data });
     });
+
+    axios.get("http://localhost:3000/api/images").then(({ data: images }) => {
+      this.setState({ images, selectedImage: images[0] });
+    });
+  }
+
+  modules() {
+    return {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ header: 1 }, { header: 2 }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ],
+        [{ direction: "rtl" }],
+        [{ align: [] }],
+        [{ color: [] }],
+        ["image", "link"],
+        [{ background: [] }],
+        ["clean"]
+      ]
+    };
+  }
+  formats() {
+    return [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "bullet",
+      "indent",
+      "align",
+      "link",
+      "color",
+      "background",
+      "direction",
+      "image"
+    ];
   }
 
   sendPost() {
-    const { title, body, articles } = this.state;
+    const { title, body, selectedImage, articles } = this.state;
     axios
-      .post("http://localhost:3000/api/articles", { title, body })
+      .post("http://localhost:3000/api/articles", {
+        title,
+        body,
+        selectedImage
+      })
       .then(({ data }) => {
         if (data == "wrong data") {
           return;
         }
-        const newArticles = [
-          { id: articles.length + 1, title, body },
-          ...articles
-        ];
-        return this.setState({ title: "", body: "", articles: newArticles });
+        const newArticles = [{ id: data.id, title, body }, ...articles];
+        return this.setState({
+          title: "",
+          body: "",
+          selectedImage: "",
+          articles: newArticles
+        });
       });
   }
 
@@ -46,10 +100,15 @@ export default class Article extends Component {
   titleChangeHandler(e) {
     this.setState({ title: e.target.value });
   }
-  bodyChangeHandler(e) {
-    this.setState({ body: e.target.value });
+  bodyChangeHandler(body) {
+    this.setState({ body });
+  }
+  imageChangeHandler(e) {
+    this.setState({ selectedImage: e.target.value });
   }
   render() {
+    const ReactQuill = require("react-quill");
+
     return (
       <div className="panel-article">
         <Container className="p-5 d-flex flex-column">
@@ -61,13 +120,37 @@ export default class Article extends Component {
             onChange={this.titleChangeHandler.bind(this)}
             value={this.state.title}
           />
-          <textarea
-            type="text"
-            className="panel-editor my-2"
-            placeholder="متن مقاله"
-            onChange={this.bodyChangeHandler.bind(this)}
-            value={this.state.body}
-          ></textarea>
+          <div id="editor">
+            <ReactQuill
+              value={this.state.body}
+              className="panel-editor rtl text-center text-light"
+              theme="snow"
+              modules={this.modules()}
+              formats={this.formats()}
+              style={{ direction: "rtl" }}
+              onChange={this.bodyChangeHandler.bind(this)}
+            />
+          </div>
+          <Row className="my-3">
+            <Col sm={2}>
+              <span className="text-light">تصویر :</span>
+            </Col>
+            <Col sm={10}>
+              <select
+                className="w-100 panel-editor ltr"
+                value={this.state.selectedImage}
+                onChange={this.imageChangeHandler.bind(this)}
+              >
+                {this.state.images.map((item, index) => {
+                  return (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
+            </Col>
+          </Row>
           <Button color="primary" onClick={this.sendPost.bind(this)}>
             ارسال
           </Button>

@@ -57,39 +57,47 @@ export default class Splash extends React.Component {
               </div>
             </Container>
           </Col>
-          <Col sm={12} md={3}>
+          <Col sm={12} md={3} className="d-flex align-items-center">
             <Container className="d-flex flex-column justify-content-center align-items-center p-5">
-              <div className="categories rtl text-right">
+              <div className="categories rtl text-right ">
                 <div
                   className={`mb-sm-2 mb-md-4 splash-category px-5 ${
                     selected == 1 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(1)}
                 >
-                  <img
-                    src={`/static/images/cable-medium${
-                      selected == 1 ? "-active" : ""
-                    }.png`}
-                    className="cable-icon"
-                  />
-                  <span>کابل فشار ضعیف</span>
+                  <div className="d-flex">
+                    <img
+                      src={`/static/images/cable-low${
+                        selected == 1 ? "-active" : ""
+                      }.png`}
+                      className="cable-icon"
+                      height="auto"
+                      alt="cable low icon"
+                    />
+                    <h2 className="m-0">کابل فشار ضعیف</h2>
+                  </div>
                 </div>
-
                 <div
                   className={`my-sm-2 my-md-4 splash-category px-5 ${
                     selected == 2 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(2)}
                 >
-                  <img
-                    src={`/static/images/cable-medium${
-                      selected == 2 ? "-active" : ""
-                    }.png`}
-                    className="cable-icon"
-                  />
-                  <span id="category-2">کابل فشار متوسط</span>
+                  <div className="d-flex">
+                    <img
+                      src={`/static/images/cable-medium${
+                        selected == 2 ? "-active" : ""
+                      }.png`}
+                      className="cable-icon"
+                      alt="cable medium icon"
+                    />
+                    <h2 id="category-2" className="m-0">
+                      کابل فشار متوسط
+                    </h2>
+                  </div>
                 </div>
-
+                {/* 
                 <div
                   className={`mt-sm-2 mt-md-4 splash-category  px-5 ${
                     selected == 3 ? "active" : ""
@@ -103,7 +111,7 @@ export default class Splash extends React.Component {
                     className="cable-icon"
                   />
                   <span>کابل فشار قوی</span>
-                </div>
+                </div> */}
               </div>
             </Container>
           </Col>
@@ -114,16 +122,21 @@ export default class Splash extends React.Component {
           >
             <div className="cable-container d-flex align-items-center justify-content-start">
               {[1, 2, 3].map(item => {
-                <img src={`/static/images/cable-${selected}.png`} hidden />;
+                <img
+                  src={`/static/images/cable-${selected}.png`}
+                  hidden
+                  alt="hidden cable file"
+                />;
               })}
               <img
                 src={`/static/images/cable-${selected}.png`}
                 className="cable-image"
                 id="cable-image"
+                alt="hidden cable file"
               />
               <span id="behind-text">CHALIPA</span>
               <Link href={`/category/${selected}`}>
-                <a id="btn-show-category">مشاهده</a>
+                <a id="btn-show-category" title="show category">مشاهده</a>
               </Link>
             </div>
           </Col>

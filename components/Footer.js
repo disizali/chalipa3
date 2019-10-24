@@ -1,12 +1,22 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
+import axios from "axios";
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { articles: [] };
   }
+
+  async componentDidMount() {
+    const { data: articles } = await axios.get(
+      "http://localhost:3000/api/articles"
+    );
+    this.setState({ articles });
+  }
+
   render() {
+    const { articles } = this.state;
     return (
       <footer>
         <Container>
@@ -20,8 +30,8 @@ export default class Footer extends React.Component {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products">
-                    <a>محصولات</a>
+                  <Link href="/news">
+                    <a>اخبار</a>
                   </Link>
                 </li>
                 <li>
@@ -29,11 +39,11 @@ export default class Footer extends React.Component {
                     <a>تماس با ما</a>
                   </Link>
                 </li>
-                <li>
-                  <Link href="/contact">
+                {/* <li>
+                  <Link href="/gallery">
                     <a>گالری تصاویر</a>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="/articles">
                     <a>مقالات</a>
@@ -49,11 +59,11 @@ export default class Footer extends React.Component {
             <Col sm={12} md={4}>
               <h3>جدیدترین مقالات</h3>
               <ul>
-                {[1, 2, 3].map((item, index) => {
+                {articles.map((item, index) => {
                   return (
                     <li key={index}>
-                      <Link href={`/articles/${item}`}>
-                        <a>مقاله {item}</a>
+                      <Link href={`/articles/${item.id}`}>
+                        <a>{item.title}</a>
                       </Link>
                     </li>
                   );
@@ -70,9 +80,15 @@ export default class Footer extends React.Component {
                 <li>پست الکترونیک: info@chalipacable.ir</li>
                 <li>شماره تماس: 5-88525503-021</li>
                 <li>
-                  <i className="fab fa-instagram mx-2"></i>
-                  <i className="fab fa-twitter mx-2"></i>
-                  <i className="fab fa-facebook mx-2"></i>
+                  <a href="https://instagram.com/chalipa" title="instagram">
+                    <i className="fab fa-instagram mx-2"></i>
+                  </a>
+                  <a href="https://twitter.com/chalipa" title="twitter">
+                    <i className="fab fa-twitter mx-2"></i>
+                  </a>
+                  <a href="https://facebook.com/chalipa" title="facebook">
+                    <i className="fab fa-facebook mx-2"></i>
+                  </a>
                 </li>
               </ul>
             </Col>

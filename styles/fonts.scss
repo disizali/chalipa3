@@ -18,7 +18,11 @@
   font-weight: normal;
   src: url("/static/fonts/Chamran.woff2");
 }
-
+@font-face {
+  font-family: "Lalezar";
+  font-weight: normal;
+  src: url("/static/fonts/Lalezar.woff2");
+}
 * {
   font-family: "Iranian Sans";
 }

@@ -13,7 +13,7 @@ export default class Samples extends React.Component {
     return (
       <section className="samples mt-5">
         <Container className="text-center">
-          <h4 className="m-3">برخی از محصولات ما</h4>
+          <h3 className="m-3">برخی از محصولات ما</h3>
           <Row>
             {[1, 2, 3, 4].map((item, index) => {
               return (
