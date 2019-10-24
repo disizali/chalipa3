@@ -31,12 +31,12 @@ export default class News extends React.Component {
             {this.props.news.map((item, index) => {
               const date = new Date(item.createdAt);
               return (
-                <Col sm={4} className="bg-sm-white ">
+                <Col sm={3} className="bg-sm-white news-item">
                   <Link href={`/news/${item.id}`} key={index}>
                     <a>
                       <img
                         src={`/static/uploads/images/${item.image}`}
-                        className="rounded shadow"
+                        className="rounded shadow news-image"
                         width="100%"
                       />
                       <h3 className="news-title my-3 px-3">{item.title}</h3>

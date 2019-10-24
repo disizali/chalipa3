@@ -34,10 +34,23 @@
   color: #838383;
 }
 .news-container {
+  padding: 0;
   a:hover {
     text-decoration: none;
   }
+  .news-item{
+    background: white;
+    margin: 0 10px;
+    border-radius: 10px;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .news-image{
+    position: relative;
+    top: -10px;
+    left: 10px;
+  }
 }
+
 .others-container {
   box-shadow: 0 1px 1px rgba(28, 37, 64, 0.16);
   background-color: #fff;

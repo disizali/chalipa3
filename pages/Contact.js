@@ -88,7 +88,6 @@ export default class Contact extends React.Component {
         <Container className="my-5 text-right rtl">
           <Row>
             <Col>
-              {/* <Form> */}
               <FormGroup>
                 <Label for="name">نام</Label>
                 <Input
@@ -126,6 +125,8 @@ export default class Contact extends React.Component {
               {/* </Form> */}
             </Col>
             <Col className="d-flex align-items-start flex-column text-right">
+              <h1 className="news-title pr-3">تماس با چلیپا کابل پویا</h1>
+
               <p>دفتر مرکزی چلیپا کابل پویا</p>
               <p>
                 تهران خیابان شهید بهشتی , بین خیابان سهروردی و میدان تختی -بعد

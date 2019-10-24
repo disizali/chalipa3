@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import { Table, Container } from "reactstrap";
-import axios from "axios"; 
+import axios from "axios";
 export default class Prices extends React.Component {
   static async getInitialProps() {
     const { data: prices } = await axios.get(
@@ -15,7 +15,7 @@ export default class Prices extends React.Component {
     return (
       <Layout>
         <Container className="mt-5 text-right rtl">
-          <h1>قیمت ها :</h1>
+          <h1 className="mb-3">قیمت سیم و کابل</h1>
           <Table className="table table-striped text-center table-light">
             <tbody>
               <tr>

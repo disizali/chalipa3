@@ -52,13 +52,20 @@
   &:hover {
     box-shadow: 0 0 10px rgba(black, 0.5);
   }
+  &:hover > h5 {
+    transform: scale(1.1);
+  }
   h5 {
     max-width: 50%;
     font-size: 1.3em;
     text-shadow: 0 0 10px rgba(black, 0.3);
+    transition: all 0.3s;
   }
 }
 
 .category-number {
   font-family: "Chamran";
+}
+.category-image-container{
+  background: black;
 }

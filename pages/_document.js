@@ -21,7 +21,7 @@ class MyDocument extends Document {
               content="شرکت چلیپا کابل پویا با بهره گیری از سالها تجربه در صنعت کابل طیف گسترده ای از کابلهای مسی و آلومینیومی با کیفیت بالا ارائه میکند"
             ></meta>
             <link rel="icon" type="image/png" href="/static/images/logo.png" />
-            <title>سیم و کابل چلیپا</title>
+            <title>چلیپا کابل پویا</title>
           </html>
         </Head>
         <body>

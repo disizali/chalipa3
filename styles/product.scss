@@ -86,7 +86,14 @@
       min-height: 100%;
     }
   }
-  .product-tab{
+  .product-tab {
     width: 100%;
+  }
+}
+
+.no-product {
+  height: 50vh;
+  h1 {
+    font-family: Lalezar;
   }
 }

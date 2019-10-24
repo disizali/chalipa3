@@ -20,11 +20,11 @@ export default class Category extends React.Component {
     } else {
       if (res) {
         res.writeHead(302, {
-          Location: `/category/${id}`
+          Location: `/category/${id}/products`
         });
         res.end();
       } else {
-        Router.push(`/category/${id}`);
+        Router.push(`/category/${id}/products`);
       }
       return {};
     }
@@ -34,18 +34,18 @@ export default class Category extends React.Component {
     super(props);
   }
   render() {
-    const { category, redirect, error } = this.props;
+    const { category} = this.props;
     return (
       <Layout>
-        <div className="category-image-container bg-dark">
+        <div className="category-image-container">
           <img
-            src="https://picsum.photos/1000/250"
+            src="/static/images/cables-cover.png"
             className="category-image"
             width="100%"
           />
         </div>
         <img
-          src="https://livedemo00.template-help.com/wt_prod-24532/images/wave-1.png"
+          src="/static/images/wave.png"
           className="wave"
           width="100%"
         />

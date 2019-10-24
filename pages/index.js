@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Splash from "../components/Splash";
 import Slogan from "../components/Slogan";
 import Samples from "../components/Samples";
-import Customers from "../components/Customers";
+import Representation from "../components/Representation";
 import { Container } from "reactstrap";
 
 const Splitter = () => {
@@ -25,7 +25,7 @@ export default class Index extends React.Component {
         {/* <Splitter /> */}
         <Samples />
         <Splitter />
-        <Customers />
+        <Representation />
       </Layout>
     );
   }

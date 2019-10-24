@@ -66,16 +66,17 @@ export default class Splash extends React.Component {
                   }`}
                   onClick={() => this.changeSelected(1)}
                 >
-                  <h2>
+                  <div className="d-flex">
                     <img
                       src={`/static/images/cable-low${
                         selected == 1 ? "-active" : ""
                       }.png`}
                       className="cable-icon"
+                      height="auto"
                       alt="cable low icon"
                     />
-                    کابل فشار ضعیف
-                  </h2>
+                    <h2 className="m-0">کابل فشار ضعیف</h2>
+                  </div>
                 </div>
                 <div
                   className={`my-sm-2 my-md-4 splash-category px-5 ${
@@ -83,7 +84,7 @@ export default class Splash extends React.Component {
                   }`}
                   onClick={() => this.changeSelected(2)}
                 >
-                  <h2 id="category-2">
+                  <div className="d-flex">
                     <img
                       src={`/static/images/cable-medium${
                         selected == 2 ? "-active" : ""
@@ -91,8 +92,10 @@ export default class Splash extends React.Component {
                       className="cable-icon"
                       alt="cable medium icon"
                     />
-                    <span>کابل فشار متوسط</span>
-                  </h2>
+                    <h2 id="category-2" className="m-0">
+                      کابل فشار متوسط
+                    </h2>
+                  </div>
                 </div>
                 {/* 
                 <div
@@ -133,7 +136,7 @@ export default class Splash extends React.Component {
               />
               <span id="behind-text">CHALIPA</span>
               <Link href={`/category/${selected}`}>
-                <a id="btn-show-category">مشاهده</a>
+                <a id="btn-show-category" title="show category">مشاهده</a>
               </Link>
             </div>
           </Col>

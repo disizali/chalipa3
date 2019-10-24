@@ -35,7 +35,7 @@ class News extends Component {
         <Container className="my-4 py-5 rtl text-right">
           <Row>
             <Col sm={12} md={9}>
-              <h1 className="news-title pr-3 my-2"> {news.title}</h1>
+              <h1 className="news-title pr-3 my-2">{news.title}</h1>
               <p className="news-date my-2">
                 <span className="mx-2">نوشته شده در </span>
                 <span>{this.getDiffrents(news.createdAt)}</span>

@@ -15,7 +15,7 @@ export default function About() {
             />
           </Col>
           <Col>
-            <h3 className="news-title pr-3 mb-5">درباره چلیپا کابل پویا</h3>
+            <h1 className="news-title pr-3 mb-5">درباره چلیپا کابل پویا</h1>
             <p className="text-muted">
               شرکت چلیپا کابل پویا با بهره گیری از سالها تجربه در صنعت کابل ,
               یکی از تامین کنندگان سیم و کابل است که با وجود کارشناسان با تجربه

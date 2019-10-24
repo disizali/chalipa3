@@ -28,7 +28,7 @@ export default class Navbarclass extends React.Component {
   }
   toggle() {
     this.setState({
-      isOpen: false
+      isOpen: !this.state.isOpen
     });
   }
 
@@ -42,17 +42,16 @@ export default class Navbarclass extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <Navbar
-        color="light"
-        light
-        expand="lg"
-        className="rtl shadow-sm"
-        fixed="true"
-      >
+      <Navbar color="light" light expand="lg" className="rtl shadow-sm text-right">
         <Container>
           <NavbarBrand href="/">
-            <img src="/static/images/logo.png" width="100" className="ml-1" alt="chalipa logo | لوگو چلیپا"/>
-            <h1 className="mr-1 navbar-brand text-main">چلیپا کابل پویا</h1>
+            <img
+              src="/static/images/logo.png"
+              width="100"
+              className="ml-1"
+              alt="chalipa logo | لوگو چلیپا"
+            />
+            <span>چلیپا کابل پویا</span>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -77,7 +76,7 @@ export default class Navbarclass extends React.Component {
                         <DropdownItem key={index}>
                           <div>
                             <Link href={`/category/${parentItem.id}`}>
-                              <a>{parentItem.title}</a>
+                              <a title={parentItem.title}>{parentItem.title}</a>
                             </Link>
                             <ul>
                               {parentItem.subCategories.map(
@@ -85,7 +84,9 @@ export default class Navbarclass extends React.Component {
                                   return (
                                     <li key={index}>
                                       <Link href={`/category/${childItem.id}`}>
-                                        <a>{childItem.title}</a>
+                                        <a className={childItem.title}>
+                                          {childItem.title}
+                                        </a>
                                       </Link>
                                     </li>
                                   );
@@ -101,7 +102,7 @@ export default class Navbarclass extends React.Component {
               </UncontrolledDropdown>
               <NavItem>
                 <Link href="/articles">
-                  <NavLink href="/articles">
+                  <NavLink href="/articles" title="مقالات">
                     <i className="mx-1 far fa-newspaper"></i>
                     <span className="mx-1">مقالات</span>
                   </NavLink>
@@ -109,7 +110,7 @@ export default class Navbarclass extends React.Component {
               </NavItem>
               <NavItem>
                 <Link href="/news">
-                  <NavLink href="/news">
+                  <NavLink href="/news" title="اخبار">
                     <i className="mx-1 fas fa-rss"></i>
                     <span className="mx-1">اخبار</span>
                   </NavLink>
@@ -125,15 +126,15 @@ export default class Navbarclass extends React.Component {
               </NavItem> */}
               <NavItem>
                 <Link href="/prices">
-                  <NavLink href="/prices">
+                  <NavLink href="/prices" title="قیمت سیم و کابل">
                     <i className="mx-1 fas fa-dollar-sign"></i>
-                    <span className="mx-1">لیست قیمت ها</span>
+                    <span className="mx-1">قیمت سیم و کابل</span>
                   </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/about">
-                  <NavLink href="/about">
+                  <NavLink href="/about" title="درباره ما">
                     <i className="mx-1 fas fa-users"></i>
                     <span className="mx-1">درباره ما</span>
                   </NavLink>
@@ -141,7 +142,7 @@ export default class Navbarclass extends React.Component {
               </NavItem>
               <NavItem>
                 <Link href="/contact">
-                  <NavLink href="/contact">
+                  <NavLink href="/contact" title="تماس با ما">
                     <i className="mx-1 fas fa-phone"></i>
                     <span className="mx-1">تماس با ما</span>
                   </NavLink>
