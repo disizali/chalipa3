@@ -11,7 +11,7 @@
   &:hover {
     background: #f4f4f4;
   }
-  &:hover > h2{
+  &:hover > h2 {
     margin-right: 10px;
   }
   h2 {
@@ -29,6 +29,7 @@
 }
 .cable-icon {
   width: 25px;
+  height: 25px;
   margin-left: 10px;
 }
 .cable-container {
@@ -93,6 +94,7 @@
 }
 
 .splash-bg {
+  overflow: hidden;
   background-color: $secondColor;
   background-image: url("/static/images/back-pattern.png");
 }
@@ -100,13 +102,10 @@
 @include media-breakpoint-down(md) {
   .splash-category {
     margin-bottom: 10px;
-    font-size: 1.1em;
+    font-size: 1em;
     &:hover {
       background: #f5f5f5;
     }
-  }
-  .splash-bg {
-    direction: rtl;
   }
   .cable-container {
     width: 90%;

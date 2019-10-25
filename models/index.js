@@ -20,8 +20,10 @@ if (config.use_env_variable) {
   );
 }
 
-const currentPath = path.resolve(process.env.PWD, "models");
-
+let currentPath = path.resolve(process.env.PWD, "models");
+if (currentPath.indexOf(`C:\\c\\`) !== -1) {
+  currentPath = currentPath.replace("C:\\c\\", "C:\\");
+}
 fs.readdirSync(currentPath)
   .filter(file => {
     return (

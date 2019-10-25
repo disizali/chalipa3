@@ -6,9 +6,7 @@ import Index from "../components/Dashboard/Panel";
 import axios from "axios";
 
 import Head from "next/head";
-
 import "../styles/dashboard/index.scss";
-
 export class dashboard extends Component {
   constructor(props) {
     super(props);

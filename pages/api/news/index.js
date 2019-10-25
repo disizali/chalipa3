@@ -1,7 +1,6 @@
 import { sequelize as db } from "../../../models";
 const { News } = db.models;
 export default async (req, res) => {
-  console.log(req.method);
   switch (req.method) {
     case "GET":
       const news = await News.findAll();

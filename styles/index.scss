@@ -16,6 +16,7 @@ $secondColor: #fb8c09;
 @import "category";
 @import "news";
 @import "gallery";
+@import "quill";
 
 .rtl {
   direction: rtl;
@@ -29,7 +30,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-image: url(/static/images/back-pattern.png);w
+  background-image: url(/static/images/back-pattern.png);
 }
 .children {
   min-height: 60vh;

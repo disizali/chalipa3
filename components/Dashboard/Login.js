@@ -32,7 +32,7 @@ export class Login extends Component {
   }
   render() {
     return (
-      <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+      <div className="login-page w-100 d-flex align-items-center justify-content-center">
         <div className="w-50 h-50 login-container d-flex flex-column align-items-center justify-content-center">
           <input
             type="text"

@@ -5,6 +5,7 @@ import Article from "./Article";
 import News from "./News";
 import Prices from "./Prices";
 import Images from "./Images";
+import Messages from "./Messages";
 
 export class panel extends Component {
   constructor(props) {
@@ -24,6 +25,8 @@ export class panel extends Component {
         return <Prices />;
       case 5:
         return <Images />;
+      case 6:
+        return <Messages />;
     }
   }
   changePanel(panel) {
@@ -70,6 +73,13 @@ export class panel extends Component {
               >
                 <i className="fa fa-images"></i>
                 <span>مدیریت تصاویر</span>
+              </li>
+              <li
+                className={`w-100 h-100 ${panel == 6 && "active"}`}
+                onClick={() => this.changePanel(6)}
+              >
+                <i className="fa fa-envelope"></i>
+                <span>پیام ها</span>
               </li>
             </ul>
           </Col>

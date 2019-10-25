@@ -58,15 +58,15 @@ export default class Splash extends React.Component {
             </Container>
           </Col>
           <Col sm={12} md={3} className="d-flex align-items-center">
-            <Container className="d-flex flex-column justify-content-center align-items-center p-5">
+            <Container className="d-flex flex-column justify-content-center p-5">
               <div className="categories rtl text-right ">
                 <div
-                  className={`mb-sm-2 mb-md-4 splash-category px-5 ${
+                  className={`mb-sm-2 mb-md-4 splash-category px-4 ${
                     selected == 1 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(1)}
                 >
-                  <div className="d-flex">
+                  <div className="d-flex align-items-center">
                     <img
                       src={`/static/images/cable-low${
                         selected == 1 ? "-active" : ""
@@ -79,12 +79,12 @@ export default class Splash extends React.Component {
                   </div>
                 </div>
                 <div
-                  className={`my-sm-2 my-md-4 splash-category px-5 ${
+                  className={`my-sm-2 my-md-4 splash-category px-4 ${
                     selected == 2 ? "active" : ""
                   }`}
                   onClick={() => this.changeSelected(2)}
                 >
-                  <div className="d-flex">
+                  <div className="d-flex align-items-center">
                     <img
                       src={`/static/images/cable-medium${
                         selected == 2 ? "-active" : ""
@@ -136,7 +136,9 @@ export default class Splash extends React.Component {
               />
               <span id="behind-text">CHALIPA</span>
               <Link href={`/category/${selected}`}>
-                <a id="btn-show-category" title="show category">مشاهده</a>
+                <a id="btn-show-category" title="show category">
+                  مشاهده
+                </a>
               </Link>
             </div>
           </Col>

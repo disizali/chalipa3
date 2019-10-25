@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "../components/Layout";
+import axios from "axios";
 
 import {
   Container,
   Row,
   Col,
   Button,
-  Form,
   FormGroup,
   Label,
   Input
@@ -38,12 +38,12 @@ export default class Contact extends React.Component {
       document.getElementById("message"),
       document.getElementById("message").value
     ];
-    // const response = await axios.post("http://localhost:3000/api/contact", {
-    //   name,
-    //   email,
-    //   number,
-    //   message
-    // });
+    const response = await axios.post("http://localhost:3000/api/contact", {
+      name,
+      email,
+      number,
+      message
+    });
     if (response.data == "done") {
       alert("با تشکر از شما ، پیام با موفقیت ارسال شد");
     }
