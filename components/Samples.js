@@ -21,13 +21,13 @@ export default class Samples extends React.Component {
             {products.map((item, index) => {
               return (
                 <Col
-                  className="d-flex flex-column justify-content-center sample-column"
+                  className="d-flex flex-column justify-content-center"
                   key={index}
                   sm={6}
                   md={3}
                 >
                   <Link href={`/category/${item.category}/products`}>
-                    <a>
+                    <a className="sample-column">
                       <img
                         src={`/static/uploads/images/${item.image}`}
                         alt={`${item.title} sample`}
