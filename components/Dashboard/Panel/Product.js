@@ -22,7 +22,7 @@ export default class MyEditor extends React.Component {
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
 
     axios
-      .get("http://95.216.86.208:3000/api/categories")
+      .get("http://http://95.216.86.208:3000/api/categories")
       .then(({ data: categories }) => {
         let finalCategories = [];
         categories.forEach(item => {
@@ -34,12 +34,12 @@ export default class MyEditor extends React.Component {
         });
       });
     axios
-      .get("http://95.216.86.208:3000/api/products")
+      .get("http://http://95.216.86.208:3000/api/products")
       .then(({ data: products }) => {
         this.setState({ products });
       });
     axios
-      .get("http://95.216.86.208:3000/api/images")
+      .get("http://http://95.216.86.208:3000/api/images")
       .then(({ data: images }) => {
         this.setState({
           images,
@@ -135,7 +135,7 @@ export default class MyEditor extends React.Component {
       technicalTable
     };
     axios
-      .post("http://95.216.86.208:3000/api/products", data)
+      .post("http://http://95.216.86.208:3000/api/products", data)
       .then(({ data: id }) => {
         this.setState({
           products: [{ id, name }, ...this.state.products],
@@ -152,7 +152,7 @@ export default class MyEditor extends React.Component {
 
   deleteProduct(targetId) {
     axios
-      .delete("http://95.216.86.208:3000/api/products", {
+      .delete("http://http://95.216.86.208:3000/api/products", {
         data: { targetId }
       })
       .then(({ data }) => {
