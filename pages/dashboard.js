@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Loading from "../components/Dashboard/Loading";
 import Login from "../components/Dashboard/Login";
 import cookie from "js-cookie";
-import Index from "../components/Dashboard/Panel";
+import Index from "../components/Dashboard/Panel/Index";
 import axios from "axios";
 
 import Head from "next/head";

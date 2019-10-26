@@ -6,27 +6,29 @@ export default class Samples extends React.Component {
   }
   componentDidMount() {
     const simpleParallax = require("simple-parallax-js");
-    document.getElementsByClassName
-    new simpleParallax()
+    document.getElementsByClassName;
+    new simpleParallax();
   }
   render() {
+    const { products } = this.props;
     return (
       <section className="samples mt-5">
         <Container className="text-center">
           <h3 className="m-3">برخی از محصولات ما</h3>
           <Row>
-            {[1, 2, 3, 4].map((item, index) => {
+            {products.map((item, index) => {
               return (
                 <Col
                   className="d-flex flex-column justify-content-center sample-column"
                   key={index}
                 >
                   <img
-                    src={`https://picsum.photos/20${index}`}
-                    alt={`sample-${index}`}
+                    src={`/static/uploads/images/${item.image}`}
+                    alt={`${item.title} sample`}
                     className="sample-image"
+                    width="100%"
                   />
-                  <span className="sample-title">sample {item}</span>
+                  <span className="sample-title">{item.name}</span>
                 </Col>
               );
             })}
