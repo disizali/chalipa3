@@ -38,14 +38,16 @@ export default class MyEditor extends React.Component {
       .then(({ data: products }) => {
         this.setState({ products });
       });
-    axios.get("http://95.216.86.208:3000/api/images").then(({ data: images }) => {
-      this.setState({
-        images,
-        image: images[0],
-        details: images[0],
-        technicalTable: images[0]
+    axios
+      .get("http://95.216.86.208:3000/api/images")
+      .then(({ data: images }) => {
+        this.setState({
+          images,
+          image: images[0],
+          details: images[0],
+          technicalTable: images[0]
+        });
       });
-    });
   }
 
   nameChangeHandler(e) {
@@ -219,7 +221,10 @@ export default class MyEditor extends React.Component {
               <span className="text-light">تصویر محصول :</span>
             </Col>
             <Col sm={10}>
-              <select className="w-100 panel-editor ltr">
+              <select
+                className="w-100 panel-editor ltr"
+                onChange={this.imageChangeHandler.bind(this)}
+              >
                 {this.state.images.map((item, index) => {
                   return (
                     <option key={index} value={item}>

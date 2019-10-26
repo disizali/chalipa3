@@ -40,7 +40,7 @@ export class Images extends Component {
   uploadImage() {
     const data = new FormData();
     data.append("image", this.state.selectedFile);
-    axios.post("http://localhost:3001/api/upload", data).then(({ data }) => {
+    axios.post("http://95.216.86.208:3001/api/upload", data).then(({ data }) => {
       const newImages = [data, ...this.state.images];
       this.setState({ images: newImages });
     });
