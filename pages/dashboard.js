@@ -18,7 +18,7 @@ export class dashboard extends Component {
       return this.setState({ loading: false, garanted: -1 });
     } else {
       axios
-        .post("http://localhost:3000/api/auth", { authToken })
+        .post("http://95.216.86.208:3000/api/auth", { authToken })
         .then(({ data }) => {
           if (data == "unauthorized") {
             return cookie.remove("authtoken");

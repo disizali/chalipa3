@@ -17,7 +17,7 @@ export class Login extends Component {
   login() {
     const { username, password } = this.state;
     axios
-      .post("http://localhost:3000/api/auth", { username, password })
+      .post("http://95.216.86.208:3000/api/auth", { username, password })
       .then(({ data }) => {
         if (data == "unauthorized") {
           this.setState({ error: 1, username: "", password: "" });
