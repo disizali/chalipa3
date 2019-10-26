@@ -6,7 +6,7 @@ export default function About() {
     <Layout>
       <div className="my-5 py-5 post-body rtl text-right p-5">
         <Row>
-          <Col className="d-flex align-items-center">
+          <Col sm={12} md={6} className="d-flex align-items-center">
             <img
               src={`/static/images/about.jpg`}
               alt="chalipa about"
@@ -14,8 +14,8 @@ export default function About() {
               className="rounded shadow-lg"
             />
           </Col>
-          <Col>
-            <h1 className="news-title pr-3 mb-5">درباره چلیپا کابل پویا</h1>
+          <Col sm={12} md={6}>
+            <h1 className="news-title pr-3 my-5">درباره چلیپا کابل پویا</h1>
             <p className="text-muted">
               شرکت چلیپا کابل پویا با بهره گیری از سالها تجربه در صنعت کابل ,
               یکی از تامین کنندگان سیم و کابل است که با وجود کارشناسان با تجربه

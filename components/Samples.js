@@ -21,6 +21,8 @@ export default class Samples extends React.Component {
                 <Col
                   className="d-flex flex-column justify-content-center sample-column"
                   key={index}
+                  sm={6}
+                  md={3}
                 >
                   <img
                     src={`/static/uploads/images/${item.image}`}

@@ -8,7 +8,7 @@ export default class Product extends React.Component {
       query: { id }
     } = context;
     const { data: products } = await axios.get(
-      `http://95.216.86.208:3000/api/categories/${id}/products`
+      `http://localhost:3000/api/categories/${id}/products`
     );
     return {
       product: products[0],

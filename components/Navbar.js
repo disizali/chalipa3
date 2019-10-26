@@ -34,7 +34,7 @@ export default class Navbarclass extends React.Component {
 
   async componentDidMount() {
     const { data: categories } = await axios.get(
-      "http://95.216.86.208:3000/api/categories"
+      "http://localhost:3000/api/categories"
     );
     this.setState({ categories });
   }

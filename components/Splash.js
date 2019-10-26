@@ -6,13 +6,13 @@ export default class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 2
+      selected: 1
     };
   }
 
   changeSelected(e) {
     const cableImage = document.getElementById("cable-image");
-    cableImage.style.left = `-28%`;
+    cableImage.style.left = `-18%`;
     cableImage.style.opacity = `0`;
     const behindText = document.getElementById("behind-text");
     behindText.style.letterSpacing = `50px`;
@@ -20,11 +20,13 @@ export default class Splash extends React.Component {
     btnShowCategory.style.width = `90px`;
     setTimeout(() => {
       this.setState({ selected: e });
-      cableImage.style.left = `-30%`;
+    }, 500);
+    setTimeout(() => {
+      cableImage.style.left = `-20%`;
       cableImage.style.opacity = `1`;
       behindText.style.letterSpacing = `40px`;
       btnShowCategory.style.width = `100px`;
-    }, 500);
+    }, 550);
   }
 
   render() {

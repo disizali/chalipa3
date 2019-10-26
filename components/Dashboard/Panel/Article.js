@@ -12,11 +12,11 @@ export default class Article extends Component {
     const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
 
-    axios.get("http://95.216.86.208:3000/api/articles").then(({ data }) => {
+    axios.get("http://localhost:3000/api/articles").then(({ data }) => {
       this.setState({ articles: data });
     });
 
-    axios.get("http://95.216.86.208:3000/api/images").then(({ data: images }) => {
+    axios.get("http://localhost:3000/api/images").then(({ data: images }) => {
       this.setState({ images, selectedImage: images[0] });
     });
   }
@@ -65,7 +65,7 @@ export default class Article extends Component {
   sendPost() {
     const { title, body, selectedImage, articles } = this.state;
     axios
-      .post("http://95.216.86.208:3000/api/articles", {
+      .post("http://localhost:3000/api/articles", {
         title,
         body,
         selectedImage
@@ -87,7 +87,7 @@ export default class Article extends Component {
   deletePost(targetId) {
     const { articles } = this.state;
     axios
-      .delete("http://95.216.86.208:3000/api/articles", { data: { targetId } })
+      .delete("http://localhost:3000/api/articles", { data: { targetId } })
       .then(({ data }) => {
         if (data == "no article") {
           return;
