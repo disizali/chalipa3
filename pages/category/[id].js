@@ -12,7 +12,7 @@ export default class Category extends React.Component {
       query: { id }
     } = context;
     const { data: category } = await axios.get(
-      `http://http://95.216.86.208:3000/api/categories/${id}`
+      `http://95.216.86.208:3000/api/categories/${id}`
     );
     if (category.subCategories.length >= 1) {
       return { category };

@@ -11,7 +11,7 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://http://95.216.86.208:3000/api/messages").then(({ data }) => {
+    axios.get("http://95.216.86.208:3000/api/messages").then(({ data }) => {
       this.setState({ messages: data });
     });
   }
