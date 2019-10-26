@@ -8,10 +8,10 @@ export default class MyEditor extends React.Component {
       name: "",
       category: "",
       image: "",
-      subtitle: "",
       details: "",
-      description: "",
       technicalTable: "",
+      subtitle: "",
+      description: "",
       categories: [],
       images: [],
       products: []
@@ -223,6 +223,7 @@ export default class MyEditor extends React.Component {
             <Col sm={10}>
               <select
                 className="w-100 panel-editor ltr"
+                value={this.state.image}
                 onChange={this.imageChangeHandler.bind(this)}
               >
                 {this.state.images.map((item, index) => {
