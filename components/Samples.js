@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import Link from "next/link";
+
 export default class Samples extends React.Component {
   constructor(props) {
     super(props);
@@ -24,13 +26,17 @@ export default class Samples extends React.Component {
                   sm={6}
                   md={3}
                 >
-                  <img
-                    src={`/static/uploads/images/${item.image}`}
-                    alt={`${item.title} sample`}
-                    className="sample-image"
-                    width="100%"
-                  />
-                  <span className="sample-title">{item.name}</span>
+                  <Link href={`/category/${item.category}/products`}>
+                    <a>
+                      <img
+                        src={`/static/uploads/images/${item.image}`}
+                        alt={`${item.title} sample`}
+                        className="sample-image"
+                        width="100%"
+                      />
+                      <span className="sample-title">{item.name}</span>
+                    </a>
+                  </Link>
                 </Col>
               );
             })}
