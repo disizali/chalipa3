@@ -21,7 +21,7 @@ export class Images extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/images").then(({ data: images }) => {
+    axios.get("http://95.216.86.208:3000/api/images").then(({ data: images }) => {
       this.setState({
         images
       });
@@ -29,7 +29,7 @@ export class Images extends Component {
   }
   deleteImage(targetFileName) {
     axios
-      .delete("http://localhost:3000/api/images", { data: { targetFileName } })
+      .delete("http://95.216.86.208:3000/api/images", { data: { targetFileName } })
       .then(({ data }) => {
         this.setState({
           images: this.state.images.filter(item => item != targetFileName)

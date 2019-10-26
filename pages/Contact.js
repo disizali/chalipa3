@@ -38,7 +38,7 @@ export default class Contact extends React.Component {
       document.getElementById("message"),
       document.getElementById("message").value
     ];
-    const response = await axios.post("http://localhost:3000/api/contact", {
+    const response = await axios.post("http://95.216.86.208:3000/api/contact", {
       name,
       email,
       number,
@@ -87,7 +87,7 @@ export default class Contact extends React.Component {
         </div>
         <Container className="my-5 text-right rtl">
           <Row>
-            <Col>
+            <Col sm={12} md={6}>
               <FormGroup>
                 <Label for="name">نام</Label>
                 <Input
@@ -124,7 +124,11 @@ export default class Contact extends React.Component {
               </Button>
               {/* </Form> */}
             </Col>
-            <Col className="d-flex align-items-start flex-column text-right">
+            <Col
+              sm={12}
+              md={6}
+              className="d-flex align-items-start flex-column text-right"
+            >
               <h1 className="news-title pr-3">تماس با چلیپا کابل پویا</h1>
 
               <p>دفتر مرکزی چلیپا کابل پویا</p>
