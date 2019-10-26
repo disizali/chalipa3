@@ -53,8 +53,8 @@ export default class Category extends React.Component {
               <Row className="justify-content-center text-right rtl">
                 {category.subCategories.map((item, index) => {
                   return (
-                    <Col sm={4} className={`mb-5`}>
-                      <Link href={`${item.id}/products`} key={item.id}>
+                    <Col sm={4} className={`mb-5`} key={index}>
+                      <Link href={`${item.id}/products`}>
                         <a className="d-flex justify-content-start align-items-center">
                           {/* <span className="category-logo text-dark shadow mx-2 d-flex justify-content-center align-items-center">
                           <img
