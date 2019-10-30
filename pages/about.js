@@ -1,9 +1,13 @@
 import Layout from "../components/Layout";
+import Head from "next/head";
 import { Container, Row, Col } from "reactstrap";
 
 export default function About() {
   return (
     <Layout>
+      <Head>
+        <title>چلیپا کابل پویا - درباره ما</title>
+      </Head>
       <div className="my-5 py-5 post-body rtl text-right p-5">
         <Row>
           <Col sm={12} md={6} className="d-flex align-items-center">

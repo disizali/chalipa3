@@ -5,8 +5,9 @@ import Slogan from "../components/Slogan";
 import Samples from "../components/Samples";
 import Representation from "../components/Representation";
 import { Container } from "reactstrap";
-
+import _ from "lodash";
 import axios from "axios";
+import Head from "next/head";
 
 const Splitter = () => {
   return (
@@ -20,7 +21,7 @@ export default class Index extends React.Component {
     let { data: products } = await axios.get(
       "http://95.216.86.208/api/products"
     );
-    return { products: products.splice(0, 4) };
+    return { products: _.sampleSize(products, 4) };
   }
   constructor(props) {
     super(props);
@@ -28,6 +29,9 @@ export default class Index extends React.Component {
   render() {
     return (
       <Layout className="justify-content-center">
+        <Head>
+          <title>چلیپا کابل پویا - نمایندگی کابل خراسان</title>
+        </Head>
         <Splash />
         <Slogan />
         {/* <Splitter /> */}

@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
+import Head from "next/head";
 
 import {
   Container,
@@ -52,38 +53,28 @@ export default class Contact extends React.Component {
     numberInput.value = "";
     messageInput.value = "";
   }
+
+  componentDidMount() {
+    
+  }
+  
   render() {
     return (
       <Layout>
+        <Head>
+          <title>چلیپا کابل پویا - تماس با ما</title>
+        </Head>
         <div className="mapouter">
           <div className="gmap_canvas">
             <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.8044614390956!2d51.43352431561295!3d35.73102723484614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03e3f181f7dd%3A0x5d1db83216503389!2z2LTYsdqp2Kog2obZhNuM2b7YpyDaqdin2KjZhCDZvtmI24zYpw!5e0!3m2!1sen!2s!4v1572419832060!5m2!1sen!2s"
               width="100%"
               height="300"
-              id="gmap_canvas"
-              src="https://maps.google.com/maps?q=chalipa%20cable%20pouya&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              frameBorder="0"
-              scrolling="no"
-              marginHeight="0"
-              marginWidth="0"
+              frameborder="0"
+              allowfullscreen=""
+              className="shadow-sm border-bottom"
             ></iframe>
           </div>
-          <style jsx>
-            {`
-              .mapouter {
-                position: relative;
-                text-align: right;
-                height: 300px;
-                width: 100%;
-              }
-              .gmap_canvas {
-                overflow: hidden;
-                background: none !important;
-                height: 300px;
-                width: 100%;
-              }
-            `}
-          </style>
         </div>
         <Container className="my-5 text-right rtl">
           <Row>

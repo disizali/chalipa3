@@ -3,8 +3,8 @@ const { Article } = db.models;
 
 export default async (req, res) => {
   const {
-    query: { id }
+    query: { title }
   } = req;
-  const article = await Article.findByPk(id);
+  const article = await Article.findOne({ where: { title } });
   res.status(200).send(article);
 };

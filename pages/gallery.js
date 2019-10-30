@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { Row, Col } from "reactstrap";
-
+import Head from "next/head";
 export default class Gallery extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +9,9 @@ export default class Gallery extends React.Component {
   render() {
     return (
       <Layout>
+        <Head>
+          <title>چلیپا کابل پویا - گالری</title>
+        </Head>
         <Row>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => {
             console.log(item.toString().length);

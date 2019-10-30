@@ -3,6 +3,9 @@ import Layout from "../../components/Layout";
 import Link from "next/link";
 import { Container, Col, Row } from "reactstrap";
 import axios from "axios";
+import Head from "next/head";
+
+
 export default class News extends React.Component {
   static async getInitialProps(context) {
     const host =
@@ -26,13 +29,16 @@ export default class News extends React.Component {
   render() {
     return (
       <Layout>
+                <Head>
+          <title>چلیپا کابل پویا - اخبار</title>
+        </Head>
         <Container className="news-container my-5 rtl text-right">
           <Row>
             {this.props.news.map((item, index) => {
               const date = new Date(item.createdAt);
               return (
                 <Col sm={3} className="bg-sm-white news-item">
-                  <Link href={`/news/${item.id}`} key={index}>
+                  <Link href={`/news/${item.title}`} key={index}>
                     <a>
                       <img
                         src={`/static/uploads/images/${item.image}`}

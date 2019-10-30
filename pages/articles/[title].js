@@ -3,15 +3,16 @@ import Layout from "../../components/Layout";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
 import axios from "axios";
+import Head from "next/head";
 export default class Articles extends Component {
   static async getInitialProps(context) {
-    const id = context.query.id;
+    let title = encodeURI(context.query.title);
     const host =
       context.req != undefined
         ? `http://${context.req.headers.host}`
         : `${window.location.origin}`;
 
-    const { data: article } = await axios.get(`${host}/api/articles/${id}`);
+    const { data: article } = await axios.get(`${host}/api/articles/${title}`);
     const { data: allArticles } = await axios.get(`${host}/api/articles`);
     return { article, allArticles };
   }
@@ -32,6 +33,9 @@ export default class Articles extends Component {
     const { article, allArticles } = this.props;
     return (
       <Layout>
+        <Head>
+          <title>چلیپا کابل پویا - {article.title}</title>
+        </Head>
         <Container className="my-4 py-5 rtl text-right">
           <Row>
             <Col sm={12} md={9}>
@@ -58,7 +62,7 @@ export default class Articles extends Component {
                   {allArticles.map((item, index) => {
                     return (
                       <li key={index}>
-                        <Link href={`/articles/${item.id}`}>
+                        <Link href={`/articles/${item.title}`}>
                           <a>
                             <span className="text-main">{item.title}</span>
                           </a>

@@ -1,9 +1,9 @@
 import { sequelize as db } from "../../../models";
-const { Product } = db.models;
+const { Product , Category} = db.models;
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
-      res.send(await Product.findAll({ order: [["id", "desc"]] }));
+      res.send(await Product.findAll({ order: [["id", "desc"]] , include :[{model :Category}]}));
       break;
     case "DELETE":
       res.send(await Product.destroy({ where: { id: req.body.targetId } }));

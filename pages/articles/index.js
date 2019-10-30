@@ -3,6 +3,8 @@ import Layout from "../../components/Layout";
 import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
 import axios from "axios";
+import Head from "next/head";
+
 export default class Articles extends React.Component {
   static async getInitialProps(context) {
     const host =
@@ -26,13 +28,16 @@ export default class Articles extends React.Component {
   render() {
     return (
       <Layout>
-          <Container className="news-container my-5 rtl text-right">
+        <Head>
+          <title>چلیپا کابل پویا - مقالات</title>
+        </Head>
+        <Container className="news-container my-5 rtl text-right">
           <Row>
             {this.props.articles.map((item, index) => {
               const date = new Date(item.createdAt);
               return (
                 <Col sm={4} className="news-item">
-                  <Link href={`/articles/${item.id}`} key={index}>
+                  <Link href={`/articles/${item.title}`} key={index}>
                     <a>
                       <img
                         src={`/static/uploads/images/${item.image}`}
@@ -47,7 +52,11 @@ export default class Articles extends React.Component {
                       <div
                         className="news-preview"
                         dangerouslySetInnerHTML={{
-                          __html: item.body.substring(item.body.indexOf("<p>"),item.body.indexOf("</p>")) + " ..."
+                          __html:
+                            item.body.substring(
+                              item.body.indexOf("<p>"),
+                              item.body.indexOf("</p>")
+                            ) + " ..."
                         }}
                       ></div>
                       <div className="d-flex justify-content-end">

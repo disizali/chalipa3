@@ -3,15 +3,17 @@ import Layout from "../../components/Layout";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
 import axios from "axios";
+import Head from "next/head";
+
 class News extends Component {
   static async getInitialProps(context) {
-    const id = context.query.id;
+    let title = encodeURI(context.query.title);
     const host =
       context.req != undefined
         ? `http://${context.req.headers.host}`
         : `${window.location.origin}`;
 
-    const { data: news } = await axios.get(`${host}/api/news/${id}`);
+    const { data: news } = await axios.get(`${host}/api/news/${title}`);
     const { data: allNews } = await axios.get(`${host}/api/news`);
     return { news, allNews };
   }
@@ -32,6 +34,9 @@ class News extends Component {
     const { news, allNews } = this.props;
     return (
       <Layout>
+        <Head>
+          <title>چلیپا کابل پویا - {news.title}</title>
+        </Head>
         <Container className="my-4 py-5 rtl text-right">
           <Row>
             <Col sm={12} md={9}>
@@ -57,12 +62,12 @@ class News extends Component {
                 <ul className="p-0 text-right">
                   {allNews.map((item, index) => {
                     return (
-                     <li key={index}>
-                      <Link href={`/news/${item.id}`}>
-                        <a>
-                          <span className="text-main">{item.title}</span>
-                        </a>
-                      </Link>
+                      <li key={index}>
+                        <Link href={`/news/${item.title}`}>
+                          <a>
+                            <span className="text-main">{item.title}</span>
+                          </a>
+                        </Link>
                       </li>
                     );
                   })}
