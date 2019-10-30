@@ -13,7 +13,7 @@ export default class Category extends React.Component {
     } = context;
     title = encodeURI(title);
     const { data: category } = await axios.get(
-      `http://localhost/api/categories/${title}`
+      `http://95.216.86.208/api/categories/${title}`
     );
     console.log(category);
     if (category.subCategories.length >= 1) {

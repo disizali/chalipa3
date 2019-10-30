@@ -22,7 +22,7 @@ export default class MyEditor extends React.Component {
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
 
     axios
-      .get("http://localhost/api/categories")
+      .get("http://95.216.86.208/api/categories")
       .then(({ data: categories }) => {
         let finalCategories = [];
         categories.forEach(item => {
@@ -34,12 +34,12 @@ export default class MyEditor extends React.Component {
         });
       });
     axios
-      .get("http://localhost/api/products")
+      .get("http://95.216.86.208/api/products")
       .then(({ data: products }) => {
         this.setState({ products });
       });
     axios
-      .get("http://localhost/api/images")
+      .get("http://95.216.86.208/api/images")
       .then(({ data: images }) => {
         this.setState({
           images,
@@ -135,7 +135,7 @@ export default class MyEditor extends React.Component {
       technicalTable
     };
     axios
-      .post("http://localhost/api/products", data)
+      .post("http://95.216.86.208/api/products", data)
       .then(({ data: id }) => {
         this.setState({
           products: [{ id, name }, ...this.state.products],
@@ -152,7 +152,7 @@ export default class MyEditor extends React.Component {
 
   deleteProduct(targetId) {
     axios
-      .delete("http://localhost/api/products", {
+      .delete("http://95.216.86.208/api/products", {
         data: { targetId }
       })
       .then(({ data }) => {

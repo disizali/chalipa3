@@ -9,7 +9,7 @@ export default class Product extends React.Component {
     } = context;
     title = encodeURI(title);
     const { data: products } = await axios.get(
-      `http://localhost/api/categories/${title}/products`
+      `http://95.216.86.208/api/categories/${title}/products`
     );
     return {
       product: products[0],
