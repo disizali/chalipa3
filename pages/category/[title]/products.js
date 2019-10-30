@@ -4,11 +4,12 @@ import axios from "axios";
 import { Container, Row, Col, Nav, NavItem, NavLink } from "reactstrap";
 export default class Product extends React.Component {
   static async getInitialProps(context) {
-    const {
-      query: { id }
+    let  {
+      query: { title }
     } = context;
+    title = encodeURI(title);
     const { data: products } = await axios.get(
-      `http://95.216.86.208:3000/api/categories/${id}/products`
+      `http://localhost:3000/api/categories/${title}/products`
     );
     return {
       product: products[0],
@@ -49,7 +50,9 @@ export default class Product extends React.Component {
   getNoProduct() {
     return (
       <div className="no-product rtl my-5 w-100 d-flex text-center justify-content-center align-items-center">
-        <h1 className="text-main">در حال افزودن این دسته بندی کابل هستیم ...</h1>
+        <h1 className="text-main">
+          در حال افزودن این دسته بندی کابل هستیم ...
+        </h1>
       </div>
     );
   }

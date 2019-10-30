@@ -10,9 +10,9 @@ export default class Footer extends React.Component {
 
   async componentDidMount() {
     const { data: articles } = await axios.get(
-      "http://95.216.86.208:3000/api/articles"
+      "http://localhost:3000/api/articles"
     );
-    this.setState({ articles });
+    this.setState({ articles: articles.splice(0, 5) });
   }
 
   render() {

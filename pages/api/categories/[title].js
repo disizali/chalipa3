@@ -3,10 +3,10 @@ const { Category } = db.models;
 
 export default async (req, res) => {
   const {
-    query: { id }
+    query: { title }
   } = req;
   let category = await Category.findOne({
-    where: { id },
+    where: { title },
     attributes: ["id", "title","description"],
     raw: true
   });

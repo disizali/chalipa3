@@ -7,23 +7,25 @@ import Link from "next/link";
 export default class Category extends React.Component {
   static async getInitialProps(context) {
     const { res } = context;
-
-    const {
-      query: { id }
+    console.log(context.query);
+    let {
+      query: { title }
     } = context;
+    title = encodeURI(title);
     const { data: category } = await axios.get(
-      `http://95.216.86.208:3000/api/categories/${id}`
+      `http://localhost:3000/api/categories/${title}`
     );
+    console.log(category);
     if (category.subCategories.length >= 1) {
       return { category };
     } else {
       if (res) {
         res.writeHead(302, {
-          Location: `/category/${id}/products`
+          Location: `/category/${title}/products`
         });
         res.end();
       } else {
-        Router.push(`/category/${id}/products`);
+        Router.push(`/category/${title}/products`);
       }
       return {};
     }
@@ -54,7 +56,7 @@ export default class Category extends React.Component {
                 {category.subCategories.map((item, index) => {
                   return (
                     <Col sm={4} className={`mb-5`} key={index}>
-                      <Link href={`${item.id}/products`}>
+                      <Link href={`${item.title}/products`}>
                         <a className="d-flex justify-content-start align-items-center">
                           {/* <span className="category-logo text-dark shadow mx-2 d-flex justify-content-center align-items-center">
                           <img

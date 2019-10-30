@@ -34,7 +34,7 @@ export default class Navbarclass extends React.Component {
 
   async componentDidMount() {
     const { data: categories } = await axios.get(
-      "http://95.216.86.208:3000/api/categories"
+      "http://localhost:3000/api/categories"
     );
     this.setState({ categories });
   }
@@ -75,7 +75,7 @@ export default class Navbarclass extends React.Component {
                       return (
                         <DropdownItem key={index}>
                           <div>
-                            <Link href={`/category/${parentItem.id}`}>
+                            <Link href={`/category/${encodeURI(parentItem.title)}`}>
                               <a title={parentItem.title}>{parentItem.title}</a>
                             </Link>
                             <ul>
@@ -83,7 +83,7 @@ export default class Navbarclass extends React.Component {
                                 (childItem, index) => {
                                   return (
                                     <li key={index}>
-                                      <Link href={`/category/${childItem.id}`}>
+                                      <Link href={`/category/${encodeURI(childItem.title)}`}>
                                         <a className={childItem.title}>
                                           {childItem.title}
                                         </a>
