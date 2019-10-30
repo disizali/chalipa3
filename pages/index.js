@@ -18,7 +18,7 @@ const Splitter = () => {
 export default class Index extends React.Component {
   static async getInitialProps(context) {
     let { data: products } = await axios.get(
-      "http://localhost:3000/api/products"
+      "http://localhost/api/products"
     );
     return { products: products.splice(0, 4) };
   }

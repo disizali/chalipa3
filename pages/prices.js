@@ -4,7 +4,7 @@ import axios from "axios";
 export default class Prices extends React.Component {
   static async getInitialProps() {
     const { data: prices } = await axios.get(
-      "http://localhost:3000/api/prices"
+      "http://localhost/api/prices"
     );
     return { prices };
   }

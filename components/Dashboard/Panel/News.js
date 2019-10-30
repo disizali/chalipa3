@@ -18,10 +18,10 @@ export default class News extends Component {
     const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
 
-    axios.get("http://localhost:3000/api/news").then(({ data }) => {
+    axios.get("http://localhost/api/news").then(({ data }) => {
       this.setState({ news: data });
     });
-    axios.get("http://localhost:3000/api/images").then(({ data: images }) => {
+    axios.get("http://localhost/api/images").then(({ data: images }) => {
       this.setState({ images, selectedImage: images[0] });
     });
   }
@@ -29,7 +29,7 @@ export default class News extends Component {
   sendNews() {
     const { title, body, selectedImage, news } = this.state;
     axios
-      .post("http://localhost:3000/api/news", {
+      .post("http://localhost/api/news", {
         title,
         body,
         image: selectedImage
@@ -87,7 +87,7 @@ export default class News extends Component {
   deleteNews(targetId) {
     const { news } = this.state;
     axios
-      .delete("http://localhost:3000/api/news", { data: { targetId } })
+      .delete("http://localhost/api/news", { data: { targetId } })
       .then(({ data }) => {
         if (data == "no news") {
           return;

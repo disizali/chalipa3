@@ -8,7 +8,7 @@ export class Prices extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/prices").then(({ data: prices }) => {
+    axios.get("http://localhost/api/prices").then(({ data: prices }) => {
       this.setState({ prices });
     });
   }
@@ -16,7 +16,7 @@ export class Prices extends Component {
   sendPrice() {
     const { code, price, size, prices } = this.state;
     axios
-      .post("http://localhost:3000/api/prices", { code, price, size })
+      .post("http://localhost/api/prices", { code, price, size })
       .then(({ data }) => {
         if (data != "error") {
           const newPrices = [
@@ -40,7 +40,7 @@ export class Prices extends Component {
 
   deletePrice(targetId) {
     axios
-      .delete("http://localhost:3000/api/prices", { data: { targetId } })
+      .delete("http://localhost/api/prices", { data: { targetId } })
       .then(({ data }) => {
         if (data != "no price") {
           this.setState({

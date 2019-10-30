@@ -25,6 +25,6 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
   res.send(req.file ? req.file.filename : "not uploaded");
 });
 
-app.listen("3001", () => {
-  console.log("server is running on port 3001");
+app.listen("3000", () => {
+  console.log("server is running on port 3000");
 });

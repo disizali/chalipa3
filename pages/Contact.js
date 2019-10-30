@@ -38,7 +38,7 @@ export default class Contact extends React.Component {
       document.getElementById("message"),
       document.getElementById("message").value
     ];
-    const response = await axios.post("http://localhost:3000/api/contact", {
+    const response = await axios.post("http://localhost/api/contact", {
       name,
       email,
       number,
