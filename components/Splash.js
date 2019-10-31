@@ -123,7 +123,7 @@ export default class Splash extends React.Component {
             className="justify-content-end d-flex align-items-center"
           >
             <div className="cable-container d-flex align-items-center justify-content-start">
-              {[1, 2, 3].map(item => {
+              {[1, 2].map(item => {
                 <img
                   src={`/static/images/cable-${selected}.png`}
                   hidden
@@ -137,7 +137,13 @@ export default class Splash extends React.Component {
                 alt="hidden cable file"
               />
               <span id="behind-text">CHALIPA</span>
-              <Link href={`/category/${selected}`}>
+              <Link
+                href={`/category/${
+                  selected == 1
+                    ? encodeURI("کابل فشار ضعیف")
+                    : encodeURI("کابل فشار متوسط")
+                }`}
+              >
                 <a id="btn-show-category" title="show category">
                   مشاهده
                 </a>
