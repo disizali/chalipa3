@@ -21,7 +21,7 @@ export class Images extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://95.216.86.208/api/images").then(({ data: images }) => {
+    axios.get("http://chalipacable.ir/api/images").then(({ data: images }) => {
       this.setState({
         images
       });
@@ -29,7 +29,7 @@ export class Images extends Component {
   }
   deleteImage(targetFileName) {
     axios
-      .delete("http://95.216.86.208/api/images", { data: { targetFileName } })
+      .delete("http://chalipacable.ir/api/images", { data: { targetFileName } })
       .then(({ data }) => {
         this.setState({
           images: this.state.images.filter(item => item != targetFileName)
@@ -40,7 +40,7 @@ export class Images extends Component {
   uploadImage() {
     const data = new FormData();
     data.append("image", this.state.selectedFile);
-    axios.post("http://95.216.86.208:3000/api/upload", data).then(({ data }) => {
+    axios.post("http://chalipacable.ir:3000/api/upload", data).then(({ data }) => {
       const newImages = [data, ...this.state.images];
       this.setState({ images: newImages });
     });
@@ -50,7 +50,7 @@ export class Images extends Component {
       <div>
         <Container className="p-5 d-flex flex-column">
           <h2 className="text-light">مدیریت تصاویر</h2>
-          <Form action="http://95.216.86.208:3000/api/upload" method="POST">
+          <Form action="http://chalipacable.ir:3000/api/upload" method="POST">
             <FormGroup>
               <Label
                 className="text-secondary"

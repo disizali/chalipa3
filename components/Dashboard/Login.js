@@ -17,7 +17,7 @@ export class Login extends Component {
   login() {
     const { username, password } = this.state;
     axios
-      .post("http://95.216.86.208/api/auth", { username, password })
+      .post("http://chalipacable.ir/api/auth", { username, password })
       .then(({ data }) => {
         if (data == "unauthorized") {
           this.setState({ error: 1, username: "", password: "" });

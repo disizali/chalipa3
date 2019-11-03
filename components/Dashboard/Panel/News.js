@@ -18,10 +18,10 @@ export default class News extends Component {
     const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
 
-    axios.get("http://95.216.86.208/api/news").then(({ data }) => {
+    axios.get("http://chalipacable.ir/api/news").then(({ data }) => {
       this.setState({ news: data });
     });
-    axios.get("http://95.216.86.208/api/images").then(({ data: images }) => {
+    axios.get("http://chalipacable.ir/api/images").then(({ data: images }) => {
       this.setState({ images, selectedImage: images[0] });
     });
   }
@@ -29,7 +29,7 @@ export default class News extends Component {
   sendNews() {
     const { title, body, selectedImage, news } = this.state;
     axios
-      .post("http://95.216.86.208/api/news", {
+      .post("http://chalipacable.ir/api/news", {
         title,
         body,
         image: selectedImage
@@ -87,7 +87,7 @@ export default class News extends Component {
   deleteNews(targetId) {
     const { news } = this.state;
     axios
-      .delete("http://95.216.86.208/api/news", { data: { targetId } })
+      .delete("http://chalipacable.ir/api/news", { data: { targetId } })
       .then(({ data }) => {
         if (data == "no news") {
           return;

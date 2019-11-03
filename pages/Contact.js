@@ -39,7 +39,7 @@ export default class Contact extends React.Component {
       document.getElementById("message"),
       document.getElementById("message").value
     ];
-    const response = await axios.post("http://95.216.86.208/api/contact", {
+    const response = await axios.post("http://chalipacable.ir/api/contact", {
       name,
       email,
       number,

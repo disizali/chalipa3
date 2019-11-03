@@ -19,7 +19,7 @@ const Splitter = () => {
 export default class Index extends React.Component {
   static async getInitialProps(context) {
     let { data: products } = await axios.get(
-      "http://95.216.86.208/api/products"
+      "http://chalipacable.ir/api/products"
     );
     return { products: _.sampleSize(products, 4) };
   }

@@ -12,7 +12,6 @@ class News extends Component {
       context.req != undefined
         ? `http://${context.req.headers.host}`
         : `${window.location.origin}`;
-
     const { data: news } = await axios.get(`${host}/api/news/${title}`);
     const { data: allNews } = await axios.get(`${host}/api/news`);
     return { news, allNews };
