@@ -19,6 +19,7 @@ class MyDocument extends Document {
             name="description"
             content="شرکت چلیپا کابل پویا با بهره گیری از سالها تجربه در صنعت کابل طیف گسترده ای از کابلهای مسی و آلومینیومی با کیفیت بالا ارائه میکند"
           ></meta>
+          <meta name="google-site-verification" content="XH0xV47B0RHTBquHv11ZAkF3dkdzT0CGu_7e5m3T0K4" />
           <link rel="icon" type="image/png" href="/static/images/favicon.png" />
         </Head>
         <body>
