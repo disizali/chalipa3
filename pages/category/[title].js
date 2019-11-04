@@ -18,11 +18,11 @@ export default class Category extends React.Component {
     } else {
       if (res) {
         res.writeHead(302, {
-          Location: `/category/${title}/products`
+          Location: `/category/${encodeURI(title)}/products`
         });
         res.end();
       } else {
-        Router.push(`/category/${title}/products`);
+        Router.push(`/category/${encodeURI(title)}/products`);
       }
       return {};
     }

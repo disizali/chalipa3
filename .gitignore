@@ -1,3 +1,5 @@
 node_modules
 .next
 src/config.js
+public/static/uploads/images
+config/config.json

@@ -31,9 +31,9 @@ export default class Articles extends React.Component {
             {this.props.articles.map((item, index) => {
               const date = new Date(item.createdAt);
               return (
-                <Col sm={4} className="news-item">
+                <Col sm={3} className="news-item" key={index}>
                   <Link href={`/articles/${item.title}`} key={index}>
-                    <a>
+                     <a>
                       <img
                         src={`/static/uploads/images/${item.image}`}
                         className="rounded shadow"
