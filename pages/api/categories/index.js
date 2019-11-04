@@ -1,14 +1,20 @@
 import { sequelize as db } from "../../../models";
-const { Category } = db.models;
+import express from "express";
+import cors from "cors";
 
-export default async (req, res) => {
+const app = express();
+var corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
+app.get("/api/categories", async (req, res) => {
+  const { Category } = db.models;
   let categories = await Category.findAll({
     attributes: ["id", "title", "parent_category"],
     raw: true
   });
-
   let finalCategories = categories.filter(item => item.parent_category == 0);
-
   finalCategories = finalCategories.map(parentItem => {
     const newValue = {
       ...parentItem,
@@ -20,4 +26,6 @@ export default async (req, res) => {
     return newValue;
   });
   res.send(finalCategories);
-};
+});
+
+export default app;
