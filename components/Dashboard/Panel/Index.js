@@ -83,7 +83,17 @@ export class panel extends Component {
               </li>
             </ul>
           </Col>
-          <Col sm={12} md={10} className="panel-container">
+          <Col sm={12} md={10} className="panel-container p-0">
+            <div className="bg-white w-100 d-flex justify-content-between p-2 align-items-center">
+              <div>
+                <span className="mx-2">شرکت ویرا وب آپادانا</span>
+                <span className="mx-2">44259688-44259611</span>
+              </div>
+              <a href="http://apweb.ir">
+                APWEB
+              </a>
+            </div>
+
             {this.getPanel()}
           </Col>
         </Row>

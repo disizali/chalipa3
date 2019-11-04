@@ -69,6 +69,10 @@ export function deleteProduct(data) {
   return axios.delete(`${api}/products`, data);
 }
 
+export function updateProduct(data) {
+  return axios.put(`${api}/products`, data);
+}
+
 export function sendArticle(data) {
   return axios.post(`${api}/articles`, data);
 }

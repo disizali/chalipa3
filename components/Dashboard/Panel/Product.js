@@ -15,8 +15,11 @@ export default class MyEditor extends React.Component {
       description: "",
       categories: [],
       images: [],
-      products: []
+      products: [],
+      editable: false
     };
+    this.cancelEdit = this.cancelEdit.bind(this);
+    this.editProduct = this.editProduct.bind(this);
   }
   async componentDidMount() {
     const editor = document.querySelector("#editor p");
@@ -41,7 +44,63 @@ export default class MyEditor extends React.Component {
       technicalTable: images[0]
     });
   }
+  startEdit(editable) {
+    const { products } = this.state;
+    const product = products.find(item => item.id == editable);
+    this.setState({ ...product, editable });
+  }
+  cancelEdit() {
+    this.setState({
+      name: "",
+      category: "",
+      image: this.state.images[0],
+      subtitle: "",
+      details: this.state.images[0],
+      description: "",
+      technicalTable: this.state.images[0],
+      editable: false
+    });
+  }
+  editProduct(id) {
+    const {
+      name,
+      category,
+      image,
+      subtitle,
+      details,
+      description,
+      technicalTable
+    } = this.state;
 
+    const data = {
+      name,
+      category,
+      image,
+      subtitle,
+      details,
+      description,
+      technicalTable
+    };
+
+    api.updateProduct({ ...data, id }).then(({ data }) => {
+      if (data == "updated") {
+        const newProducts = this.state.products.map(item => {
+          if (item.id == id) {
+            item.name = name;
+            item.category = category;
+            item.image = image;
+            item.subtitle = subtitle;
+            item.details = details;
+            item.description = description;
+            item.technicalTable = technicalTable;
+          }
+          return item;
+        });
+        this.setState({ product: newProducts });
+        this.cancelEdit();
+      }
+    });
+  }
   nameChangeHandler(e) {
     this.setState({ name: e.target.value });
   }
@@ -85,7 +144,6 @@ export default class MyEditor extends React.Component {
       ]
     };
   }
-
   formats() {
     return [
       "header",
@@ -154,7 +212,7 @@ export default class MyEditor extends React.Component {
 
   render() {
     const ReactQuill = require("react-quill");
-
+    const { editable } = this.state;
     return (
       <section className="product">
         <Container className="p-5">
@@ -270,17 +328,36 @@ export default class MyEditor extends React.Component {
             className="form-control"
             color="primary"
             onClick={this.sendProduct.bind(this)}
+            style={{ display: editable ? "none" : "block" }}
           >
             افزودن
           </Button>
+          <div style={{ display: editable ? "flex" : "none" }}>
+            <Button
+              className="form-control mx-1"
+              color="warning"
+              onClick={() => this.editProduct(this.state.editable)}
+            >
+              ویرایش
+            </Button>
+            <Button
+              className="form-control mx-1"
+              color="danger"
+              onClick={() => this.cancelEdit()}
+            >
+              لغو
+            </Button>
+          </div>
+
           <br />
           <hr className="bg-muted text-warning w-100 h-100" />
           <br />
+
           <Table responsive bordered dark className="text-right">
             <thead>
               <tr>
-                <th width="80%">نام</th>
-                <th width="20%">عملیات</th>
+                <th width="60%">نام</th>
+                <th width="40%">عملیات</th>
               </tr>
             </thead>
             <tbody>
@@ -290,11 +367,20 @@ export default class MyEditor extends React.Component {
                     <td>{item.name}</td>
                     <td>
                       <Button
+                        className="mx-2"
                         color="danger"
                         onClick={() => this.deleteProduct(item.id)}
                       >
-                        <i className="fas fa-trash mx-2"></i>
-                        <span className="mx-2">حذف</span>
+                        <i className="fas fa-trash mx-1"></i>
+                        <span className="mx-1">حذف</span>
+                      </Button>
+                      <Button
+                        className="mx-2"
+                        color="warning"
+                        onClick={() => this.startEdit(item.id)}
+                      >
+                        <i className="fas fa-pen mx-1"></i>
+                        <span className="mx-1">ویرایش</span>
                       </Button>
                     </td>
                   </tr>

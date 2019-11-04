@@ -10,8 +10,10 @@ export default (req, res) => {
           return second - first;
         });
       res.send(imagesLis);
+      break;
     case "DELETE":
       fs.unlinkSync("public/static/uploads/images/" + req.body.targetFileName);
       res.send("deleted");
+      break;
   }
 };

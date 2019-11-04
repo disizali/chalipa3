@@ -4,7 +4,6 @@ import Login from "../components/Dashboard/Login";
 import cookie from "js-cookie";
 import Index from "../components/Dashboard/Panel/Index";
 import * as api from "../src/api";
-
 import Head from "next/head";
 import "../styles/dashboard/index.scss";
 export class dashboard extends Component {
