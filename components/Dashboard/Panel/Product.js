@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button, Table } from "reactstrap";
-import axios from "axios";
+import * as api from "../../../src/api";
+
 export default class MyEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -17,37 +18,28 @@ export default class MyEditor extends React.Component {
       products: []
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
     const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+    const categories = await api.getCategories();
+    let finalCategories = [];
+    categories.forEach(item => {
+      finalCategories = [...finalCategories, ...item.subCategories];
+    });
+    this.setState({
+      categories: finalCategories,
+      category: finalCategories[0].id
+    });
 
-    axios
-      .get("http://chalipacable.ir/api/categories")
-      .then(({ data: categories }) => {
-        let finalCategories = [];
-        categories.forEach(item => {
-          finalCategories = [...finalCategories, ...item.subCategories];
-        });
-        this.setState({
-          categories: finalCategories,
-          category: finalCategories[0].id
-        });
-      });
-    axios
-      .get("http://chalipacable.ir/api/products")
-      .then(({ data: products }) => {
-        this.setState({ products });
-      });
-    axios
-      .get("http://chalipacable.ir/api/images")
-      .then(({ data: images }) => {
-        this.setState({
-          images,
-          image: images[0],
-          details: images[0],
-          technicalTable: images[0]
-        });
-      });
+    this.setState({ products: await api.getProducts() });
+    const images = await api.getImages();
+
+    this.setState({
+      images,
+      image: images[0],
+      details: images[0],
+      technicalTable: images[0]
+    });
   }
 
   nameChangeHandler(e) {
@@ -134,25 +126,23 @@ export default class MyEditor extends React.Component {
       description,
       technicalTable
     };
-    axios
-      .post("http://chalipacable.ir/api/products", data)
-      .then(({ data: id }) => {
-        this.setState({
-          products: [{ id, name }, ...this.state.products],
-          name: "",
-          category: "",
-          image: "",
-          subtitle: "",
-          details: "",
-          description: "",
-          technicalTable: ""
-        });
+    api.sendProduct(data).then(({ data: id }) => {
+      this.setState({
+        products: [{ id, name }, ...this.state.products],
+        name: "",
+        category: "",
+        image: "",
+        subtitle: "",
+        details: "",
+        description: "",
+        technicalTable: ""
       });
+    });
   }
 
   deleteProduct(targetId) {
-    axios
-      .delete("http://chalipacable.ir/api/products", {
+    api
+      .deleteProduct({
         data: { targetId }
       })
       .then(({ data }) => {

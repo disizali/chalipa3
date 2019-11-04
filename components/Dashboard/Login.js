@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
+import * as api from "../../src/api";
 
 export class Login extends Component {
   constructor(props) {
@@ -16,19 +17,17 @@ export class Login extends Component {
   }
   login() {
     const { username, password } = this.state;
-    axios
-      .post("http://chalipacable.ir/api/auth", { username, password })
-      .then(({ data }) => {
-        if (data == "unauthorized") {
-          this.setState({ error: 1, username: "", password: "" });
-          setTimeout(() => {
-            this.setState({ error: 0 });
-          }, 2000);
-          return;
-        }
-        cookie.set("authtoken", data);
-        return this.props.changeGaranty(1);
-      });
+    api.login({ username, password }).then(({ data }) => {
+      if (data == "unauthorized") {
+        this.setState({ error: 1, username: "", password: "" });
+        setTimeout(() => {
+          this.setState({ error: 0 });
+        }, 2000);
+        return;
+      }
+      cookie.set("authtoken", data);
+      return this.props.changeGaranty(1);
+    });
   }
   render() {
     return (

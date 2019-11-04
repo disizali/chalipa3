@@ -8,9 +8,7 @@ import {
   Input,
   Button
 } from "reactstrap";
-
-import axios from "axios";
-
+import * as api from "../../../src/api";
 export class Images extends Component {
   constructor(props) {
     super(props);
@@ -20,27 +18,24 @@ export class Images extends Component {
     this.setState({ selectedFile: e.target.files[0] });
   }
 
-  componentDidMount() {
-    axios.get("http://chalipacable.ir/api/images").then(({ data: images }) => {
+  async componentDidMount() {
       this.setState({
-        images
+        images : await api.getImages()
       });
-    });
   }
+
   deleteImage(targetFileName) {
-    axios
-      .delete("http://chalipacable.ir/api/images", { data: { targetFileName } })
+    api.deleteImage({ data: { targetFileName } })
       .then(({ data }) => {
         this.setState({
           images: this.state.images.filter(item => item != targetFileName)
         });
       });
   }
-
   uploadImage() {
     const data = new FormData();
     data.append("image", this.state.selectedFile);
-    axios.post("http://chalipacable.ir:3000/api/upload", data).then(({ data }) => {
+    api.uploadImage(data).then(({ data }) => {
       const newImages = [data, ...this.state.images];
       this.setState({ images: newImages });
     });
@@ -50,7 +45,6 @@ export class Images extends Component {
       <div>
         <Container className="p-5 d-flex flex-column">
           <h2 className="text-light">مدیریت تصاویر</h2>
-          <Form action="http://chalipacable.ir:3000/api/upload" method="POST">
             <FormGroup>
               <Label
                 className="text-secondary"
@@ -72,7 +66,6 @@ export class Images extends Component {
                 آپلود
               </Button>
             </FormGroup>
-          </Form>
           <br />
           <hr />
           <br />

@@ -1,26 +1,24 @@
 import React, { Component } from "react";
 import { Table, Container, Button, Row, Col } from "reactstrap";
 import axios from "axios";
+import * as api from "../../../src/api";
 export class Prices extends Component {
   constructor(props) {
     super(props);
     this.state = { prices: [], code: "", price: "", size: "" };
   }
 
-  componentDidMount() {
-    axios.get("http://chalipacable.ir/api/prices").then(({ data: prices }) => {
-      this.setState({ prices });
-    });
+  async componentDidMount() {
+      this.setState({ prices : await api.getPrices() });
   }
 
   sendPrice() {
     const { code, price, size, prices } = this.state;
-    axios
-      .post("http://chalipacable.ir/api/prices", { code, price, size })
+    api.sendPrice({ code, price, size })
       .then(({ data }) => {
         if (data != "error") {
           const newPrices = [
-            { id: prices.length + 1, code, size, price },
+            { id: data.id, code, size, price },
             ...prices
           ];
           this.setState({ prices: newPrices });
@@ -39,8 +37,7 @@ export class Prices extends Component {
   }
 
   deletePrice(targetId) {
-    axios
-      .delete("http://chalipacable.ir/api/prices", { data: { targetId } })
+    api.deletePrice({ data: { targetId } })
       .then(({ data }) => {
         if (data != "no price") {
           this.setState({

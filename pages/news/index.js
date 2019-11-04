@@ -2,18 +2,11 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import { Container, Col, Row } from "reactstrap";
-import axios from "axios";
+import * as api from "../../src/api";
 import Head from "next/head";
-
-
 export default class News extends React.Component {
   static async getInitialProps(context) {
-    const host =
-      context.req != undefined
-        ? `http://${context.req.headers.host}`
-        : `${window.location.origin}`;
-
-    const { data: news } = await axios.get(`${host}/api/news`);
+    const news = await api.getNews();
     return { news };
   }
   constructor(props) {
@@ -29,7 +22,7 @@ export default class News extends React.Component {
   render() {
     return (
       <Layout>
-                <Head>
+        <Head>
           <title>چلیپا کابل پویا - اخبار</title>
         </Head>
         <Container className="news-container my-5 rtl text-right">
@@ -37,7 +30,7 @@ export default class News extends React.Component {
             {this.props.news.map((item, index) => {
               const date = new Date(item.createdAt);
               return (
-                <Col sm={3} className="bg-sm-white news-item">
+                <Col sm={3} className="bg-sm-white news-item mb-2" key={index}>
                   <Link href={`/news/${item.title}`} key={index}>
                     <a>
                       <img
@@ -53,7 +46,11 @@ export default class News extends React.Component {
                       <div
                         className="news-preview"
                         dangerouslySetInnerHTML={{
-                          __html: item.body.substring(item.body.indexOf("<p>"),item.body.indexOf("</p>")) + " ..."
+                          __html:
+                            item.body.substring(
+                              item.body.indexOf("<p>"),
+                              item.body.indexOf("</p>")
+                            ) + " ..."
                         }}
                       ></div>
                       <div className="d-flex justify-content-end">

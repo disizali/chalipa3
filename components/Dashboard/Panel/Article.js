@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
-import axios from "axios";
+import * as api from "../../../src/api";
 
 export default class Article extends Component {
   constructor(props) {
@@ -8,19 +8,13 @@ export default class Article extends Component {
     this.state = { title: "", body: "", articles: [], images: [] };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
-
-    axios.get("http://chalipacable.ir/api/articles").then(({ data }) => {
-      this.setState({ articles: data });
-    });
-
-    axios.get("http://chalipacable.ir/api/images").then(({ data: images }) => {
-      this.setState({ images, selectedImage: images[0] });
-    });
+    this.setState({ articles: await api.getArticles() });
+    const images = await api.getImages();
+    this.setState({ images, selectedImage: images[0] });
   }
-
   modules() {
     return {
       toolbar: [
@@ -62,10 +56,10 @@ export default class Article extends Component {
     ];
   }
 
-  sendPost() {
+  sendArticle() {
     const { title, body, selectedImage, articles } = this.state;
-    axios
-      .post("http://chalipacable.ir/api/articles", {
+    api
+      .sendArticle({
         title,
         body,
         selectedImage
@@ -84,18 +78,16 @@ export default class Article extends Component {
       });
   }
 
-  deletePost(targetId) {
+  deleteArticle(targetId) {
     const { articles } = this.state;
-    axios
-      .delete("http://chalipacable.ir/api/articles", { data: { targetId } })
-      .then(({ data }) => {
-        if (data == "no article") {
-          return;
-        }
-        return this.setState({
-          articles: articles.filter(item => item.id !== targetId)
-        });
+    api.deleteArticle({ data: { targetId } }).then(({ data }) => {
+      if (data == "no article") {
+        return;
+      }
+      return this.setState({
+        articles: articles.filter(item => item.id !== targetId)
       });
+    });
   }
   titleChangeHandler(e) {
     this.setState({ title: e.target.value });
@@ -108,7 +100,6 @@ export default class Article extends Component {
   }
   render() {
     const ReactQuill = require("react-quill");
-
     return (
       <div className="panel-article">
         <Container className="p-5 d-flex flex-column">
@@ -151,7 +142,7 @@ export default class Article extends Component {
               </select>
             </Col>
           </Row>
-          <Button color="primary" onClick={this.sendPost.bind(this)}>
+          <Button color="primary" onClick={this.sendArticle.bind(this)}>
             ارسال
           </Button>
           <br />
@@ -172,7 +163,7 @@ export default class Article extends Component {
                     <td>
                       <Button
                         color="danger"
-                        onClick={() => this.deletePost(item.id)}
+                        onClick={() => this.deleteArticle(item.id)}
                       >
                         <i className="fas fa-trash mx-2"></i>
                         <span className="mx-2">حذف</span>

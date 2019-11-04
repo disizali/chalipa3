@@ -25,7 +25,7 @@ export default class Samples extends React.Component {
                     <a className="d-flex flex-column justify-content-center sample-column">
                       <img
                         src={`/static/uploads/images/${item.image}`}
-                          alt={`${item.title} sample`}
+                        alt={`${item.title} sample`}
                         className="sample-image"
                         width="100%"
                       />

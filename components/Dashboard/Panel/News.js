@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
-import axios from "axios";
+import * as api from "../../../src/api";
 
 export default class News extends Component {
   constructor(props) {
@@ -14,22 +14,19 @@ export default class News extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
 
-    axios.get("http://chalipacable.ir/api/news").then(({ data }) => {
-      this.setState({ news: data });
-    });
-    axios.get("http://chalipacable.ir/api/images").then(({ data: images }) => {
-      this.setState({ images, selectedImage: images[0] });
-    });
+    this.setState({ news: await api.getNews() });
+    const images = await api.getImages();
+    this.setState({ images, selectedImage: images[0] });
   }
 
   sendNews() {
     const { title, body, selectedImage, news } = this.state;
-    axios
-      .post("http://chalipacable.ir/api/news", {
+    api
+      .sendNews({
         title,
         body,
         image: selectedImage
@@ -86,16 +83,14 @@ export default class News extends Component {
 
   deleteNews(targetId) {
     const { news } = this.state;
-    axios
-      .delete("http://chalipacable.ir/api/news", { data: { targetId } })
-      .then(({ data }) => {
-        if (data == "no news") {
-          return;
-        }
-        return this.setState({
-          news: news.filter(item => item.id !== targetId)
-        });
+    api.deleteNews({ data: { targetId } }).then(({ data }) => {
+      if (data == "no news") {
+        return;
+      }
+      return this.setState({
+        news: news.filter(item => item.id !== targetId)
       });
+    });
   }
   titleChangeHandler(e) {
     this.setState({ title: e.target.value });

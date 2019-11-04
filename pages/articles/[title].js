@@ -2,21 +2,16 @@ import { Component } from "react";
 import Layout from "../../components/Layout";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
-import axios from "axios";
 import Head from "next/head";
+import * as api from "../../src/api";
+
 export default class Articles extends Component {
   static async getInitialProps(context) {
-    let title = encodeURI(context.query.title);
-    const host =
-      context.req != undefined
-        ? `http://${context.req.headers.host}`
-        : `${window.location.origin}`;
-
-    const { data: article } = await axios.get(`${host}/api/articles/${title}`);
-    const { data: allArticles } = await axios.get(`${host}/api/articles`);
-    return { article, allArticles };
+    let title = context.query.title;
+    const articles = await api.getArticles();
+    const article = articles.find(item => item.title == title);
+    return { article, articles };
   }
-
   constructor(props) {
     super(props);
   }
@@ -30,7 +25,7 @@ export default class Articles extends Component {
   }
 
   render() {
-    const { article, allArticles } = this.props;
+    const { article, articles } = this.props;
     return (
       <Layout>
         <Head>
@@ -59,7 +54,7 @@ export default class Articles extends Component {
               >
                 <h5 className="other-title pr-3">دیگر مقالات</h5>
                 <ul className="p-0 text-right">
-                  {allArticles.map((item, index) => {
+                  {articles.map((item, index) => {
                     return (
                       <li key={index}>
                         <Link href={`/articles/${item.title}`}>

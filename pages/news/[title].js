@@ -2,18 +2,14 @@ import { Component } from "react";
 import Layout from "../../components/Layout";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
-import axios from "axios";
+import * as api from "../../src/api";
 import Head from "next/head";
 
 class News extends Component {
   static async getInitialProps(context) {
-    let title = encodeURI(context.query.title);
-    const host =
-      context.req != undefined
-        ? `http://${context.req.headers.host}`
-        : `${window.location.origin}`;
-    const { data: news } = await axios.get(`${host}/api/news/${title}`);
-    const { data: allNews } = await axios.get(`${host}/api/news`);
+    let title = context.query.title;
+    const allNews = await api.getNews();
+    const news = allNews.find(item => item.title == title);
     return { news, allNews };
   }
 

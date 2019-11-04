@@ -3,7 +3,7 @@ const { News } = db.models;
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
-      const news = await News.findAll();
+      const news = await News.findAll({order : [["id","DESC"]]});
       res.status(200).send(news);
       break;
     case "POST":

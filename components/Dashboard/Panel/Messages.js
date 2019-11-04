@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
-import axios from "axios";
+import * as api from "../../../src/api";
 
 export default class News extends Component {
   constructor(props) {
@@ -10,10 +10,8 @@ export default class News extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("http://chalipacable.ir/api/messages").then(({ data }) => {
-      this.setState({ messages: data });
-    });
+  async componentDidMount() {
+    this.setState({ messages: await api.getMessages() });
   }
 
   render() {

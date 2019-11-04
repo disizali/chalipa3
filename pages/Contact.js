@@ -1,8 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
-import axios from "axios";
+import * as api from "../src/api";
 import Head from "next/head";
-
 import {
   Container,
   Row,
@@ -39,7 +38,7 @@ export default class Contact extends React.Component {
       document.getElementById("message"),
       document.getElementById("message").value
     ];
-    const response = await axios.post("http://chalipacable.ir/api/contact", {
+    const response = await api.sendMessage({
       name,
       email,
       number,
@@ -54,10 +53,8 @@ export default class Contact extends React.Component {
     messageInput.value = "";
   }
 
-  componentDidMount() {
-    
-  }
-  
+  componentDidMount() {}
+
   render() {
     return (
       <Layout>
@@ -70,8 +67,8 @@ export default class Contact extends React.Component {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.8044614390956!2d51.43352431561295!3d35.73102723484614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e03e3f181f7dd%3A0x5d1db83216503389!2z2LTYsdqp2Kog2obZhNuM2b7YpyDaqdin2KjZhCDZvtmI24zYpw!5e0!3m2!1sen!2s!4v1572419832060!5m2!1sen!2s"
               width="100%"
               height="300"
-              frameborder="0"
-              allowfullscreen=""
+              frameBorder="0"
+              allowFullScreen=""
               className="shadow-sm border-bottom"
             ></iframe>
           </div>

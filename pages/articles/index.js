@@ -2,17 +2,12 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
-import axios from "axios";
+import * as api from "../../src/api";
 import Head from "next/head";
 
 export default class Articles extends React.Component {
   static async getInitialProps(context) {
-    const host =
-      context.req != undefined
-        ? `http://${context.req.headers.host}`
-        : `${window.location.origin}`;
-
-    const { data: articles } = await axios.get(`${host}/api/articles`);
+    const articles = await api.getArticles();
     return { articles };
   }
   constructor(props) {

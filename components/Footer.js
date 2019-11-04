@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
 import axios from "axios";
+import * as api from "../src/api";
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
@@ -9,9 +10,7 @@ export default class Footer extends React.Component {
   }
 
   async componentDidMount() {
-    const { data: articles } = await axios.get(
-      "http://chalipacable.ir/api/articles"
-    );
+    const articles = await api.getArticles();
     this.setState({ articles: articles.splice(0, 5) });
   }
 

@@ -1,26 +1,28 @@
 import React from "react";
 import Layout from "../../../components/Layout";
 import axios from "axios";
-import { Container, Row, Col, Nav, NavItem, NavLink } from "reactstrap";
+import { Row, Col } from "reactstrap";
+import * as api from "../../../src/api";
+
+import Head from "next/head";
 export default class Product extends React.Component {
   static async getInitialProps(context) {
-    let  {
+    let {
       query: { title }
     } = context;
-    title = encodeURI(title);
-    const { data: products } = await axios.get(
-      `http://chalipacable.ir/api/categories/${title}/products`
-    );
+    const categoryProducts = await api.getCategoryProducts(title);
     return {
-      product: products[0],
-      products
+      product: categoryProducts[0],
+      products: categoryProducts,
+      title
     };
   }
 
   constructor(props) {
     super(props);
     this.state = { selected: props.product, tab: 1 };
-    this.changeTab.bind(this);
+    this.changeTab = this.changeTab.bind(this);
+    this.getNoProduct = this.getNoProduct.bind(this);
   }
 
   changeProduct(e) {
@@ -50,6 +52,9 @@ export default class Product extends React.Component {
   getNoProduct() {
     return (
       <div className="no-product rtl my-5 w-100 d-flex text-center justify-content-center align-items-center">
+        <Head>
+          <title>چلیپا کابل پویا - محصولات {this.props.title}</title>
+        </Head>
         <h1 className="text-main">
           در حال افزودن این دسته بندی کابل هستیم ...
         </h1>
@@ -62,6 +67,9 @@ export default class Product extends React.Component {
     const { products } = this.props;
     return (
       <Layout>
+        <Head>
+          <title>چلیپا کابل پویا - محصولات {this.props.title}</title>
+        </Head>
         <main className="product">
           {!selected ? (
             this.getNoProduct()

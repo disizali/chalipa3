@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-
 import {
   Collapse,
   Navbar,
@@ -15,11 +14,11 @@ import {
   DropdownItem,
   Container
 } from "reactstrap";
-import axios from "axios";
+import * as api from "../src/api";
+
 export default class Navbarclass extends React.Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
@@ -31,18 +30,19 @@ export default class Navbarclass extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-
   async componentDidMount() {
-    const { data: categories } = await axios.get(
-      "http://chalipacable.ir/api/categories"
-    );
+    const categories = await api.getCategories();
     this.setState({ categories });
   }
-
   render() {
     const { categories } = this.state;
     return (
-      <Navbar color="light" light expand="lg" className="rtl shadow-sm text-right">
+      <Navbar
+        color="light"
+        light
+        expand="lg"
+        className="rtl shadow-sm text-right"
+      >
         <Container>
           <NavbarBrand href="/">
             <img
@@ -75,7 +75,9 @@ export default class Navbarclass extends React.Component {
                       return (
                         <DropdownItem key={index}>
                           <div>
-                            <Link href={`/category/${encodeURI(parentItem.title)}`}>
+                            <Link
+                              href={`/category/${encodeURI(parentItem.title)}`}
+                            >
                               <a title={parentItem.title}>{parentItem.title}</a>
                             </Link>
                             <ul>
@@ -83,7 +85,11 @@ export default class Navbarclass extends React.Component {
                                 (childItem, index) => {
                                   return (
                                     <li key={index}>
-                                      <Link href={`/category/${encodeURI(childItem.title)}`}>
+                                      <Link
+                                        href={`/category/${encodeURI(
+                                          childItem.title
+                                        )}`}
+                                      >
                                         <a className={childItem.title}>
                                           {childItem.title}
                                         </a>

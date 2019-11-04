@@ -3,7 +3,7 @@ import Loading from "../components/Dashboard/Loading";
 import Login from "../components/Dashboard/Login";
 import cookie from "js-cookie";
 import Index from "../components/Dashboard/Panel/Index";
-import axios from "axios";
+import * as api from "../src/api";
 
 import Head from "next/head";
 import "../styles/dashboard/index.scss";
@@ -17,14 +17,12 @@ export class dashboard extends Component {
     if (authToken == undefined) {
       return this.setState({ loading: false, garanted: -1 });
     } else {
-      axios
-        .post("http://chalipacable.ir/api/auth", { authToken })
-        .then(({ data }) => {
-          if (data == "unauthorized") {
-            return cookie.remove("authtoken");
-          }
-          return this.setState({ garanted: 1, loading: false });
-        });
+      api.checkAuth({ authToken }).then(data => {
+        if (data == "unauthorized") {
+          return cookie.remove("authtoken");
+        }
+        return this.setState({ garanted: 1, loading: false });
+      });
     }
   }
 
