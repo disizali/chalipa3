@@ -11,7 +11,7 @@ export default class Namayandegi extends Component {
           <title>چلیپا کابل پویا - نمایندگی کابل خراسان</title>
         </Head>
         <Container className="text-right p-5 rtl">
-          <h1>خراسان افشار نژاد</h1>
+          <h1 className="news-title pr-3 my-5">خراسان افشار نژاد</h1>
           <h4>
             <li>سیم و کابل خراسان</li>
           </h4>
@@ -174,6 +174,53 @@ export default class Namayandegi extends Component {
             کابل هوایی می گویند. کابل هوایی خود انواع مختلفی دارد که یکی از آن
             کابل مخابراتی خراسان است. برای مطالعه بیشتر کلیک کنید.
           </p>
+          <h1 className="news-title pr-3 my-5">انواع کابل های ما</h1>
+          <ul>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir/category/%DA%A9%D8%A7%D8%A8%D9%84%20%D9%81%D8%B4%D8%A7%D8%B1%20%D8%B6%D8%B9%DB%8C%D9%81">
+                  کابل فشار ضعیف
+                </a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir/category/%DA%A9%D8%A7%D8%A8%D9%84%20%D9%81%D8%B4%D8%A7%D8%B1%20%D9%85%D8%AA%D9%88%D8%B3%D8%B7">
+                  کابل فشار متوسط
+                </a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir">کابل متال</a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir">کابل شاهین</a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir">کابل ابزار دقیق</a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir">کابل افشان</a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir">کابل فشار قوی</a>
+              </h3>
+            </li>
+            <li>
+              <h3 className="text-dark customer-container w-25">
+                <a href="http://chalipacable.ir">کابل افشار نژاد خراسان</a>
+              </h3>
+            </li>
+          </ul>
         </Container>
       </Layout>
     );

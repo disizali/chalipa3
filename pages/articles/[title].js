@@ -31,22 +31,32 @@ export default class Articles extends Component {
         <Head>
           <title>چلیپا کابل پویا - {article.title}</title>
         </Head>
-        <Container className="my-4 py-5 rtl text-right">
+        <div className="m-4 p-5 rtl text-right">
           <Row>
             <Col sm={12} md={9}>
-              <h1 className="news-title pr-3 my-2"> {article.title}</h1>
-              <p className="news-date my-2">
-                <span className="mx-2">نوشته شده در </span>
-                <span>{this.getDiffrents(article.createdAt)}</span>
-                <span className="mr-2"> روز پیش</span>
-              </p>
-              <img
-                src={`/static/uploads/images/${article.image}`}
-                // src={`https://picsum.photos/1000/400`}
-                className="w-100 shadow rounded my-2"
-              />
+              <Row>
+                <Col sm={12}>
+                  <h1 className="news-title pr-3 my-2"> {article.title}</h1>
+                  <p className="news-date my-2">
+                    <span className="mx-2">نوشته شده در </span>
+                    <span>{this.getDiffrents(article.createdAt)}</span>
+                    <span className="mr-2"> روز پیش</span>
+                  </p>
+                  <img
+                    src={`/static/uploads/images/${article.image}`}
+                    // src={`https://picsum.photos/1000/400`}
+                    className="w-100 shadow rounded my-2"
+                  />
+                </Col>
+                <Col sm={12}>
+                  <div
+                    className="content post-body my-5"
+                    dangerouslySetInnerHTML={{ __html: article.body }}
+                  ></div>
+                </Col>
+              </Row>
             </Col>
-            <Col className="my-5">
+            <Col sm={3} className="my-5">
               <div
                 sm={12}
                 md={4}
@@ -69,13 +79,7 @@ export default class Articles extends Component {
               </div>
             </Col>
           </Row>
-          <Col sm={12} md={2}>
-            <div
-              className="content post-body my-5"
-              dangerouslySetInnerHTML={{ __html: article.body }}
-            ></div>
-          </Col>
-        </Container>
+        </div>
       </Layout>
     );
   }
