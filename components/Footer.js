@@ -61,7 +61,7 @@ export default class Footer extends React.Component {
                 {articles.map((item, index) => {
                   return (
                     <li key={index}>
-                      <Link href={`/articles/${item.title}`}>
+                      <Link href={`/articles/${encodeURI(item.title)}`}>
                         <a>{item.title}</a>
                       </Link>
                     </li>
