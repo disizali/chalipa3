@@ -12,7 +12,7 @@ import {
   Input
 } from "reactstrap";
 
-export default class Contact extends React.Component {
+export default class contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
