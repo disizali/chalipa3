@@ -177,46 +177,46 @@ export default class Namayandegi extends Component {
           <h1 className="news-title pr-3 my-5">انواع کابل های ما</h1>
           <ul>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir/category/%DA%A9%D8%A7%D8%A8%D9%84%20%D9%81%D8%B4%D8%A7%D8%B1%20%D8%B6%D8%B9%DB%8C%D9%81">
                   کابل فشار ضعیف
                 </a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir/category/%DA%A9%D8%A7%D8%A8%D9%84%20%D9%81%D8%B4%D8%A7%D8%B1%20%D9%85%D8%AA%D9%88%D8%B3%D8%B7">
                   کابل فشار متوسط
                 </a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir">کابل متال</a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir">کابل شاهین</a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir">کابل ابزار دقیق</a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir">کابل افشان</a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir">کابل فشار قوی</a>
               </h3>
             </li>
             <li>
-              <h3 className="text-dark customer-container w-25">
+              <h3 className="text-dark customer-container w-50">
                 <a href="http://chalipacable.ir">کابل افشار نژاد خراسان</a>
               </h3>
             </li>
