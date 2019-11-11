@@ -9,22 +9,20 @@ export class Prices extends Component {
   }
 
   async componentDidMount() {
-      this.setState({ prices : await api.getPrices() });
+    this.setState({ prices: await api.getPrices() });
   }
 
   sendPrice() {
     const { code, price, size, prices } = this.state;
-    api.sendPrice({ code, price, size })
-      .then(({ data }) => {
-        if (data != "error") {
-          const newPrices = [
-            { id: data.id, code, size, price },
-            ...prices
-          ];
-          this.setState({ prices: newPrices });
-        }
-        this.setState({ code: "", price: "", size: "" });
-      });
+    if (!code || !price || !size)
+      return alert("لطفا ورودی های خودتون رو چک بفرمایید");
+    api.sendPrice({ code, price, size }).then(({ data }) => {
+      if (data != "error") {
+        const newPrices = [{ id: data.id, code, size, price }, ...prices];
+        this.setState({ prices: newPrices });
+      }
+      this.setState({ code: "", price: "", size: "" });
+    });
   }
   codeChangeHandler(e) {
     this.setState({ code: e.target.value });
@@ -37,21 +35,20 @@ export class Prices extends Component {
   }
 
   deletePrice(targetId) {
-    api.deletePrice({ data: { targetId } })
-      .then(({ data }) => {
-        if (data != "no price") {
-          this.setState({
-            prices: this.state.prices.filter(item => item.id != targetId)
-          });
-        }
-      });
+    api.deletePrice({ data: { targetId } }).then(({ data }) => {
+      if (data != "no price") {
+        this.setState({
+          prices: this.state.prices.filter(item => item.id != targetId)
+        });
+      }
+    });
   }
 
   render() {
     return (
       <div>
         <Container className="p-5">
-          <h2 className="text-light">لیست قیمت ها</h2>
+          <h2 className="text-dark">افزودن قیمت</h2>
           <Row className="my-2">
             <Col>
               <input
@@ -91,7 +88,8 @@ export class Prices extends Component {
           <br />
           <hr />
           <br />
-          <Table dark responsive bordered>
+          <h2 className="text-dark">لیست قیمت ها</h2>
+          <Table responsive bordered>
             <thead>
               <tr>
                 <th>کد</th>

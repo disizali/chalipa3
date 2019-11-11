@@ -35,7 +35,7 @@ export default class Articles extends Component {
           <Row>
             <Col sm={12} md={9}>
               <Row>
-                <Col sm={12}>
+                <Col sm={12} className="p-0">
                   <h1 className="news-title pr-3 my-2"> {article.title}</h1>
                   <p className="news-date my-2">
                     <span className="mx-2">نوشته شده در </span>
@@ -48,9 +48,9 @@ export default class Articles extends Component {
                     className="w-100 shadow rounded my-2"
                   />
                 </Col>
-                <Col sm={12}>
+                <Col sm={12} className="bg-white rounded shadow-sm w-100">
                   <div
-                    className="content post-body my-5"
+                    className="post-body my-5"
                     dangerouslySetInnerHTML={{ __html: article.body }}
                   ></div>
                 </Col>

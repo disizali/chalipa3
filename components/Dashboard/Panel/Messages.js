@@ -18,8 +18,8 @@ export default class News extends Component {
     return (
       <div className="panel-messages">
         <Container className="p-5 d-flex flex-column">
-          <h2 className="text-light">پیام ها</h2>
-          <Table responsive bordered dark className="text-right">
+          <h2 className="text-dark">پیام ها</h2>
+          <Table responsive bordered className="text-right">
             <thead>
               <tr>
                 <th width="15%">نام</th>

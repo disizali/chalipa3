@@ -34,69 +34,69 @@ export class panel extends Component {
   }
   render() {
     const { panel } = this.state;
+    const actions = [
+      ["shopping-cart", "محصولات"],
+      ["newspaper", "مقالات"],
+      ["rss", "اخبار"],
+      ["dollar-sign", "لیست قیمت"],
+      ["images", "تصاویر"],
+      ["envelope", "پیام ها"]
+    ];
     return (
       <div className="h-100 w-100">
-        <Row className="rtl text-right panel h-100 w-100 p-0 m-0">
-          <Col sm={12} md={2} className="panel-actions h-100 w-100 p-0">
-            <ul className="w-100">
-              <li
-                className={`w-100 h-100 ${panel == 1 && "active"}`}
-                onClick={() => this.changePanel(1)}
-              >
-                <i className="fa fa-plus"></i>
-                <span>افزودن محصول</span>
-              </li>
-              <li
-                className={`w-100 h-100 ${panel == 2 && "active"}`}
-                onClick={() => this.changePanel(2)}
-              >
-                <i className="fa fa-newspaper"></i>
-                <span>ارسال مقاله</span>
-              </li>
-              <li
-                className={`w-100 h-100 ${panel == 3 && "active"}`}
-                onClick={() => this.changePanel(3)}
-              >
-                <i className="fa fa-rss"></i>
-                <span>افزودن خبر</span>
-              </li>
-              <li
-                className={`w-100 h-100 ${panel == 4 && "active"}`}
-                onClick={() => this.changePanel(4)}
-              >
-                <i className="fa fa-dollar-sign"></i>
-                <span>ویرایش لیست قیمت</span>
-              </li>
-              <li
-                className={`w-100 h-100 ${panel == 5 && "active"}`}
-                onClick={() => this.changePanel(5)}
-              >
-                <i className="fa fa-images"></i>
-                <span>مدیریت تصاویر</span>
-              </li>
-              <li
-                className={`w-100 h-100 ${panel == 6 && "active"}`}
-                onClick={() => this.changePanel(6)}
-              >
-                <i className="fa fa-envelope"></i>
-                <span>پیام ها</span>
-              </li>
-            </ul>
-          </Col>
-          <Col sm={12} md={10} className="panel-container p-0">
-            <div className="bg-white w-100 d-flex justify-content-between p-2 align-items-center">
-              <div>
-                <span className="mx-2">شرکت ویرا وب آپادانا</span>
-                <span className="mx-2">44259688-44259611</span>
-              </div>
-              <a href="http://apweb.ir">
-                APWEB
-              </a>
+        <nav className="rtl bg-white w-100 d-flex justify-content-between px-5 shadow-sm align-items-center position-fixed">
+          <div className="d-flex">
+            <div className="border-left d-flex align-items-center px-3 ">
+              <img
+                src="/static/images/apadana.jpg"
+                width="60"
+                alt="vira web apadana | apweb"
+              />
+              <span className="text-dark mr-3">ویرا وب آپادانا</span>
             </div>
-
-            {this.getPanel()}
-          </Col>
-        </Row>
+            <div className="text-left d-flex flex-column align-items-center justify-content-end px-3">
+              <div className="w-100">
+                <span className="mx-1">021-44259688</span>
+                <i className="fas fa-phone tiny-icon mx-1"></i>
+              </div>
+              <div className="w-100">
+                <span className="mx-1">021-44259611</span>
+                <i className="fas fa-phone tiny-icon mx-1"></i>
+              </div>
+            </div>
+          </div>
+          <a href="http://apweb.ir">APWEB.IR</a>
+        </nav>
+        <div className="dashboard-container">
+          <Row className="rtl text-right panel h-100 w-100 p-0 m-0">
+            <Col sm={12} md={1} className="panel-actions h-100 w-100 p-0 m-3">
+              <div className="m-2 bg-white shadow-sm position-fixed">
+                <ul className="w-100">
+                  {actions.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className={`d-flex flex-column text-center ${panel ==
+                          index + 1 && "active"}`}
+                        onClick={() => this.changePanel(index + 1)}
+                      >
+                        <i className={`m-0 p-0 my-1 fa fa-${item[0]}`}></i>
+                        <span className="m-0 p-0 my-1">{item[1]}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </Col>
+            <Col
+              sm={12}
+              md={10}
+              className="panel-container p-0 bg-white m-4 shadow"
+            >
+              {this.getPanel()}
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button, Table } from "reactstrap";
 import * as api from "../../../src/api";
-
 export default class MyEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -216,7 +215,7 @@ export default class MyEditor extends React.Component {
     return (
       <section className="product">
         <Container className="p-5">
-          <h2 className="text-light">افزودن محصول جدید</h2>
+          <h2 className="text-dark">افزودن محصول جدید</h2>
           <input
             type="text"
             className="panel-editor my-2 w-100"
@@ -226,7 +225,7 @@ export default class MyEditor extends React.Component {
           />
           <Row>
             <Col sm={2}>
-              <span className="text-light">دسته بندی :</span>
+              <span className="text-dark">دسته بندی :</span>
             </Col>
             <Col sm={10}>
               <select
@@ -251,11 +250,11 @@ export default class MyEditor extends React.Component {
             value={this.state.subtitle}
             onChange={this.subtitleChangeHandler.bind(this)}
           ></textarea>
-          <span className="my-2 text-light">متن توضیحات :</span>
+          <span className="my-2 text-dark">متن توضیحات :</span>
           <div id="editor">
             <ReactQuill
               value={this.state.description}
-              className="panel-editor rtl text-center text-light"
+              className="panel-editor rtl text-center text-dark"
               theme="snow"
               modules={this.modules()}
               formats={this.formats()}
@@ -266,7 +265,7 @@ export default class MyEditor extends React.Component {
 
           <Row className="my-3">
             <Col sm={2}>
-              <span className="text-light">تصویر محصول :</span>
+              <span className="text-dark">تصویر محصول :</span>
             </Col>
             <Col sm={10}>
               <select
@@ -286,7 +285,7 @@ export default class MyEditor extends React.Component {
           </Row>
           <Row className="my-3">
             <Col sm={2}>
-              <span className="text-light">مشخصات :</span>
+              <span className="text-dark">مشخصات :</span>
             </Col>
             <Col sm={10}>
               <select
@@ -306,7 +305,7 @@ export default class MyEditor extends React.Component {
           </Row>
           <Row className="my-3">
             <Col sm={2}>
-              <span className="text-light">جدول فنی :</span>
+              <span className="text-dark">جدول فنی :</span>
             </Col>
             <Col sm={10}>
               <select
@@ -335,29 +334,29 @@ export default class MyEditor extends React.Component {
           <div style={{ display: editable ? "flex" : "none" }}>
             <Button
               className="form-control mx-1"
-              color="warning"
-              onClick={() => this.editProduct(this.state.editable)}
-            >
-              ویرایش
-            </Button>
-            <Button
-              className="form-control mx-1"
               color="danger"
               onClick={() => this.cancelEdit()}
             >
               لغو
+            </Button>
+            <Button
+              className="form-control mx-1"
+              color="warning"
+              onClick={() => this.editProduct(this.state.editable)}
+            >
+              ذخیره
             </Button>
           </div>
 
           <br />
           <hr className="bg-muted text-warning w-100 h-100" />
           <br />
-
-          <Table responsive bordered dark className="text-right">
+          <h2 className="text-dark">لیست محصولات</h2>
+          <Table responsive bordered className="text-right">
             <thead>
               <tr>
-                <th width="60%">نام</th>
-                <th width="40%">عملیات</th>
+                <th width="70%">نام</th>
+                <th width="30%">عملیات</th>
               </tr>
             </thead>
             <tbody>

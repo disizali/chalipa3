@@ -44,7 +44,7 @@ export class Images extends Component {
     return (
       <div>
         <Container className="p-5 d-flex flex-column">
-          <h2 className="text-light">مدیریت تصاویر</h2>
+          <h2 className="text-dark">افزودن تصاویر</h2>
             <FormGroup>
               <Label
                 className="text-secondary"
@@ -69,7 +69,8 @@ export class Images extends Component {
           <br />
           <hr />
           <br />
-          <Table bordered responsive dark>
+          <h2 className="text-dark">لیست تصاویر</h2>
+          <Table bordered responsive>
             <thead>
               <tr>
                 <th width="20%">تصویر</th>

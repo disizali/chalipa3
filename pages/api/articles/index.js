@@ -8,6 +8,12 @@ const deleteArticle = async targetId => {
   return await Article.destroy({ where: { id: targetId } });
 };
 
+const updateArticle = async article => {
+  return await Article.update(
+    { ...article, image: article.selectedImage },
+    { where: { id: article.id } }
+  );
+};
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
@@ -21,6 +27,9 @@ export default async (req, res) => {
           req.body.selectedImage
         )
       );
+      break;
+    case "PUT":
+      res.send(await updateArticle(req.body));
       break;
     case "DELETE":
       res.send(await deleteArticle(req.body.targetId));

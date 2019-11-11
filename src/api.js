@@ -81,6 +81,10 @@ export function deleteArticle(data) {
   return axios.delete(`${api}/articles`, data);
 }
 
+export function editArticle(data) {
+  return axios.put(`${api}/articles`, data);
+}
+
 export function sendNews(data) {
   return axios.post(`${api}/news`, data);
 }
@@ -89,6 +93,9 @@ export function deleteNews(data) {
   return axios.delete(`${api}/news`, data);
 }
 
+export function editNews(data) {
+  return axios.put(`${api}/news`, data);
+}
 export function sendPrice(data) {
   return axios.post(`${api}/prices`, data);
 }

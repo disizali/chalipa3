@@ -1,18 +1,17 @@
 import { Component } from "react";
 import Layout from "../../components/Layout";
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import Link from "next/link";
-import * as api from "../../src/api";
 import Head from "next/head";
+import * as api from "../../src/api";
 
-class News extends Component {
+export default class News extends Component {
   static async getInitialProps(context) {
     let title = context.query.title;
     const allNews = await api.getNews();
     const news = allNews.find(item => item.title == title);
     return { news, allNews };
   }
-
   constructor(props) {
     super(props);
   }
@@ -32,33 +31,43 @@ class News extends Component {
         <Head>
           <title>چلیپا کابل پویا - {news.title}</title>
         </Head>
-        <Container className="my-4 py-5 rtl text-right">
+        <div className="m-4 p-5 rtl text-right">
           <Row>
             <Col sm={12} md={9}>
-              <h1 className="news-title pr-3 my-2">{news.title}</h1>
-              <p className="news-date my-2">
-                <span className="mx-2">نوشته شده در </span>
-                <span>{this.getDiffrents(news.createdAt)}</span>
-                <span className="mr-2"> روز پیش</span>
-              </p>
-              <img
-                src={`/static/uploads/images/${news.image}`}
-                // src={`https://picsum.photos/1000/400`}
-                className="w-100 shadow rounded my-2"
-              />
+              <Row>
+                <Col sm={12} className="p-0">
+                  <h1 className="news-title pr-3 my-2"> {news.title}</h1>
+                  <p className="news-date my-2">
+                    <span className="mx-2">نوشته شده در </span>
+                    <span>{this.getDiffrents(news.createdAt)}</span>
+                    <span className="mr-2"> روز پیش</span>
+                  </p>
+                  <img
+                    src={`/static/uploads/images/${news.image}`}
+                    // src={`https://picsum.photos/1000/400`}
+                    className="w-100 shadow rounded my-2"
+                  />
+                </Col>
+                <Col sm={12} className="bg-white rounded shadow-sm w-100">
+                  <div
+                    className="post-body my-5"
+                    dangerouslySetInnerHTML={{ __html: news.body }}
+                  ></div>
+                </Col>
+              </Row>
             </Col>
-            <Col className="my-5">
+            <Col sm={3} className="my-5">
               <div
                 sm={12}
                 md={4}
                 className="others-container d-flex justify-content-start flex-column align-items-start"
               >
-                <h5 className="other-title pr-3">دیگر خبر ها</h5>
+                <h5 className="other-title pr-3">دیگر مقالات</h5>
                 <ul className="p-0 text-right">
                   {allNews.map((item, index) => {
                     return (
                       <li key={index}>
-                        <Link href={`/news/${item.title}`}>
+                        <Link href={`/news/${encodeURI(item.title)}`}>
                           <a>
                             <span className="text-main">{item.title}</span>
                           </a>
@@ -70,16 +79,8 @@ class News extends Component {
               </div>
             </Col>
           </Row>
-          <Col sm={12} md={2}>
-            <div
-              className="content post-body my-5"
-              dangerouslySetInnerHTML={{ __html: news.body }}
-            ></div>
-          </Col>
-        </Container>
+        </div>
       </Layout>
     );
   }
 }
-
-export default News;
