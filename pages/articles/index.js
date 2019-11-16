@@ -40,7 +40,7 @@ export default class Articles extends React.Component {
 
               return (
                 <Col sm={3} className="news-item my-2" key={index}>
-                  <Link href={`/articles/${item.title}`} key={index}>
+                  <Link href={`/articles/${encodeURI(item.title)}`} key={index}>
                     <a>
                       <img
                         src={`/static/uploads/images/${item.image}`}
