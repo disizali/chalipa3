@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
-import axios from "axios";
 import * as api from "../src/api";
 export default class Footer extends React.Component {
   constructor(props) {
@@ -10,8 +9,8 @@ export default class Footer extends React.Component {
   }
 
   async componentDidMount() {
-    // const articles = await api.getArticles();
-    // this.setState({ articles: articles.splice(0, 5) });
+    const articles = await api.getArticles();
+    this.setState({ articles: articles.splice(0, 5) });
   }
 
   render() {

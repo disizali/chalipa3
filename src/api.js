@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as config from "./config";
-import fetch from "isomorphic-unfetch";
 
 import axiosRetry from 'axios-retry';
 axiosRetry(axios, { retries: 10 });
