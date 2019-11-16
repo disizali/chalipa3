@@ -1,6 +1,10 @@
 import axios from "axios";
+import rax from "retry-axios";
+import { axios as axios2 } from "axios";
 import * as config from "./config";
 import fetch from "isomorphic-unfetch";
+
+const interceptorId = rax.attach();
 
 const api = config.API;
 const uploadApi = config.UPLOAD_API;
@@ -23,9 +27,7 @@ export async function getCategory(title) {
 }
 
 export async function getPrices() {
-  const res = await fetch(`${api}/prices`);
-  return res.json();
-  const { data: prices } = await axios.get(`${api}/prices`);
+  const { data: prices } = await axios2(`${api}/prices`);
   return prices;
 }
 
