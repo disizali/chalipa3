@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
   }
 
   async componentDidMount() {
-    if (this.state.articles.length) {
+    if (this.state.articles.length == 0) {
       const articles = await api.getArticles();
       this.setState({ articles: articles.splice(0, 5) });
     }
