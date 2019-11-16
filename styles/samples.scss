@@ -1,7 +1,6 @@
 .sample-image {
   border-radius: 5px;
   position: relative;
-  background-image: linear-gradient(to bottom, transparent, red);
   transition: filter 0.5s ease;
   &:hover {
     filter: brightness(70%);
