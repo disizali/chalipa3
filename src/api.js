@@ -1,8 +1,6 @@
 import axios from "axios";
 import * as config from "./config";
 import fetch from "isomorphic-unfetch";
-// const rax = require("retry-axios");
-// const interceptorId = rax.attach();
 
 import axiosRetry from 'axios-retry';
 axiosRetry(axios, { retries: 10 });
