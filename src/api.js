@@ -1,10 +1,11 @@
 import axios from "axios";
-import rax from "retry-axios";
-import { axios as axios2 } from "axios";
 import * as config from "./config";
 import fetch from "isomorphic-unfetch";
+// const rax = require("retry-axios");
+// const interceptorId = rax.attach();
 
-const interceptorId = rax.attach();
+import axiosRetry from 'axios-retry';
+axiosRetry(axios, { retries: 10 });
 
 const api = config.API;
 const uploadApi = config.UPLOAD_API;
