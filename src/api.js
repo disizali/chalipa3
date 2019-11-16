@@ -28,7 +28,7 @@ export async function getCategory(title) {
 }
 
 export async function getPrices() {
-  const { data: prices } = await axios2(`${api}/prices`);
+  const { data: prices } = await axios(`${api}/prices`);
   return prices;
 }
 
