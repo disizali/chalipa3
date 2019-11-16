@@ -29,7 +29,7 @@ export default class Samples extends React.Component {
                         className="sample-image"
                         width="100%"
                       />
-                      <span className="sample-title">{item.name}</span>
+                      <span className="text-dark sample-title">{item.name}</span>
                     </a>
                   </Link>
                 </Col>
