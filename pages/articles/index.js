@@ -29,14 +29,6 @@ export default class Articles extends React.Component {
         <Container className="news-container my-5 rtl text-right">
           <Row>
             {this.props.articles.map((item, index) => {
-              console.log(
-                item.body
-                  .substring(
-                    item.body.indexOf("<p>"),
-                    item.body.indexOf("</p>")
-                  )
-                  .replace(/h\d/g, "span")
-              );
               const previewText =
                 item.body
                   .substring(
@@ -47,7 +39,7 @@ export default class Articles extends React.Component {
                   .substring(0, 200) + " ...";
 
               return (
-                <Col sm={3} className="news-item" key={index}>
+                <Col sm={3} className="news-item my-2" key={index}>
                   <Link href={`/articles/${item.title}`} key={index}>
                     <a>
                       <img

@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as config from "./config";
+import fetch from "isomorphic-unfetch";
 
 const api = config.API;
 const uploadApi = config.UPLOAD_API;
@@ -22,6 +23,8 @@ export async function getCategory(title) {
 }
 
 export async function getPrices() {
+  const res = await fetch(`${api}/prices`);
+  return res.json();
   const { data: prices } = await axios.get(`${api}/prices`);
   return prices;
 }
