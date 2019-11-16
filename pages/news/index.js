@@ -31,7 +31,7 @@ export default class News extends React.Component {
               const date = new Date(item.createdAt);
               return (
                 <Col sm={3} className="bg-sm-white news-item mb-2" key={index}>
-                  <Link href={`/news/${item.title}`} key={index}>
+                  <Link href={`/news/${encodeURI(item.title)}`} key={index}>
                     <a>
                       <img
                         src={`/static/uploads/images/${item.image}`}
