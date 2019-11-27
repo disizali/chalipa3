@@ -161,10 +161,6 @@ export default class News extends Component {
     const { editable } = this.state;
     return (
       <div className="panel-article">
-        <Head>
-          <script src="https://cdn.tiny.cloud/1/ixg2s2h2b5r0csl2c9vkzcke0rqoxxjqor825rn9ba0k7io2/tinymce/5/tinymce.min.js" />
-                 <script>tinymce.init({{ selector: "#mytextarea" }});</script>
-        </Head>
         <Container className="p-5 d-flex flex-column">
           <h2 className="text-dark">افزودن خبر جدید</h2>
           <input
@@ -176,8 +172,7 @@ export default class News extends Component {
           />
           <span className="my-2 text-dark">متن خبر :</span>
           <div id="editor">
-            <textarea id="mytextarea" />
-            {/* <ReactQuill
+            <ReactQuill
               value={this.state.body}
               className="panel-editor rtl text-center text-dark"
               theme="snow"
@@ -185,7 +180,7 @@ export default class News extends Component {
               formats={this.formats()}
               style={{ direction: "rtl" }}
               onChange={this.bodyChangeHandler.bind(this)}
-            /> */}
+            />
           </div>
           <Row className="my-3">
             <Col sm={2}>
