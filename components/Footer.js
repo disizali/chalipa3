@@ -79,12 +79,12 @@ export default class Footer extends React.Component {
                 </li>
                 <li>پست الکترونیک: info@chalipacable.ir</li>
                 <li>شماره تماس: 5-88525503-021</li>
-                <li className="d-flex justify-content-around">
+                <li>
                   <a href="https://instagram.com/chalipacable.ir" title="instagram">
-                    <i className="fab fa-instagram mx-2"></i>
+                    <i className="fab fa-instagram ml-4"></i>
                   </a>
                   <a href="https://www.facebook.com/chalipa.cable.9" title="facebook">
-                    <i className="fab fa-facebook mx-2"></i>
+                    <i className="fab fa-facebook mr-4"></i>
                   </a>
                 </li>
               </ul>

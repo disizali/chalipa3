@@ -10,7 +10,7 @@ export default class Representation extends React.Component {
         <Container className="text-center">
           <h3 className="m-3">نمایندگی های ما</h3>
           <Row className="justify-content-center">
-            {["نمایندگی کابل خراسان", "نمایندگی کابل شاهین"].map(
+            {["نمایندگی کابل خراسان", "نمایندگی کابل شاهین","نمایندگی کابل متال"].map(
               (item, index) => {
                 return (
                   <Col
