@@ -5,7 +5,10 @@ import * as api from "../../../src/api";
 export class Prices extends Component {
   constructor(props) {
     super(props);
-    this.state = { prices: [], code: "", price: "", size: "" };
+    this.state = { prices: [], code: "", price: "", size: "", editable: false };
+    this.startUpdate = this.startUpdate.bind(this);
+    this.cancelUpdate = this.cancelUpdate.bind(this);
+    this.submitUpdate = this.submitUpdate.bind(this);
   }
 
   async componentDidMount() {
@@ -24,6 +27,39 @@ export class Prices extends Component {
       this.setState({ code: "", price: "", size: "" });
     });
   }
+
+  startUpdate(editable) {
+    const targetPrice = this.state.prices.find(item => item.id == editable);
+    this.setState({
+      editable,
+      price: targetPrice.price,
+      code: targetPrice.code,
+      size: targetPrice.size
+    });
+  }
+  cancelUpdate() {
+    this.setState({ editable: false, price: "", code: "", size: "" });
+  }
+  submitUpdate() {
+    const { price, code, size, editable } = this.state;
+    if (!price || !code || !size) alert("لطفا ورودی های خودتون رو چک کنید");
+    api
+      .editPrice({ price, code, size, targetId: editable })
+      .then(({ data }) => {
+        if (data == "wrong data") {
+          return;
+        }
+        const newPrices = this.state.prices.map(item => {
+          if (item.id == editable) {
+            item.code = code;
+            item.price = price;
+            item.size = size;
+          }
+          return item;
+        });
+        this.setState({ prices: newPrices, price: "", code: "", size: "" });
+      });
+  }
   codeChangeHandler(e) {
     this.setState({ code: e.target.value });
   }
@@ -41,10 +77,12 @@ export class Prices extends Component {
           prices: this.state.prices.filter(item => item.id != targetId)
         });
       }
+      this.cancelUpdate();
     });
   }
 
   render() {
+    const { editable } = this.state;
     return (
       <div>
         <Container className="p-5">
@@ -78,13 +116,31 @@ export class Prices extends Component {
               />
             </Col>
           </Row>
-          <Button
-            color="primary"
-            className="form-control"
-            onClick={this.sendPrice.bind(this)}
-          >
-            افزودن
-          </Button>
+          <div style={{ display: editable ? "none" : "block" }}>
+            <Button
+              color="primary"
+              className="form-control"
+              onClick={this.sendPrice.bind(this)}
+            >
+              افزودن
+            </Button>
+          </div>
+          <div style={{ display: editable ? "flex" : "none" }}>
+            <Button
+              color="danger"
+              className="form-control ml-2"
+              onClick={this.cancelUpdate.bind(this)}
+            >
+              لغو
+            </Button>
+            <Button
+              color="warning"
+              className="form-control mr-2"
+              onClick={this.submitUpdate.bind(this)}
+            >
+              ذخیره
+            </Button>
+          </div>
           <br />
           <hr />
           <br />
@@ -105,13 +161,22 @@ export class Prices extends Component {
                     <td>{item.code}</td>
                     <td>{item.size}</td>
                     <td>{item.price.toLocaleString()}</td>
-                    <td>
+                    <td className="d-flex">
                       <Button
                         color="danger"
+                        className="mx-2"
                         onClick={() => this.deletePrice(item.id)}
                       >
                         <i className="fas fa-trash mx-2"></i>
                         <span className="mx-2">حذف</span>
+                      </Button>
+                      <Button
+                        color="warning"
+                        className="mx-2"
+                        onClick={() => this.startUpdate(item.id)}
+                      >
+                        <i className="fas fa-pen mx-2"></i>
+                        <span className="mx-2">ویرایش</span>
                       </Button>
                     </td>
                   </tr>

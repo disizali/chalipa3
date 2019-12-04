@@ -107,6 +107,10 @@ export function deletePrice(data) {
   return axios.delete(`${api}/prices`, data);
 }
 
+export function editPrice(data) {
+  return axios.put(`${api}/prices`, data);
+}
+
 export function deleteImage(data) {
   return axios.delete(`${api}/images`, data);
 }

@@ -18,6 +18,7 @@ export default async (req, res) => {
           { where: { id: req.body.id } }
         )
       );
+      break;
     case "DELETE":
       const destroy = await News.destroy({ where: { id: req.body.targetId } });
       res.status(200).send(destroy ? "done" : "no news");
