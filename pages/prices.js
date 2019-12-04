@@ -34,7 +34,7 @@ export default class Prices extends React.Component {
                     <td>{item.code}</td>
                     <td>{item.size}</td>
                     <td>
-                      {item.price.toLocaleString()}
+                      {item.price > 0 ? (item.price.toLocaleString()) : "تماس بگیرید"}
                       <i className="fas fa-money-bill-alt mr-2"></i>
                     </td>
                   </tr>
