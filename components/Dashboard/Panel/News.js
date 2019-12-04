@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
 import * as api from "../../../src/api";
-import Head from "next/head";
 
 export default class News extends Component {
   constructor(props) {
