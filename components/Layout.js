@@ -7,18 +7,26 @@ import Footer from "./Footer";
 export default class Layout extends React.Component {
   constructor(props) {
     super(props);
+    this.gtag = this.gtag.bind(this);
   }
-  // componentDidMount () {
-  //   if (!window.GA_INITIALIZED) {
-  //     initGA()
-  //     window.GA_INITIALIZED = true
-  //   }
-  //   logPageView()
-  // }
-  
+  gtag() {
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push(arguments);
+  }
+  componentDidMount() {
+    this.gtag("js", new Date());
+    this.gtag("config", "UA-154429283-1");
+  }
+
   render() {
     return (
       <main>
+        <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-154429283-1"
+          ></script>
+        </Head>
         <Navbar />
         <div className="children">{this.props.children}</div>
         <Footer articles={this.props.articles} />
