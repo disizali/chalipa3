@@ -16,7 +16,6 @@ export default class News extends Component {
   constructor(props) {
     super(props);
   }
-w
   getDiffrents(date) {
     const date1 = new Date();
     const date2 = new Date(date);

@@ -6,6 +6,8 @@ import Index from "../components/Dashboard/Panel/Index";
 import * as api from "../src/api";
 import Head from "next/head";
 import "../styles/dashboard/index.scss";
+import _ from "lodash";
+
 export class dashboard extends Component {
   constructor(props) {
     super(props);

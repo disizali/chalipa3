@@ -8,8 +8,6 @@ class MyDocument extends Document {
     return (
       <Html lang="fa">
         <Head>
-         
-
           <meta charSet="UTF-8" />
           <meta
             name="keywords"
