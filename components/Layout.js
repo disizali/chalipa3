@@ -7,7 +7,7 @@ import Footer from "./Footer";
 export default class Layout extends React.Component {
   constructor(props) {
     super(props);
-    this.gtag = this.gtag.bind(this);
+    // this.gtag = this.gtag.bind(this);
   }
   // gtag() {
   //   window.dataLayer = window.dataLayer || [];
