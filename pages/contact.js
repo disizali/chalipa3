@@ -11,8 +11,13 @@ import {
   Label,
   Input
 } from "reactstrap";
+import _ from "lodash";
 
 export default class contact extends React.Component {
+  static async getInitialProps(context) {
+    const articles = _.sampleSize(await api.getArticles(), 5);
+    return { articles };
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -56,8 +61,9 @@ export default class contact extends React.Component {
   componentDidMount() {}
 
   render() {
+    const { articles } = this.props;
     return (
-      <Layout>
+      <Layout articles={articles}>
         <Head>
           <title>چلیپا کابل پویا - تماس با ما</title>
         </Head>

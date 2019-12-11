@@ -4,10 +4,13 @@ import Link from "next/link";
 import { Container, Col, Row } from "reactstrap";
 import * as api from "../../src/api";
 import Head from "next/head";
+import _ from "lodash";
+
 export default class News extends React.Component {
   static async getInitialProps(context) {
     const news = await api.getNews();
-    return { news };
+    const articles = _.sampleSize(await api.getArticles(), 5);
+    return { news, articles };
   }
   constructor(props) {
     super(props);
@@ -21,7 +24,7 @@ export default class News extends React.Component {
   }
   render() {
     return (
-      <Layout>
+      <Layout articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - اخبار</title>
         </Head>

@@ -1,20 +1,22 @@
 import React from "react";
 import Layout from "../../../components/Layout";
-import axios from "axios";
+import _ from "lodash";
 import { Row, Col } from "reactstrap";
 import * as api from "../../../src/api";
-
 import Head from "next/head";
+
 export default class Product extends React.Component {
   static async getInitialProps(context) {
     let {
       query: { title }
     } = context;
     const categoryProducts = await api.getCategoryProducts(title);
+    const articles = _.sampleSize(await api.getArticles(), 5);
     return {
       product: categoryProducts[0],
       products: categoryProducts,
-      title
+      title,
+      articles
     };
   }
 
@@ -66,7 +68,7 @@ export default class Product extends React.Component {
     const { selected, tab } = this.state;
     const { products } = this.props;
     return (
-      <Layout>
+      <Layout articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - محصولات {this.props.title}</title>
         </Head>

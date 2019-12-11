@@ -7,16 +7,8 @@ export default class Footer extends React.Component {
     super(props);
     this.state = { articles: [] };
   }
-
-  async componentDidMount() {
-    if (this.state.articles.length == 0) {
-      const articles = await api.getArticles();
-      this.setState({ articles: articles.splice(0, 5) });
-    }
-  }
-
   render() {
-    const { articles } = this.state;
+    const { articles } = this.props;
     return (
       <footer>
         <Container>

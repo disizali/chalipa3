@@ -5,6 +5,7 @@ import * as api from "../../src/api";
 import Head from "next/head";
 import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
+import _ from "lodash";
 
 export default class Category extends React.Component {
   static async getInitialProps(context) {
@@ -14,7 +15,8 @@ export default class Category extends React.Component {
     } = context;
     const category = await api.getCategory(title);
     if (category.subCategories.length >= 1) {
-      return { category };
+      const articles = _.sampleSize(await api.getArticles(), 5);
+      return { category, articles };
     } else {
       if (res) {
         res.writeHead(302, {
@@ -33,7 +35,7 @@ export default class Category extends React.Component {
   render() {
     const { category } = this.props;
     return (
-      <Layout>
+      <Layout articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - {category.title}</title>
         </Head>

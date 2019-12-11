@@ -4,7 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 import Link from "next/link";
 import Head from "next/head";
 import * as api from "../../src/api";
-
+import _ from "lodash";
 export default class Articles extends Component {
   static async getInitialProps(context) {
     let title = context.query.title;
@@ -27,7 +27,7 @@ export default class Articles extends Component {
   render() {
     const { article, articles } = this.props;
     return (
-      <Layout>
+      <Layout articles={_.sampleSize(articles, 5)}>
         <Head>
           <title>چلیپا کابل پویا - {article.title}</title>
         </Head>

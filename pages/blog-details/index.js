@@ -3,10 +3,16 @@ import Layout from "../../components/Layout";
 import Head from "next/head";
 import { Container } from "reactstrap";
 import Link from "next/link";
+import * as api from "../../src/api";
+import _ from "lodash";
 export default class Namayandegi extends Component {
+  static async getInitialProps(context) {
+    const articles = _.sampleSize(await api.getArticles(), 5);
+    return { articles };
+  }
   render() {
     return (
-      <Layout>
+      <Layout articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - نمایندگی کابل خراسان</title>
         </Head>

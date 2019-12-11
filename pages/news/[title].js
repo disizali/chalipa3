@@ -4,18 +4,19 @@ import { Row, Col } from "reactstrap";
 import Link from "next/link";
 import Head from "next/head";
 import * as api from "../../src/api";
-
+import _ from "lodash";
 export default class News extends Component {
   static async getInitialProps(context) {
     let title = context.query.title;
     const allNews = await api.getNews();
+    const articles = _.sampleSize(await api.getArticles(), 5);
     const news = allNews.find(item => item.title == title);
-    return { news, allNews };
+    return { news, allNews, articles };
   }
   constructor(props) {
     super(props);
   }
-
+w
   getDiffrents(date) {
     const date1 = new Date();
     const date2 = new Date(date);
@@ -27,7 +28,7 @@ export default class News extends Component {
   render() {
     const { news, allNews } = this.props;
     return (
-      <Layout>
+      <Layout articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - {news.title}</title>
         </Head>

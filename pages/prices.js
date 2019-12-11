@@ -6,14 +6,15 @@ import * as api from "../src/api";
 export default class Prices extends React.Component {
   static async getInitialProps() {
     let prices = await api.getPrices();
-    return { prices };
+    const articles = _.sampleSize(await api.getArticles(), 5);
+    return { prices, articles };
   }
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <Layout>
+      <Layout articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - قیمت سیم و کابل</title>
         </Head>
@@ -34,7 +35,9 @@ export default class Prices extends React.Component {
                     <td>{item.code}</td>
                     <td>{item.size}</td>
                     <td>
-                      {item.price > 0 ? (item.price.toLocaleString()) : "تماس بگیرید"}
+                      {item.price > 0
+                        ? item.price.toLocaleString()
+                        : "تماس بگیرید"}
                       <i className="fas fa-money-bill-alt mr-2"></i>
                     </td>
                   </tr>

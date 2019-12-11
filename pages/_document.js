@@ -1,11 +1,12 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import withGA from "next-ga";
+import Router from "next/router";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
-
   render() {
     return (
       <Html lang="fa">
@@ -33,5 +34,4 @@ class MyDocument extends Document {
     );
   }
 }
-
-export default MyDocument;
+export default withGA("UA-154429283-1", Router)(MyDocument);

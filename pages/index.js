@@ -19,14 +19,15 @@ const Splitter = () => {
 export default class Index extends React.Component {
   static async getInitialProps(context) {
     let products = await api.getProducts();
-    return { products: _.sampleSize(products, 4) };
+    const articles = _.sampleSize(await api.getArticles(), 5);
+    return { products: _.sampleSize(products, 4), articles };
   }
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <Layout className="justify-content-center">
+      <Layout className="justify-content-center" articles={this.props.articles}>
         <Head>
           <title>چلیپا کابل پویا - نمایندگی کابل خراسان</title>
         </Head>
