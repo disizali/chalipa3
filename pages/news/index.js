@@ -10,7 +10,8 @@ export default class News extends React.Component {
   static async getInitialProps(context) {
     const news = await api.getNews();
     const articles = _.sampleSize(await api.getArticles(), 5);
-    return { news, articles };
+    const categories = await api.getCategories();
+    return { news, articles, categories };
   }
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ export default class News extends React.Component {
   }
   render() {
     return (
-      <Layout articles={this.props.articles}>
+      <Layout articles={this.props.articles} categories={this.props.categories}>
         <Head>
           <title>چلیپا کابل پویا - اخبار</title>
         </Head>

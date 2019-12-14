@@ -16,7 +16,8 @@ import _ from "lodash";
 export default class contact extends React.Component {
   static async getInitialProps(context) {
     const articles = _.sampleSize(await api.getArticles(), 5);
-    return { articles };
+    const categories = await api.getCategories();
+    return { articles, categories };
   }
   constructor(props) {
     super(props);
@@ -61,9 +62,9 @@ export default class contact extends React.Component {
   componentDidMount() {}
 
   render() {
-    const { articles } = this.props;
+    const { articles, categories } = this.props;
     return (
-      <Layout articles={articles}>
+      <Layout articles={articles} categories={categories}>
         <Head>
           <title>چلیپا کابل پویا - تماس با ما</title>
         </Head>

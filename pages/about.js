@@ -7,12 +7,17 @@ import * as api from "../src/api";
 export default class About extends Component {
   static async getInitialProps(context) {
     const articles = _.sampleSize(await api.getArticles(), 5);
-    return { articles };
+    const categories = await api.getCategories();
+    return { articles, categories };
   }
   render() {
     const { articles } = this.props;
     return (
-      <Layout articles={articles  }>
+      <Layout
+        articles={articles}
+        products={this.props.products}
+        categories={this.props.categories}
+      >
         <Head>
           <title>چلیپا کابل پویا - درباره ما</title>
         </Head>

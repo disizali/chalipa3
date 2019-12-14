@@ -11,7 +11,8 @@ export default class News extends Component {
     const allNews = await api.getNews();
     const articles = _.sampleSize(await api.getArticles(), 5);
     const news = allNews.find(item => item.title == title);
-    return { news, allNews, articles };
+    const categories = await api.getCategories();
+    return { news, allNews, articles, categories };
   }
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ export default class News extends Component {
   render() {
     const { news, allNews } = this.props;
     return (
-      <Layout articles={this.props.articles}>
+      <Layout articles={this.props.articles} categories={this.props.categories}>
         <Head>
           <title>چلیپا کابل پویا - {news.title}</title>
         </Head>

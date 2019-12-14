@@ -9,7 +9,8 @@ import _ from "lodash";
 export default class Articles extends React.Component {
   static async getInitialProps(context) {
     const articles = await api.getArticles();
-    return { articles };
+    const categoreis = await api.getCategories();
+    return { articles, categoreis };
   }
   constructor(props) {
     super(props);
@@ -23,7 +24,10 @@ export default class Articles extends React.Component {
   }
   render() {
     return (
-      <Layout articles={_.sampleSize(this.props.articles, 5)}>
+      <Layout
+        articles={_.sampleSize(this.props.articles, 5)}
+        categories={this.props.categories}
+      >
         <Head>
           <title>چلیپا کابل پویا - مقالات</title>
         </Head>

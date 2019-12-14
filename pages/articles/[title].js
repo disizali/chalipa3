@@ -10,7 +10,8 @@ export default class Articles extends Component {
     let title = context.query.title;
     const articles = await api.getArticles();
     const article = articles.find(item => item.title == title);
-    return { article, articles };
+    const categories = await api.getCategories();
+    return { article, articles, categories };
   }
   constructor(props) {
     super(props);
@@ -27,7 +28,10 @@ export default class Articles extends Component {
   render() {
     const { article, articles } = this.props;
     return (
-      <Layout articles={_.sampleSize(articles, 5)}>
+      <Layout
+        articles={_.sampleSize(articles, 5)}
+        categories={this.props.categories}
+      >
         <Head>
           <title>چلیپا کابل پویا - {article.title}</title>
         </Head>

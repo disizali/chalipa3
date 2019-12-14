@@ -9,11 +9,12 @@ import _ from "lodash";
 export default class Namayandegi extends Component {
   static async getInitialProps(context) {
     const articles = _.sampleSize(await api.getArticles(), 5);
-    return { articles };
+    const categoreis = await api.getCategories();
+    return { articles, categoreis };
   }
   render() {
     return (
-      <Layout articles={this.props.articles}>
+      <Layout articles={this.props.articles} categoreis={this.props.categoreis}>
         <Head>
           <title>چلیپا کابل پویا - نمایندگی کابل خراسان</title>
         </Head>

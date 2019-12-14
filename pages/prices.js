@@ -7,14 +7,15 @@ export default class Prices extends React.Component {
   static async getInitialProps() {
     let prices = await api.getPrices();
     const articles = _.sampleSize(await api.getArticles(), 5);
-    return { prices, articles };
+    const categories = await api.getCategories();
+    return { prices, articles, categories };
   }
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <Layout articles={this.props.articles}>
+      <Layout articles={this.props.articles} categories={this.props.categories}>
         <Head>
           <title>چلیپا کابل پویا - قیمت سیم و کابل</title>
         </Head>

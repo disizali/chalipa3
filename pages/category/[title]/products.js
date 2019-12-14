@@ -12,11 +12,13 @@ export default class Product extends React.Component {
     } = context;
     const categoryProducts = await api.getCategoryProducts(title);
     const articles = _.sampleSize(await api.getArticles(), 5);
+    const categories = await api.getCategories();
     return {
       product: categoryProducts[0],
       products: categoryProducts,
       title,
-      articles
+      articles,
+      categories
     };
   }
 
@@ -68,7 +70,7 @@ export default class Product extends React.Component {
     const { selected, tab } = this.state;
     const { products } = this.props;
     return (
-      <Layout articles={this.props.articles}>
+      <Layout articles={this.props.articles} categories={this.props.categories}>
         <Head>
           <title>چلیپا کابل پویا - محصولات {this.props.title}</title>
         </Head>

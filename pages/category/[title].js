@@ -14,9 +14,10 @@ export default class Category extends React.Component {
       query: { title }
     } = context;
     const category = await api.getCategory(title);
+    const categories = await api.getCategories();
     if (category.subCategories.length >= 1) {
       const articles = _.sampleSize(await api.getArticles(), 5);
-      return { category, articles };
+      return { category, articles, categories };
     } else {
       if (res) {
         res.writeHead(302, {
@@ -35,7 +36,7 @@ export default class Category extends React.Component {
   render() {
     const { category } = this.props;
     return (
-      <Layout articles={this.props.articles}>
+      <Layout articles={this.props.articles} categories={this.props.categories}>
         <Head>
           <title>چلیپا کابل پویا - {category.title}</title>
         </Head>
