@@ -27,7 +27,7 @@ export default class Layout extends React.Component {
             src="https://www.googletagmanager.com/gtag/js?id=UA-154429283-1"
           ></script>
         </Head> */}
-        <Navbar />
+        <Navbar categories={this.props.categories} />
         <div className="children">{this.props.children}</div>
         <Footer articles={this.props.articles} />
       </main>

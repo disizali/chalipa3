@@ -30,12 +30,8 @@ export default class Navbarclass extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-  async componentDidMount() {
-    const categories = await api.getCategories();
-    this.setState({ categories });
-  }
   render() {
-    const { categories } = this.state;
+    const { categories } = this.props;
     return (
       <Navbar
         color="light"

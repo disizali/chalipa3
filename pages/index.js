@@ -20,14 +20,19 @@ export default class Index extends React.Component {
   static async getInitialProps(context) {
     let products = await api.getProducts();
     const articles = _.sampleSize(await api.getArticles(), 5);
-    return { products: _.sampleSize(products, 4), articles };
+    const categories = await api.getCategories();
+    return { products: _.sampleSize(products, 4), articles, categories };
   }
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <Layout className="justify-content-center" articles={this.props.articles}>
+      <Layout
+        className="justify-content-center"
+        articles={this.props.articles}
+        categories={this.props.categories}
+      >
         <Head>
           <title>چلیپا کابل پویا - نمایندگی کابل خراسان</title>
         </Head>
