@@ -6,26 +6,26 @@
     filter: brightness(70%);
   }
 }
+
 .sample-column:hover > .sample-title {
   opacity: 1;
   height: 30px;
   margin-top: -30px;
   letter-spacing: 4px;
+  color: white;
 }
 .sample-column {
-  a {
     text-decoration: none;
     &:hover {
       text-decoration: none;
     }
-  }
 }
 .sample-title {
   height: 25px;
   position: relative;
   margin-top: -25px;
   background: linear-gradient(to top, $shadowColor 0%, transparent 100%);
-  color: #ffffff;
+  color: rgb(65, 65, 65);
   transition: all 0.3s;
   opacity: 0.2;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

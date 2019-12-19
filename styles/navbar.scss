@@ -9,6 +9,12 @@ nav {
 }
 
 .dropdown-menu {
+  a{
+    text-decoration: none;
+    &:hover{
+      text-decoration: none;
+    }
+  }
   background: white;
   text-align: right;
   border-radius: 5px;

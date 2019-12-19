@@ -9,8 +9,8 @@ import _ from "lodash";
 export default class Articles extends React.Component {
   static async getInitialProps(context) {
     const articles = await api.getArticles();
-    const categoreis = await api.getCategories();
-    return { articles, categoreis };
+    const categories = await api.getCategories();
+    return { articles, categories };
   }
   constructor(props) {
     super(props);
