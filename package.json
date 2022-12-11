@@ -21,7 +21,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "draft-js": "^0.11.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-fileupload": "^1.1.6-alpha.5",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",
